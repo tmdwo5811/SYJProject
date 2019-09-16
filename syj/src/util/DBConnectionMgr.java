@@ -83,6 +83,7 @@ public class DBConnectionMgr {
     	_url="jdbc:mysql://127.0.0.1:3306/mydb?useUnicode=true&characterEncoding=UTF-8";
     	_user="root";
     	_password="1234";
+    	//이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽
     	System.out.println("_driver=>"+(_driver)+",_url=>"+(_url));
     	System.out.println("_user=>"+(_user)+",_password=>"+(_password));
     	
