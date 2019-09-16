@@ -42,12 +42,5 @@
 	  <version>1.2</version>
 	</dependency>
 	
-	<!-- 인코딩 필터 만들기 귀찮아서 끌어옴 -->
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-web</artifactId>
-	  <version>5.1.5.RELEASE</version>
-	</dependency>
-	
   </dependencies>
 </project>

@@ -80,7 +80,7 @@ public class DBConnectionMgr {
     	//드라이브만 시스템에 반영
     	if(_driver!=null)  System.setProperty("jdbc.drivers", _driver);//등록
     	//-------------------------------------------------------------------
-    	_url="jdbc:mysql://127.0.0.1:3306/mydb?useUnicode=true&characterEncoding=UTF-8";
+    	_url="jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=UTF-8";
     	_user="root";
     	_password="1234";
     	System.out.println("_driver=>"+(_driver)+",_url=>"+(_url));
