@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+		 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+		 id="WebApp_ID" version="3.1">
+  <display-name>syj</display-name>
+  <!--  controllerAction -->
+  <servlet>
+	<servlet-name>controllerAction</servlet-name>
+	<servlet-class>controller.ControllerAction</servlet-class>
+	<init-param>
+	  <param-name>propertyConfig</param-name>
+	  <param-value>WEB-INF/command.properties</param-value>
+	</init-param>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>controllerAction</servlet-name>
+	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <!-- encoding -->
+  <filter>
+	<filter-name>encodingFilter</filter-name>
+	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	<init-param>
+	  <param-name>encoding</param-name>
+	  <param-value>UTF-8</param-value>
+	</init-param>
+  </filter>
+  <filter-mapping>
+	<filter-name>encodingFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>
