@@ -4,11 +4,11 @@ import java.sql.Timestamp;
 
 public class Answer {
 	
-	int no;
-	Post post;
-	User user;
-	String content;
-	Timestamp regdate;
+	private int no;
+	private Post post;
+	private User user;
+	private String content;
+	private Timestamp regdate;
 	
 	public int getNo() { return no; }
 	public Post getPost() { return post; }

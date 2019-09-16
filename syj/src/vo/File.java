@@ -2,9 +2,9 @@ package vo;
 
 public class File {
 	
-	Post post;
-	String name;
-	char type;
+	private Post post;
+	private String name;
+	private char type;
 	
 	public Post getPost() { return post; }
 	public String getName() { return name; }

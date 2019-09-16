@@ -4,14 +4,14 @@ import java.sql.Timestamp;
 
 public class Post {
 	
-	int no;
-	Location location;
-	String subject;
-	User user;
-	String content;
-	int view;
-	Timestamp regdate;
-	byte status;
+	private int no;
+	private Location location;
+	private String subject;
+	private User user;
+	private String content;
+	private int view;
+	private Timestamp regdate;
+	private byte status;
 	
 	public int getNo() { return no; }
 	public Location getLocation() { return location; }

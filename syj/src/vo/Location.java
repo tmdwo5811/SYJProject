@@ -2,8 +2,8 @@ package vo;
 
 public class Location {
 	
-	int no;
-	String name;
+	private int no;
+	private String name;
 	
 	public int getNo() { return no; }
 	public String getName() { return name; }

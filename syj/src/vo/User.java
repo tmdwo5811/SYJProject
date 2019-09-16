@@ -5,14 +5,14 @@ import java.sql.Timestamp;
 
 public class User {
 	
-	int no;
-	String id, pw, salt, addr, phone;
-	char gender;
-	Date both;
-	String email;
-	Location location;
-	Timestamp regdate;
-	String credentialFile;
+	private int no;
+	private String id, pw, salt, addr, phone;
+	private char gender;
+	private Date both;
+	private String email;
+	private Location location;
+	private Timestamp regdate;
+	private String credentialFile;
 	
 	public int getNo() { return no; }
 	public String getId() { return id; }

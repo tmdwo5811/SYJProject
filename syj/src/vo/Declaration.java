@@ -2,10 +2,10 @@ package vo;
 
 public class Declaration {
 	
-	int no;
-	Post post;
-	User user;
-	String content;
+	private int no;
+	private Post post;
+	private User user;
+	private String content;
 	
 	public int getNo() { return no; }
 	public Post getPost() { return post; }
