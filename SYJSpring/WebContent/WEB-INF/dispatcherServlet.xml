@@ -9,12 +9,13 @@
 	<property name="suffix" value=".jsp"/>
   </bean>
   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-
-  <context:component-scan base-package="controller"/>
-
+  
   <mvc:default-servlet-handler/>
   <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
 	<property name="order" value="0"/>
   </bean>
   <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+  
+  <context:component-scan base-package="controller"/>
+  
 </beans>
