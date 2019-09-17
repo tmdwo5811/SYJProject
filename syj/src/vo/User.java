@@ -16,6 +16,19 @@ public class User {
 	private Timestamp regdate;
 	private String credentialFile;
 	
+	public static void main(String[] args) {
+		
+		User user = new User();
+		user.setPasswordWithEncrypt("1234");
+		
+		System.out.println(user.getPw());
+		System.out.println(user.getSalt());
+		
+		System.out.println(user.isPassword("1234"));
+		System.out.println(user.isPassword("1235"));
+		
+	}
+	
 	public void setPasswordWithEncrypt(String password) {
 		
 		setSalt(SHA256Util.generateSalt());
