@@ -3,6 +3,8 @@ package vo;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import kr.co.hucloud.utilities.SHA256Util;
+
 public class User {
 	
 	private int no;
@@ -13,6 +15,20 @@ public class User {
 	private Location location;
 	private Timestamp regdate;
 	private String credentialFile;
+	
+	public void setPasswordWithEncrypt(String password) {
+		
+		setSalt(SHA256Util.generateSalt());
+		setPw(SHA256Util.getEncrypt(password, getSalt()));
+		
+	} //setPasswordWithEncrypt();
+	
+	public boolean isPassword(String password) {
+		
+		boolean result = getPw().equals(SHA256Util.getEncrypt(password, getSalt()));
+		return result;
+		
+	} //isPassword();
 	
 	public int getNo() { return no; }
 	public String getId() { return id; }
