@@ -33,15 +33,15 @@ public class UsersDAO {
 			
 			con = pool.getConnection();
 			pstmt = con.prepareStatement(sql);
-			
+			/*
 			pstmt.setString(1, user.getId());
 			pstmt.setString(2, user.getPw());
 			pstmt.setString(3, user.getSalt());
 			pstmt.setString(4, user.getAddr());
-			pstmt.setString(5, user.getPhone());
+			pstmt.setString(5, user.getPhone());*/
 			pstmt.setString(6, Character.toString(user.getGender()));
 			pstmt.setDate(7, user.getBoth());
-			pstmt.setString(8, user.getEmail());
+			/*pstmt.setString(8, user.getEmail());*/
 			pstmt.setInt(9, user.getLocation().getNo());
 			pstmt.setString(10, user.getCredentialFile());
 			
