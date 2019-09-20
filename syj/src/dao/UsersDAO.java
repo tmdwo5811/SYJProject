@@ -43,7 +43,7 @@ public class UsersDAO {
 			pstmt.setDate(7, user.getBoth());
 			/*pstmt.setString(8, user.getEmail());*/
 			pstmt.setInt(9, user.getLocation().getNo());
-			pstmt.setString(10, user.getCredentialFile());
+			pstmt.setBoolean(10, user.getCredential());
 			
 			result = pstmt.executeUpdate() != 0;
 			
