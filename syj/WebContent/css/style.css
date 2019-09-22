@@ -74,7 +74,7 @@ a{
   position:fixed;
   top:80px;
   z-index:1000;
-  background:green;
+  background:#0059ab;
   height:auto;
   width:210px;
   padding:20px 20px;
@@ -89,6 +89,31 @@ a{
   text-align: center;
   width:100px;
 }
+.l_form, .j_form{
+  z-index: 99999;
+  /*position:absolute;*/
+  width:210px;
+  color:#fff;
+}
+.l_form input{
+  padding:5px;
+  margin:5px auto;
+  text-align: center;
+  display:none;
+}
+.j_form, .j_menual{
+  margin:10px 0px;
+  display: none;
+}
+.j_textbox{
+  width:80px;
+}
+.j_menual{
+  text-align: center;
+}
+.j_menual a{
+  font-size: 11px;
+}
 .sidebarf{
   position:fixed;
   background:#0059ab;
@@ -100,4 +125,10 @@ a{
   display:block;
   top:205px;
   bottom:0;
+}
+.sidebarf a span, .sidebarf a i{
+  margin-top: 20px;
+}
+.sidebarf ul li ul{
+  display: none;
 }
