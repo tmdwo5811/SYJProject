@@ -10,7 +10,7 @@ a{
 }
 .toptoptop{
   position:fixed;
-  background: #343d46;
+  background: #ece9de;
   width:100%;
   height:80px;
 }
@@ -23,7 +23,7 @@ a{
 .container-1 input#search{
   width: 300px;
   height: 50px;
-  background: #2b303b;
+  background: #ece9de;
   border: none;
   font-size: 10pt;
   float: left;
@@ -66,17 +66,21 @@ a{
 .container-1:hover button, .container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
     outline:none;
     background: #ffffff;
-    border:0px solid #fff;
+    border:1px solid #fff;
   }
 .container-1{
   margin:0 auto;
   padding-top:15px;
+  border:1px
+}
+.container-1 input#search{
+box-shadow: 0px 0px 2px #fff;
 }
 .sidebart{
   position:fixed;
   top:80px;
   z-index:1000;
-  background:#0059ab;
+  background:#729246;
   height:auto;
   width:210px;
   padding:20px 20px;
@@ -110,9 +114,9 @@ a{
   cursor: text;
 }
 .cl_j_div label{
-  font-size: 14px;
+  font-size: 12px;
 }
-.l_form input[type=text], .l_form input[type=password], .j_form input[type=text], .j_form input[type=password]{
+.l_form input[type=text], .l_form input[type=password], .j_form input[type=text], .j_form input[type=number], .j_form input[type=password]{
   height:25px;
   padding:6px;
   margin:5px auto;
@@ -153,13 +157,12 @@ a{
 }
 .j_menual{
   text-align: center;
-}
-.j_menual a{
-  font-size: 11px;
+  color:#fff;
+  font-size:11px;
 }
 .sidebarf{
   position:fixed;
-  background:#0059ab;
+  background:#729246;
   z-index:1000;
   height:auto;
   width:210px;
@@ -172,69 +175,57 @@ a{
 .sidebarf a span, .sidebarf a i{
   margin-top: 20px;
 }
+.sidebar_cate ul li{
+  position:relative;
+}
 .sidebarf ul li ul{
   display: none;
 }
-.selectbox {
-position: relative;
-  width: 200px;/* 너비설정 */
-
-  border: 1px solid #999; /* 테두리 설정 */
-
-  z-index: 1;
-
-  /* focus 효과*/
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+.sidebarf ul .loc_li{
+  position:absolute;
+  top:17px;
+  left:18px;
 }
-
-/* focus 효과 */
-.selectbox.focus {
-  border-color: #66afe9;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+.selectbox{
+  position:relative;
+  margin-top:3px;
+  width:207px;
+  border:1px solid #999;
+  z-index:999999;
+  background:#fff;
+  margin-bottom:3px;
 }
-
-/* 가상 선택자를 활용 화살표 대체 */
-.selectbox:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  width: 0;
-  height: 0;
-  margin-top: -1px;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #313131;
+.selectbox:before{
+  content="";
+  position:absolute;
+  top:50px;
+  right:15px;
+  width:0;height:0;
+  margin-top:-1px;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top: 5px solid #333;
 }
-
-.selectbox label {
-  position: absolute;
-  top: 1px; /* 위치정렬 */
-
-  left: 5px; /* 위치정렬 */
-
-  padding: .5em .5em; /* select의 여백 크기 만큼 */
-
-  color: #333;
-  z-index: -1; /* IE8에서 label이 위치한 곳이 클릭되지 않는 것 해결 */
+.selectbox label{
+  position:absolute;
+  top:-4px;
+  left:0px;
+  padding: .8em .5em;
+  color:#999;
+  z-index:-1;
 }
-
-.selectbox select {
-  width: 100%;
-  height: auto;  /* 높이 초기화 */
-  line-height: normal; /* line-height 초기화 */
-  font-family: inherit; /* 폰트 상속 */
-  padding: .8em .5em;  /* 여백과 높이 결정 */
-  border: 0;
-  opacity: 0;  /* 숨기기 */
-  filter: alpha(opacity=0);  /* IE8 숨기기 */
-
-  -webkit-appearance: none;  /* 네이티브 외형 감추기 */
-  -moz-appearance: none;
-  appearance: none;
+.selectbox select{
+  width:100%;
+  height:auto;
+  line-height: normal;
+  font-family: inherit;
+  padding: .8em .5em;
+  border:0;
+  opacity:0;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+.loc_p_li span{
+  position:relative;
 }

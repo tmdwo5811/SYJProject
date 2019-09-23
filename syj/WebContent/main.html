@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- HTTPS required. HTTP will give a 403 forbidden response -->
+<script src="https://sdk.accountkit.com/en_US/sdk.js"></script>
 <script src="https://kit.fontawesome.com/af09124883.js" crossorigin="anonymous"> //fontawesome import 링크
 </script>
 <script type="text/javascript" src="js/script.js">
@@ -22,7 +24,7 @@
 </header>
 <div class="sidebart">
 	<h1>
-		<div class="logo"><a href="#"><img src="#" alt="ourforest" title="OF"></a></div>
+		<div class="logo"><a href="#"><img src="img/logo.png" alt="ourforest" title="OF"></a></div>
 	</h1>
 	<ul>
 		<li>
@@ -63,34 +65,41 @@
 			<label for="id_j_pass2">비밀번호를 한번 더 입력하세요.</label>
 			<input id="id_j_pass2"class="j_textbox" type="password">
 		</div>
-		성별 : <input type="radio" name="gender">남자 <input type="radio" name="gender">여자<br><br>
-		생년월일 :<input class="j_both" type="date" style="width:173px;"><br><br>
-		지역 선택 :
+		<div class="cl_j_div">
+			<label for="id_j_both">주민번호 앞 7자리 까지 입력하세요.</label>
+			<input id="id_j_both" class="j_textbox" type="number" maxLength="7" oninput="maxLengthCheck(this)">
+		</div>
+
+		<!-- 성별 : <input type="radio" name="gender">남자 <input type="radio" name="gender">여자<br><br>
+		생년월일 :<input class="j_both" type="date" value="생년월일 yyyy-mm-dd" style="width:173px;"><br><br> -->
 		<div class="selectbox">
-		<select id="select">
-			<option value="seoul" selected>서울시</option>
-			<option value="incheon">인천시</option>
-			<option value="daejeon">대전시</option>
-			<option value="sejong">세종시</option>
-			<option value="gyeonggi">경기도</option>
-			<option value="chungcheong">충청도</option>
-			<option value="gangwon">강원도</option>
-			<option value="gwangju">광주시</option>
-			<option value="busna">부산시</option>
-			<option value="daegu">대구시</option>
-			<option value="ulsan">울산시</option>
-			<option value="gyeongsang">경상도</option>
-			<option value="jeolla">전라도</option>
-		</select>
+			<label for="select">지역 선택</label>
+			<select id="select">
+				<option selected>지역 선택</option>
+				<option>서울시</option>
+				<option>인천시</option>
+				<option>대전시</option>
+				<option>세종시</option>
+				<option>경기도</option>
+				<option>충청도</option>
+				<option>강원도</option>
+				<option>광주시</option>
+				<option>부산시</option>
+				<option>대구시</option>
+				<option>울산시</option>
+				<option>경상도</option>
+				<option>전라도</option>
+			</select>
 	</div>
-		<input type="submit" class="j_button" value="약관을 동의하며 회원가입" style="font-size:15px;text-align:left;padding-left:17px;">
+		<input type="submit" class="j_button" value="약관에 동의하며 회원가입" style="font-size:15px;text-align:left;padding-left:17px;margin-top:5px;">
 	</form>
 		<div class="j_menual">
 		<a href="#">회원가입약관</a> / <a href="#">개인정보 취급 방침</a>
 		</div>
+<div class="sidebar_cate">
 	<ul>
-		<li><a href="#"><i class="fas fa-comments"></i> <span>지역별 청원</span></a>
-			<ul>
+		<li><a href="#" class="loc_p_li"><i class="fas fa-comments"></i> <span>지역별 청원</span></a>
+			<ul class="loc_s_li">
 				<li><a href="#">서울시</a></li>
 				<li><a href="#">인천시</a></li>
 				<li><a href="#">대전시</a></li>
@@ -128,10 +137,8 @@
 		</li>
 	</ul>
 </div>
-<div class="contents">
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
+<div class="contents">
 </div>
 </body>
 </html>
