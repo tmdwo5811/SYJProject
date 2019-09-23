@@ -4,14 +4,14 @@ import java.sql.Timestamp;
 
 public class Post extends Vo {
 	
-	private int no;
-	private Location location;
-	private String subject;
-	private User user;
-	private String content;
-	private int view;
-	private Timestamp regdate;
-	private byte status;
+	private int no;//게시물 번호
+	private Location location;//지역
+	private String subject;//제목
+	private User user;//사용자
+	private String content;//게시판
+	private int view;//조회수
+	private Timestamp regdate;//게시날짜
+	private byte status;//만료
 	
 	public int getNo() { return no; }
 	public Location getLocation() { return location; }

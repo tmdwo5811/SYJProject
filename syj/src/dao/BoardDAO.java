@@ -81,7 +81,7 @@ public class BoardDAO {
 			     *그룹번호가 가장 최신의 글을 중심으로 정렬하되,만약에 level이 같은 경우에는
 			     *step값으로 오름차순을 통해서 몇번째 레코드번호를 기준해서 정렬할것인가? 
 			     */
-				sql="select * from board order by ref desc,re_step asc limit ?,?";//1,10
+				sql="select * from board";//1,10
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, start-1);//mysql은 레코드순번이 내부적으로 0부터 시작
 				pstmt.setInt(2, end);
@@ -92,16 +92,7 @@ public class BoardDAO {
 					Location location = new Location();
 
 					do {
-						Post article=new Post();
-						article.setNo(rs.getInt("no"));
-						location.setNo(rs.getInt("location"));
-						article.setLocation(location);
-						article.setSubject(rs.getString("subject"));
-						//article.setUser(rs.getUser("user")); 이거 우째함?
-						article.setContent(rs.getString("content"));
-						article.setView(rs.getInt("view"));
-						article.setRegdate(rs.getTimestamp("regdate"));
-						article.setStatus(rs.getByte("status"));
+						Post article=(Post)new Post().setByResultSet(rs);
 						
 					}while(rs.next());
 				}
@@ -112,9 +103,86 @@ public class BoardDAO {
 			}
 			return articleList;
 		}
-		//-게시판의 글쓰기 및 답변글쓰기
+		//-게시판의 글쓰기 및 답변글쓰기 (일단 만들어두긴하는데 써야할듯)
 		public void insertArticle(Post article) {
 			List articleList=null;//ArrayList articleList=null
+		}
+		//글상세보기
+		public Post getArticle(int num) {
+			Post article=null;
+			try {
+				con=pool.getConnection();
+				sql="update board set readcount=readcount+1 where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				int update=pstmt.executeUpdate();
+				System.out.println("조회수 증가유무(update)=>"+update);
+				sql="select * from board where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				rs=pstmt.executeQuery();
+				//글목록보기
+				if(rs.next()) {
+				article=(Post)new Post().setByResultSet(rs);
+				}
+			}catch(Exception e) {
+				System.out.println("getArticle 메서드에러"+e);
+			}finally {
+				pool.freeConnection(con,pstmt,rs);
+			}
+			return article;
+		}
+		//글수정
+		public Post updateGetArticle(int num) {
+			Post article=null;
+			try {
+				con=pool.getConnection();
+				
+				sql="select * from board where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					article=(Post)new Post().setByResultSet(rs);
+				}
+			}catch(Exception e) {
+				System.out.println("updateGetArticle() 메서드 에러유발"+e);
+			}finally {
+				pool.freeConnection(con,pstmt,rs);
+			}
+			return article;
+		}
+//글삭제=>암호비교
+		public int deleteArticle(int num,String passwd) {
+			String dbpasswd=null;
+			int x=-1;//게시물의 삭제성공유무
+			
+			try {
+				con=pool.getConnection();
+				sql="select passwd from board where num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1,num);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					dbpasswd=rs.getString("passwd");
+					System.out.println("dbpasswd"+dbpasswd);
+					if(dbpasswd.contentEquals(passwd)) {
+						sql="delete from board where num=?";
+						pstmt=con.prepareStatement(sql);
+						pstmt.setInt(1, num);
+						int delete=pstmt.executeUpdate();
+						System.out.println("게시판의 글삭제 성공유무(delete)=>"+delete);
+						x=1;
+					}else {
+						x=0;
+					}
+				}
+			}catch(Exception e) {
+				System.out.println("deleteArticle()메서드 에러유발"+e);
+			}finally {
+				pool.freeConnection(con,pstmt,rs);
+			}
+			return x;
 		}
 }
 
