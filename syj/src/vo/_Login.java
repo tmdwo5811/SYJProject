@@ -2,7 +2,7 @@ package vo;
 
 import kr.co.hucloud.utilities.SHA256Util;
 
-public class _Login {
+public class _Login extends Vo {
 	
 	private String id, pw, salt;
 	
@@ -39,5 +39,10 @@ public class _Login {
 	public void setId(String id) { this.id = id; }
 	public void setPw(String pw) { this.pw = pw; }
 	public void setSalt(String salt) { this.salt = salt; }
+	
+	@Override
+	public String toString() {
+		return "_Login [id=" + id + ", pw=" + pw + ", salt=" + salt + "]";
+	} //toString();
 	
 } //class _Login

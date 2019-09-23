@@ -2,7 +2,7 @@ package vo;
 
 import java.sql.Date;
 
-public class User {
+public class User extends Vo {
 	
 	private int no;
 	private char gender;
@@ -20,5 +20,11 @@ public class User {
 	public void setBoth(Date both) { this.both = both; }
 	public void setLocation(Location location) { this.location = location; }
 	public void setCredential(Boolean credential) { this.credential = credential; }
+	
+	@Override
+	public String toString() {
+		return "User [no=" + no + ", gender=" + gender + ", both=" + both + ", location=" + location + ", credential="
+				+ credential + "]";
+	} //toString();
 	
 } //class User;

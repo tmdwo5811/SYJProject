@@ -2,7 +2,7 @@ package vo;
 
 import java.sql.Timestamp;
 
-public class UserSub {
+public class UserSub extends Vo {
 	
 	private User user;
 	private String addr, phone, email;
@@ -18,5 +18,11 @@ public class UserSub {
 	public void setPhone(String phone) { this.phone = phone; }
 	public void setEmail(String email) { this.email = email; }
 	public void setRegdate(Timestamp regdate) { this.regdate = regdate; }
+	
+	@Override
+	public String toString() {
+		return "UserSub [user=" + user + ", addr=" + addr + ", phone=" + phone + ", email=" + email + ", regdate="
+				+ regdate + "]";
+	} //toString();
 	
 } //class User2;

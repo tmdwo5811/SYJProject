@@ -2,7 +2,7 @@ package vo;
 
 import java.sql.Timestamp;
 
-public class Post {
+public class Post extends Vo {
 	
 	private int no;
 	private Location location;
@@ -29,5 +29,11 @@ public class Post {
 	public void setView(int view) { this.view = view; }
 	public void setRegdate(Timestamp regdate) { this.regdate = regdate; }
 	public void setStatus(byte status) { this.status = status; }
+	
+	@Override
+	public String toString() {
+		return "Post [no=" + no + ", location=" + location + ", subject=" + subject + ", user=" + user + ", content="
+				+ content + ", view=" + view + ", regdate=" + regdate + ", status=" + status + "]";
+	} //toString();
 	
 } //class Post;
