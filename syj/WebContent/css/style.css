@@ -1,6 +1,8 @@
 *{
   margin:0;padding:0;list-style-type: none;
-
+}
+input{
+  border:none;
 }
 a{
   color:white;
@@ -94,19 +96,60 @@ a{
   /*position:absolute;*/
   width:210px;
   color:#fff;
-}
-.l_form input{
-  padding:5px;
-  margin:5px auto;
-  text-align: center;
   display:none;
+  position:relative;
 }
+.cl_lj_div, .cl_j_div{
+  position:relative;
+}
+.cl_lj_div label, .cl_j_div label{
+  position:absolute;
+  top:13px;left:4px;
+  z-index: 99999;
+  color:gray;
+  cursor: text;
+}
+.cl_j_div label{
+  font-size: 14px;
+}
+.l_form input[type=text], .l_form input[type=password], .j_form input[type=text], .j_form input[type=password]{
+  height:25px;
+  padding:6px;
+  margin:5px auto;
+  text-align: left;
+  width:196px;
+}
+.l_button, .j_button{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  height:45px;
+  margin-top:3px;
+  width:208px;
+  font-size:25px;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.l_button:hover, .j_button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.l_button:before,.l_button:after, ..j_button:before, .j_button:after{
+  content:'';
+ position:absolute;
+ top:0;
+ right:0;
+ height:2px;
+ width:0;
+ background: #1AAB8A;
+ transition:400ms ease all;
+}
+
 .j_form, .j_menual{
   margin:10px 0px;
   display: none;
-}
-.j_textbox{
-  width:80px;
 }
 .j_menual{
   text-align: center;
@@ -131,4 +174,67 @@ a{
 }
 .sidebarf ul li ul{
   display: none;
+}
+.selectbox {
+position: relative;
+  width: 200px;/* 너비설정 */
+
+  border: 1px solid #999; /* 테두리 설정 */
+
+  z-index: 1;
+
+  /* focus 효과*/
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+/* focus 효과 */
+.selectbox.focus {
+  border-color: #66afe9;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+/* 가상 선택자를 활용 화살표 대체 */
+.selectbox:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 0;
+  height: 0;
+  margin-top: -1px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #313131;
+}
+
+.selectbox label {
+  position: absolute;
+  top: 1px; /* 위치정렬 */
+
+  left: 5px; /* 위치정렬 */
+
+  padding: .5em .5em; /* select의 여백 크기 만큼 */
+
+  color: #333;
+  z-index: -1; /* IE8에서 label이 위치한 곳이 클릭되지 않는 것 해결 */
+}
+
+.selectbox select {
+  width: 100%;
+  height: auto;  /* 높이 초기화 */
+  line-height: normal; /* line-height 초기화 */
+  font-family: inherit; /* 폰트 상속 */
+  padding: .8em .5em;  /* 여백과 높이 결정 */
+  border: 0;
+  opacity: 0;  /* 숨기기 */
+  filter: alpha(opacity=0);  /* IE8 숨기기 */
+
+  -webkit-appearance: none;  /* 네이티브 외형 감추기 */
+  -moz-appearance: none;
+  appearance: none;
 }
