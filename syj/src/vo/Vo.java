@@ -16,7 +16,7 @@ public class Vo {
 			ResultSetMetaData metaData = resultSet.getMetaData();
 			
 			for(int i = 1; i <= metaData.getColumnCount(); i++)
-				callObjectSetter(metaData.getColumnLabel(i), this, resultSet.getObject(i));
+				callVoSetter(metaData.getColumnLabel(i), this, resultSet.getObject(i));
 			
 			
 		}catch (SQLException e) { e.printStackTrace(); }
@@ -25,7 +25,7 @@ public class Vo {
 		
 	} //setByResultSet();
 	
-	private Object callObjectSetter(String column, Object obj, Object value) {
+	private Object callVoSetter(String column, Object obj, Object value) {
 		
 		System.out.println(column);
 		
@@ -40,14 +40,15 @@ public class Vo {
 			
 			if(splitArr.length < 2) {
 				switch(method.getParameters()[0].getType().toString()) {
-				case "char": case "java.lang.Character": value = ((String)value).charAt(0); break;
-				case "boolean": case "java.lang.Boolean": value = ((int)value) != 0;
+				case "byte": case "class java.lang.Byte": value = value == null ? 0 : ((Integer)value).byteValue();
+				case "char": case "class java.lang.Character": value = ((String)value).charAt(0); break;
+				case "boolean": case "class java.lang.Boolean": value = value != null && ((Integer)value) != 0;
 				}
 				method.invoke(obj, value);
 			}else {
 				Object newInstance = method.getParameters()[0].getType().newInstance();
 				method.invoke(obj, newInstance);
-				callObjectSetter(splitArr[1], newInstance, value);
+				callVoSetter(splitArr[1], newInstance, value);
 			}
 			
 		}catch (IllegalAccessException | IllegalArgumentException
@@ -55,6 +56,6 @@ public class Vo {
 		
 		return obj;
 		
-	} //findSetter();
+	} //callVoSetter();
 	
 } //class Vo;
