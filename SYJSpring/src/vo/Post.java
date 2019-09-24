@@ -30,4 +30,10 @@ public class Post {
 	public void setRegdate(Timestamp regdate) { this.regdate = regdate; }
 	public void setStatus(byte status) { this.status = status; }
 	
+	@Override
+	public String toString() {
+		return "Post [no=" + no + ", location=" + location + ", subject=" + subject + ", user=" + user + ", content="
+				+ content + ", view=" + view + ", regdate=" + regdate + ", status=" + status + "]";
+	} //toString();
+	
 } //class Post;

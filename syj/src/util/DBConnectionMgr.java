@@ -76,14 +76,12 @@ public class DBConnectionMgr {
     //(2)dbmysql.properties파일을 읽어들여서 키->값을 불러오기
     public DBConnectionMgr() throws IOException {
     	
-    	_driver="com.mysql.jdbc.Driver";
+    	_driver="com.mysql.cj.jdbc.Driver";
     	//드라이브만 시스템에 반영
     	if(_driver!=null)  System.setProperty("jdbc.drivers", _driver);//등록
-    	//-------------------------------------------------------------------
-    	_url="jdbc:mysql://localhost:3306/mydb?useUnicode=true&characterEncoding=UTF-8";
-    	_user="root";
+    	_url="jdbc:mysql://robouto1.ddns.net/teamsyjproject?serverTimezone=Asia/Seoul&useSSL=false";
+    	_user="teamsyj";
     	_password="1234";
-    	//이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽이쪽
     	System.out.println("_driver=>"+(_driver)+",_url=>"+(_url));
     	System.out.println("_user=>"+(_user)+",_password=>"+(_password));
     	

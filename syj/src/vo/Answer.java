@@ -1,14 +1,15 @@
+
 package vo;
 
 import java.sql.Timestamp;
 
 public class Answer {
 	
-	private int no;
-	private Post post;
-	private User user;
-	private String content;
-	private Timestamp regdate;
+	private int no;	//글 번호
+	private Post post;	//게시판의 게시물
+	private User user;	//작성자
+	private String content;	//글내용
+	private Timestamp regdate;	//작성일
 	
 	public int getNo() { return no; }
 	public Post getPost() { return post; }

@@ -16,4 +16,9 @@ public class Declaration {
 	public void setUser(User user) { this.user = user; }
 	public void setContent(String content) { this.content = content; }
 	
+	@Override
+	public String toString() {
+		return "Declaration [no=" + no + ", post=" + post + ", user=" + user + ", content=" + content + "]";
+	} //toString();
+	
 } //class Declaration;

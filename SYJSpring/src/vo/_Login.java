@@ -6,26 +6,13 @@ public class _Login {
 	
 	private String id, pw, salt;
 	
-	public static void main(String[] args) {
-		
-		_Login login = new _Login();
-		login.setPasswordWithEncrypt("1234");
-		
-		System.out.println(login.getPw());
-		System.out.println(login.getSalt());
-		
-		System.out.println(login.isPassword("1234"));
-		System.out.println(login.isPassword("1235"));
-		
-	}
-	
 	public void setPasswordWithEncrypt(String password) {
 		
 		setSalt(SHA256Util.generateSalt());
 		setPw(SHA256Util.getEncrypt(password, getSalt()));
 		
 	} //setPasswordWithEncrypt();
-	
+
 	public boolean isPassword(String password) {
 		
 		boolean result = getPw().equals(SHA256Util.getEncrypt(password, getSalt()));
@@ -39,5 +26,10 @@ public class _Login {
 	public void setId(String id) { this.id = id; }
 	public void setPw(String pw) { this.pw = pw; }
 	public void setSalt(String salt) { this.salt = salt; }
+	
+	@Override
+	public String toString() {
+		return "_Login [id=" + id + ", pw=" + pw + ", salt=" + salt + "]";
+	} //toString();
 	
 } //class _Login

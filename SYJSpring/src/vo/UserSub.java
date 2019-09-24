@@ -2,7 +2,7 @@ package vo;
 
 import java.sql.Timestamp;
 
-public class UserSub extends Vo {
+public class UserSub {
 	
 	private User user;
 	private String addr, phone, email;
