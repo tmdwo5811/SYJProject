@@ -21,4 +21,10 @@ public class User {
 	public void setLocation(Location location) { this.location = location; }
 	public void setCredential(Boolean credential) { this.credential = credential; }
 	
+	@Override
+	public String toString() {
+		return "User [no=" + no + ", gender=" + gender + ", both=" + both + ", location=" + location + ", credential="
+				+ credential + "]";
+	} //toString();
+	
 } //class User;

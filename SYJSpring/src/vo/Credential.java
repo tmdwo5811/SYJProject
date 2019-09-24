@@ -10,4 +10,9 @@ public class Credential {
 	public void setUser(User user) { this.user = user; }
 	public void setCredentialFile(String credentialFile) { this.credentialFile = credentialFile; }
 	
+	@Override
+	public String toString() {
+		return "Credential [user=" + user + ", credentialFile=" + credentialFile + "]";
+	} //toString();
+	
 } //class Credential

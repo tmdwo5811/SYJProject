@@ -21,4 +21,10 @@ public class Answer {
 	public void setContent(String content) { this.content = content; }
 	public void setRegdate(Timestamp regdate) { this.regdate = regdate; }
 	
+	@Override
+	public String toString() {
+		return "Answer [no=" + no + ", post=" + post + ", user=" + user + ", content=" + content + ", regdate="
+				+ regdate + "]";
+	} //toString();
+	
 } //class Answer;

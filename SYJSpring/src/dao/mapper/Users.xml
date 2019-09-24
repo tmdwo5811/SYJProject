@@ -23,11 +23,22 @@
 	  (LAST_INSERT_ID(), #{addr}, #{phone}, #{email})
   </insert>
   
-  <select id="selectUser" resultType="User">
+  <select id="selectPW" parameterType="String" resultType="Login">
 	SELECT
-	  *
+	  user_no `user.no`, pw, salt
+	FROM
+	  login
+	WHERE
+	  id = #{id}
+  </select>
+  
+  <select id="selectUser" parameterType="int" resultType="User">
+	SELECT
+	  no, gender, `both`, location_no `location.no`, credential
 	FROM
 	  users
+	WHERE
+	  no = #{no}
   </select>
   
 </mapper>

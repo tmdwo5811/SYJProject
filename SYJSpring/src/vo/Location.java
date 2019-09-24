@@ -13,4 +13,9 @@ public class Location {
 	public void setNo(int no) { this.no = no; }
 	public void setName(String name) { this.name = name; }
 	
+	@Override
+	public String toString() {
+		return "Location [no=" + no + ", name=" + name + "]";
+	} //toString();
+	
 } //class Location;

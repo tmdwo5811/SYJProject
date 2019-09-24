@@ -79,7 +79,7 @@ public class DBConnectionMgr {
     	_driver="com.mysql.cj.jdbc.Driver";
     	//드라이브만 시스템에 반영
     	if(_driver!=null)  System.setProperty("jdbc.drivers", _driver);//등록
-    	_url="jdbc:mysql://robouto1.ddns.net/teamsyjproject?serverTimezone=UTC&useSSL=false";
+    	_url="jdbc:mysql://robouto1.ddns.net/teamsyjproject?serverTimezone=Asia/Seoul&useSSL=false";
     	_user="teamsyj";
     	_password="1234";
     	System.out.println("_driver=>"+(_driver)+",_url=>"+(_url));
