@@ -2,6 +2,9 @@ package vo;
 
 public class Location {
 	
+	public Location() {}
+	public Location(int no) { this.no = no; }
+	
 	private int no;
 	private String name;
 	

@@ -2,6 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.UsersDAO">
   
+  <insert id="insertUser" parameterType="User">
+	INSERT INTO
+	  users (gender, `both`, location_no)
+	VALUES
+	  (#{gender}, #{both}, #{location.no})
+  </insert>
+  
+  <insert id="insertLogin" parameterType="Login">
+	INSERT INTO
+	  login (user_no, id, pw, salt)
+	VALUES
+	  (LAST_INSERT_ID(), #{id}, #{pw}, #{salt})
+  </insert>
+  
+  <insert id="insertUserSub" parameterType="UserSub">
+	INSERT INTO
+	  users_sub (user_no, addr, phone, email)
+	VALUES
+	  (LAST_INSERT_ID(), #{addr}, #{phone}, #{email})
+  </insert>
+  
   <select id="selectUser" resultType="User">
 	SELECT
 	  *
