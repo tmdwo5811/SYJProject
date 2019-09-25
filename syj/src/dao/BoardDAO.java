@@ -103,9 +103,42 @@ public class BoardDAO {
 			}
 			return articleList;
 		}
-		//-게시판의 글쓰기 및 답변글쓰기 (일단 만들어두긴하는데 써야할듯)
+		//-게시판의 글쓰기 (일단 만들어두긴하는데 써야할듯)
 		public void insertArticle(Post article) {
-			List articleList=null;//ArrayList articleList=null
+			
+			int view=article.getView();
+			int no=article.getNo();
+			int number=0;//데이터를 저장하기위한 게시물번호
+			System.out.println("insertArticle 메서드의 내부 no=>"+no);//0신규글
+			System.out.println("view=>"+view+"no=>"+no);
+			try {
+				con=pool.getConnection();
+				sql="select max(num) from board"; //최대값+1=실제 저장할 게시물번호
+				pstmt=con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {//보여주는 결과가 있다면 ->rs.last()->rs.getRow();(X)
+					number=rs.getInt(1)+1;  //변수명=rs.get자료형(필드명 또는 인덱스번호)=>필드명X을 사용할 수 없는 경우에 사용
+				}else {//현재 테이블에 데이터가 한개라도 없는 경우
+					number=1;
+				}
+				sql="insert into board(content,no,location,subject,user,view,regdate,status";
+				sql+=") values(?,?,?,?,?,?,?,?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, article.getContent());
+				pstmt.setInt(2, article.getNo());
+				pstmt.setInt(3, article.getLocation().getNo());
+				pstmt.setString(4, article.getSubject());
+				pstmt.setInt(5, article.getUser().getNo());
+				pstmt.setInt(6, article.getView());
+				pstmt.setTimestamp(7, article.getRegdate());
+				pstmt.setByte(8, article.getStatus());
+				int insert=pstmt.executeUpdate();
+				System.out.println("게시판의 글쓰기 성공유무(insert)=>"+insert);//1 or 0실패
+			}catch(Exception e) {
+				System.out.println("insertArticle()메서드 에러유발"+e);
+			}finally{
+				pool.freeConnection(con,pstmt,rs);
+			}
 		}
 		//글상세보기
 		public Post getArticle(int num) {
