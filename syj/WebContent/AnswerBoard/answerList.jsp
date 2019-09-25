@@ -13,7 +13,7 @@
 <table width="700">
 <tr>
     <td align="right">
-    <button><a href="/JspBoard2/writeForm.do">글쓰기</a></button>
+    <button><a href="answerWriteForm.jsp">글쓰기</a></button>
     </td>
 </tr>
 </table>
