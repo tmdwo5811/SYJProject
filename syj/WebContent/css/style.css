@@ -4,6 +4,9 @@
 input{
   border:none;
 }
+.white{
+  background:gray;
+}
 a{
   color:white;
   text-decoration: none;
@@ -166,14 +169,12 @@ box-shadow: 0px 0px 2px #fff;
   z-index:1000;
   height:auto;
   width:210px;
-  padding:20px 20px;
+  padding:20px 20px 20px 0px;
   overflow:hidden;
   display:block;
   top:205px;
   bottom:0;
-}
-.sidebarf a span, .sidebarf a i{
-  margin-top: 20px;
+  float:left;
 }
 .sidebar_cate ul li{
   position:relative;
@@ -226,6 +227,32 @@ box-shadow: 0px 0px 2px #fff;
   -moz-appearance:none;
   appearance:none;
 }
-.loc_p_li span{
-  position:relative;
+.i_1{
+  width:60px;
+  height:60px;
+  border:0px solid red;
+  display:inline-block;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar_sub{
+  position:fixed;
+  background:skyblue;
+  z-index:1001;
+  height:auto;
+  width:150px;
+  padding:10px 20px 20px 20px;
+  overflow:hidden;
+  display:block;
+  left:60px;
+  top:225px;
+  bottom:0;
+  text-align: left;
+  display:none;
+}
+.sidebar_sub ul{
+  display:none;
+}
+.sidebar_sub li{
+  padding:5px;
 }

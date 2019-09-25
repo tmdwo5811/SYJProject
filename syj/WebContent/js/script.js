@@ -39,8 +39,32 @@ checkReady(function($) {
       $('.l_textbox').click(function(){
         $(this).val('').focus()
       })
-      $('.loc_p_li').click(function(){ //지역청원 카테고리 클릭 이벤트
-        $('.loc_p_li span').animate({'right':1000},300);
+      $('.i_11, .i_111').click(function(){ //지역청원 카테고리 클릭 이벤트
+         $('.i_2').fadeToggle();
+         $('.i_11').toggleClass('white')
+         $('.sidebar_sub').fadeToggle();
+         $('.ul_1').fadeToggle();
+      })
+      $('.i_22, .i_222').click(function(){ //지역청원 카테고리 클릭 이벤트
+        $('.i_1').removeClass('white');
+         $('.i_2').fadeToggle();
+         $('.i_22').toggleClass('white')
+         $('.sidebar_sub').fadeToggle();
+         $('.ul_2').fadeToggle();
+      })
+      $('.i_33, .i_333').click(function(){ //지역청원 카테고리 클릭 이벤트
+        $('.i_1').removeClass('white');
+         $('.i_2').fadeToggle();
+         $('.i_33').toggleClass('white')
+         $('.sidebar_sub').fadeToggle();
+         $('.ul_3').fadeToggle();
+      })
+      $('.i_44, .i_444').click(function(){ //지역청원 카테고리 클릭 이벤트
+        $('.i_1').removeClass('white');
+         $('.i_2').fadeToggle();
+         $('.i_44').toggleClass('white')
+         $('.sidebar_sub').fadeToggle();
+         $('.ul_4').fadeToggle();
       })
       var ljtextbox = $('.j_textbox, .l_textbox');
       ljtextbox.on('focus',function(){
