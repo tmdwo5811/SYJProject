@@ -12,13 +12,12 @@
 <center><h3>답변글 작성</h3>
 <br>
   <!-- onsubmit이벤트 -->
-<form method="post" name="writeform" action="/JspBoard2/writePro.do"
+<form method="post" name="writeform" action="/syj/answerWritePro.do"
 	onsubmit="return writeSave()">
 	<!-- 입력하지 않고 매개변수로 전달해서 테이블에 저장 *(hidden) -->
-	<input type="hidden" name="num" value="${num}">
-	<input type="hidden" name="ref" value="${ref}">
-	<input type="hidden" name="re_step" value="${re_step}">
-	<input type="hidden" name="re_level" value="${re_level}">
+	<input type="hidden" name="no" value="${answer.no}">
+	<input type="hidden" name="post" value="${answer.post}">
+	<input type="hidden" name="content" value="${answer.content}">
 
 <table width="400" border="1" cellspacing="0" cellpadding="0" align="center">
    <tr>
@@ -34,10 +33,10 @@
   <tr>
     <td  width="70" align="center" >제 목</td>
     <td  width="330">
-    	<c:if test="${num==0}">
+    	<c:if test="${no==0}">
 		<input type="text" size="40" maxlength="50" name="subject">
 		</c:if>
-    	<c:if test="${num!=0}">
+    	<c:if test="${no!=0}">
 		<input type="text" size="40" maxlength="50" name="subject" value="[re]">
 		</c:if>
     </td>
