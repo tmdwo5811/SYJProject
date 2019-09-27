@@ -6,8 +6,9 @@
 <!-- HTTPS required. HTTP will give a 403 forbidden response -->
 <script src="https://sdk.accountkit.com/en_US/sdk.js"></script>
 <script src="https://kit.fontawesome.com/af09124883.js" crossorigin="anonymous"> </script>
-<script type="text/javascript" src="js/script.js">
-</script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/styleScript.js"></script>
+
 <link rel="stylesheet" href="css/style.css">
 <title>우리 동네 대나무 숲 프로젝트</title>
 </head>
@@ -41,7 +42,7 @@
 	</ul>
 </div>
 <div class="sidebarf">
-	<form action="" class="l_form">
+	<form name="userForm" action="/syj/userPro.do" method="post" class="l_form">
 	<div class="cl_lj_div">
 		<label for="id_l_textbox">아이디를 입력하세요.</label>
 		<input id="id_l_textbox" class="l_textbox" type="text">

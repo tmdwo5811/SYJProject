@@ -1,86 +1,44 @@
-function maxLengthCheck(object){
-  if (object.value.length > object.maxLength){
-    object.value = object.value.slice(0, object.maxLength);
-  }
+function inputCheck(){
+	if(document.regForm.mem_id.value==""){
+		alert("아이디를 입력해 주세요.");
+		document.regForm.mem_id.focus();
+		return;
+	}
+	if(document.regForm.mem_passwd.value==""){
+		alert("비밀번호를 입력해 주세요.");
+		document.regForm.mem_passwd.focus();
+		return;
+	}
+	if(document.regForm.mem_repasswd.value==""){
+		alert("비밀번호를 확인해 주세요");
+		document.regForm.mem_repasswd.focus();
+		return;
+	}
+	if(document.regForm.mem_name.value==""){
+		alert("이름을 입력해 주세요.");
+		document.regForm.mem_name.focus();
+		return;
+	}
+	if(document.regForm.mem_email.value==""){
+		alert("이메일을 입력해 주세요.");
+		document.regForm.mem_email.focus();
+		return;
+	}
+	if(document.regForm.mem_phone.value==""){
+		alert("연락처를 입력해 주세요.");
+		document.regForm.mem_phone.focus();
+		return;
+	}
+	if(document.regForm.mem_job.value=="0"){
+		alert("직업을 선택해 주세요.");
+		document.regForm.mem_job.focus();
+		return;
+	}
+	
+	if(document.regForm.mem_passwd.value != document.regForm.mem_repasswd.value){
+		alert("비밀번호가 일치하지 않습니다.");
+		document.regForm.mem_repasswd.focus();
+		return;
+	}
+	MemberInsert.jsp
 }
-
-(function() {
-    var startingTime = new Date().getTime();
-    // Load the script
-    var script = document.createElement("SCRIPT");
-    script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
-    script.type = 'text/javascript';
-    document.getElementsByTagName("head")[0].appendChild(script);
-
-    // Poll for jQuery to come into existance
-    var checkReady = function(callback) {
-        if (window.jQuery) {
-            callback(jQuery);
-        }
-        else {
-            window.setTimeout(function() { checkReady(callback); }, 20);
-        }
-};
-// Start polling...
-checkReady(function($) {
-
-    $(function() {
-      $('.login_button').click(function(){ //로그인 버튼 클릭 이벤트
-        $('.l_form').slideToggle();
-        $('.j_form').slideUp();
-      })
-      $('.join_button').click(function(){ //회원가입 버튼 클릭 이벤트
-        $('.j_form, .j_menual').slideToggle();
-        $('.l_form').slideUp();
-      })
-      $('.j_textbox').click(function(){
-        $(this).val('').focus()
-      })
-      $('.l_textbox').click(function(){
-        $(this).val('').focus()
-      })
-      $('.i_11, .i_111').click(function(){ //지역청원 카테고리 클릭 이벤트
-         $('.i_2').fadeToggle();
-         $('.i_11').toggleClass('white')
-         $('.sidebar_sub').fadeToggle();
-         $('.ul_1').fadeToggle();
-      })
-      $('.i_22, .i_222').click(function(){ //지역청원 카테고리 클릭 이벤트
-        $('.i_1').removeClass('white');
-         $('.i_2').fadeToggle();
-         $('.i_22').toggleClass('white')
-         $('.sidebar_sub').fadeToggle();
-         $('.ul_2').fadeToggle();
-      })
-      $('.i_33, .i_333').click(function(){ //지역청원 카테고리 클릭 이벤트
-        $('.i_1').removeClass('white');
-         $('.i_2').fadeToggle();
-         $('.i_33').toggleClass('white')
-         $('.sidebar_sub').fadeToggle();
-         $('.ul_3').fadeToggle();
-      })
-      $('.i_44, .i_444').click(function(){ //지역청원 카테고리 클릭 이벤트
-        $('.i_1').removeClass('white');
-         $('.i_2').fadeToggle();
-         $('.i_44').toggleClass('white')
-         $('.sidebar_sub').fadeToggle();
-         $('.ul_4').fadeToggle();
-      })
-      var ljtextbox = $('.j_textbox, .l_textbox');
-      ljtextbox.on('focus',function(){
-        $(this).siblings('label').fadeOut('fast');
-      })
-      ljtextbox.on('focusout',function(){
-        if($(this).val()==""){
-          $(this).siblings('label').fadeIn('fast');
-        }
-      })
-      var selectTarget = $('.selectbox select');
-      selectTarget.change(function(){
-        var select_name = $(this).children('option:selected').text();
-        $(this).siblings('label').text(select_name);
-        $(this).siblings('label').css('color','#000');
-      })
-    });//jQuery end
-});
-})();
