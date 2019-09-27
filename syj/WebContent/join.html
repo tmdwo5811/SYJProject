@@ -79,40 +79,42 @@
 
             <nav class="header__nav-wrap">
 
-              <ul class="header__nav">
-                  <li class="current has-children">
-                      <a href="index.html" title="">대나무숲 입장 하기</a>
-                      <ul class="sub-menu">
-                      <li><a href="login.html">로그인</a></li>
-                      <li><a href="join.html">회원 가입</a></li>
-                      </ul>
-                  </li>
-                  <li class="has-children">
-                      <a href="#0" title="">대나무숲 청원</a>
-                      <ul class="sub-menu">
-                      <li><a href="board.html">실시간 청원</a></li>
-                      <li><a href="loc_board.html">지역별 청원</a></li>
-                      <li><a href="exp_board.html">만료된 청원</a></li>
-                      <li><a href="answer_board.html">답변된 청원</a></li>
-                      <li><a href="faq.html">대나무숲 청원 FAQ</a></li>
-                      </ul>
-                  </li>
-                  <li class="has-children">
-                      <a href="#0" title="">청원 하기</a>
-                      <ul class="sub-menu">
-                      <li><a href="write.html">지금 청원 하기</a></li>
-                      </ul>
-                  </li>
-                  <li class="has-children">
-                      <a href="page-about.html" title="">대나무 숲</a>
-                      <ul class="sub-menu">
-                      <li><a href="img_storage.html">사진 자료실</a></li>
-                      <li><a href="video_storage.html">동영상 자료실</a></li>
-                      <li><a href="Advertising.html">지역별 소식 보기</a></li>
-                      <li><a href="status.html">청원 진행 과정</a></li>
-                      </ul>
-                  </li>
-              </ul> <!-- end header__nav -->
+                <ul class="header__nav">
+                    <li class="current has-children">
+                        <a href="index.html" title="">우리 동네 대나무숲</a>
+                        <ul class="sub-menu">
+                        <li><a href="single-video.html">로그인</a></li>
+                        <li><a href="single-audio.html">회원 가입</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="board.html" title="">지역별 청원</a>
+                    </li>
+                    <li class="has-children">
+                        <a href="#0" title="">답변된 청원</a>
+                        <ul class="sub-menu">
+                        <li><a href="board.html">전체 보기</a></li>
+                        <li><a href="single-audio.html">우리 동네 보기</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="styles.html" title="">청원 하기</a>
+                        <ul class="sub-menu">
+                        <li><a href="write.html">지금 청원 하기</a></li>
+                        <li><a href="single-audio.html">청원 하는 방법</a></li>
+                        <li><a href="single-audio.html">청원 과정</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="page-about.html" title="">대나무 숲</a>
+                        <ul class="sub-menu">
+                        <li><a href="single-video.html">사진 자료실</a></li>
+                        <li><a href="single-audio.html">동영상 자료실</a></li>
+                        <li><a href="single-audio.html">우리 동네 소식 보기</a></li>
+                        <li><a href="single-audio.html">지역별 소식 보기</a></li>
+                        </ul>
+                    </li>
+                </ul> <!-- end header__nav -->
 
                 <ul class="header__social">
                     <li class="ss-facebook">
@@ -161,15 +163,15 @@
                                             <input name="cName" id="cName" class="full-width" placeholder="사용할 아이디를 입력해주세요." value="" type="text">
                                         </div>
                                         <div class="form-field">
-                                            <input name="cpassword" id="cpassword1" class="full-width" placeholder="비밀번호를 입력해주세요." value="" type="password">
+                                            <input name="cpassword" id="cpassword" class="full-width" placeholder="비밀번호를 입력해주세요." value="" type="password">
                                         </div>
                                         <div class="form-field">
-                                            <input name="cpassword" id="cpassword2" class="full-width" placeholder="비밀번호를 한번더 입력해주세요." value="" type="password">
+                                            <input name="cpassword" id="cpassword" class="full-width" placeholder="비밀번호를 한번더 입력해주세요." value="" type="password">
                                         </div>
 
                                         <div class="form-field">
-                                            <select name="caddress" id="caddress" class="full-width" placeholder="거주 지역을 선택해 주세요." value="">
-                                              <option selected value="none">거주 지역을 선택해 주세요.</option>
+                                            <select name="cEmail" id="cEmail" class="full-width" placeholder="거주 지역을 선택해 주세요." value="">
+                                              <option selected>거주 지역을 선택해 주세요.</option>
                                               <option>서울시</option>
                                               <option>인천시</option>
                                               <option>대전시</option>
@@ -186,16 +188,17 @@
                                             </select>
                                         </div>
                                         <div class="form-field">
-                                            <input name="cBoth1" id="cBoth1" class="width45 both_input" placeholder="주민등록번호 앞 6자리를 입력해주세요." maxlength="6" oninput="maxLengthCheck(this)" value="" type="number">
-                                            - <input name="cBoth2" id="cBoth2" class="width45" placeholder="주민등록번호 뒤 1자리를 입력해주세요." maxlength="1" oninput="maxLengthCheck(this)" value="" type="number">
+                                            <input name="cWebsite" id="cWebsite" class="full-width" placeholder="관련 링크를 입력해주세요. (선택항목)" value="" type="text">
                                         </div>
                                         <div class="form-field">
-                                            <input name="cphone" id="cphone" class="full-width" placeholder="휴대폰 번호를 입력하세요." maxlength="11" oninput="maxLengthCheck(this)" value="" type="number">
+                                            <input name="cimg" id="cimg" class="full-width" placeholder="사진을 업로드 해주세요. (선택항목)" value="" type="text">
                                         </div>
-                                        <div style="text-align:center;">
-                                        <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large width48" value="가입 하기" type="submit">
-                                        <input name="reset" id="reset" class="btn btn--default btn-wide btn--large width48" value="다시 작성" type="button">
-                                      </div>
+                                        <div class="form-field">
+                                            <input name="cvideo" id="cvideo" class="full-width" placeholder="동영상을 업로드 해주세요. (선택항목)" value="" type="text">
+                                        </div>
+
+                                        <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="작성 완료" type="submit">
+
                                     </fieldset>
                                 </form> <!-- end form -->
 
