@@ -5,7 +5,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Video Post - Typerite</title>
+    <title>Typerite</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -32,7 +32,7 @@
 
 </head>
 
-<body class="ss-bg-white">
+<body>
 
     <!-- preloader
     ================================================== -->
@@ -48,7 +48,7 @@
 
         <!-- site header
         ================================================== -->
-        <header class="s-header header">
+        <header class="s-header">
 
             <div class="header__top">
                 <div class="header__logo">
@@ -75,7 +75,7 @@
                 <a href="#0" class="header__search-trigger"></a>
                 <a href="#0" class="header__menu-toggle"><span>Menu</span></a>
 
-            </div>
+            </div> <!-- end header__top -->
 
             <nav class="header__nav-wrap">
 
@@ -127,10 +127,10 @@
                     </li>
                     <li class="ss-dribbble">
                         <a href="#0">
-                            <span class="screen-reader-text">Instagram</span>
+                            <span class="screen-reader-text">Dribbble</span>
                         </a>
                     </li>
-                    <li class="ss-behance">
+                    <li class="ss-pinterest">
                         <a href="#0">
                             <span class="screen-reader-text">Behance</span>
                         </a>
@@ -139,79 +139,54 @@
 
             </nav> <!-- end header__nav-wrap -->
 
+
+
         </header> <!-- end s-header -->
 
+          <div class="s-content"><!--컨텐츠 입력 시작 -->
+            <div class="s-content content">
+                <main class="row content__page">
 
-        <!-- site content
-        ================================================== -->
-        <div class="s-content content">
-            <main class="row content__page">
+                        <div class="column large-12 comment-respond">
 
-                    <div class="column large-12 comment-respond">
+                            <!-- START respond -->
+                            <div id="respond">
 
-                        <!-- START respond -->
-                        <div id="respond">
+                                <h3 class="h2">우리 동네 대나무숲<span>관리자 접속 하기</span></h3>
 
-                            <h3 class="h2">우리 동네에 <span>청원 하기</span></h3>
+                                <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
+                                    <fieldset>
 
-                            <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
-                                <fieldset>
+                                        <div class="form-field">
+                                            <input name="cId" id="cId" class="full-width" placeholder="아이디를 입력해주세요." value="" type="text">
+                                        </div>
+                                        <div class="form-field">
+                                            <input name="cpassword" id="cpassword" class="full-width" placeholder="비밀번호를 입력해주세요." value="" type="password">
+                                        </div>
 
-                                    <div class="form-field">
-                                        <input name="cName" id="cName" class="full-width" placeholder="청원제목을 입력해주세요." value="" type="text">
-                                    </div>
+                                        <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="로그인" type="submit">
+                                        <div class="login_sub">
+                                          <a href="join.html" style="color:#444444;">회원 가입</a> | <a href="" style="color:#444444;">아이디/비밀번호 찾기</a>
+                                        </div>
+                                    </fieldset>
+                                </form> <!-- end form -->
 
-                                    <div class="form-field">
-                                        <select name="cEmail" id="cEmail" class="full-width" placeholder="지역을 선택해 주세요." value="">
-                                          <option selected>지역을 선택해 주세요.</option>
-                                          <option>서울시</option>
-                                          <option>인천시</option>
-                                          <option>대전시</option>
-                                          <option>세종시</option>
-                                          <option>경기도</option>
-                                          <option>충청도</option>
-                                          <option>강원도</option>
-                                          <option>광주시</option>
-                                          <option>부산시</option>
-                                          <option>대구시</option>
-                                          <option>울산시</option>
-                                          <option>경상도</option>
-                                          <option>전라도</option>
-                                        </select>
-                                    </div>
+                            </div>
+                            <!-- END respond-->
 
-                                    <div class="message form-field">
-                                        <textarea name="cMessage" id="cMessage" class="full-width" placeholder="청원 내용을 작성해 주세요."></textarea>
-                                    </div>
-                                    <div class="form-field">
-                                        <input name="cWebsite" id="cWebsite" class="full-width" placeholder="관련 링크를 입력해주세요. (선택항목)" value="" type="text">
-                                    </div>
-                                    <div class="form-field">
-                                        <input name="cimg" id="cimg" class="full-width" placeholder="사진을 업로드 해주세요. (선택항목)" value="" type="text">
-                                    </div>
-                                    <div class="form-field">
-                                        <input name="cvideo" id="cvideo" class="full-width" placeholder="동영상을 업로드 해주세요. (선택항목)" value="" type="text">
-                                    </div>
+                        </div> <!-- end comment-respond -->
 
-                                    <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="작성 완료" type="submit">
+                    </div> <!-- end comments-wrap -->
+                </main>
 
-                                </fieldset>
-                            </form> <!-- end form -->
-
-                        </div>
-                        <!-- END respond-->
-
-                    </div> <!-- end comment-respond -->
-
-                </div> <!-- end comments-wrap -->
-            </main>
+            </div> <!-- end s-content -->
 
         </div> <!-- end s-content -->
 
 
         <!-- footer
         ================================================== -->
-        <footer class="s-footer footer">
+        <footer class="s-footer">
             <div class="row">
                 <div class="column large-full footer__content">
                     <div class="footer__copyright">

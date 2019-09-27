@@ -6,7 +6,7 @@
 (function($) {
 
     "use strict";
-    
+
     var cfg = {
         scrollDuration : 800, // smoothscroll duration
         mailChimpURL   : ''   // mailchimp url
@@ -23,7 +23,7 @@
    /* Preloader
     * -------------------------------------------------- */
     var ssPreloader = function() {
-        
+
         $("html").addClass('ss-preload');
 
         $WIN.on('load', function() {
@@ -31,16 +31,16 @@
             //force page scroll position to top at page refresh
             // $('html, body').animate({ scrollTop: 0 }, 'normal');
 
-            // will first fade out the loading animation 
+            // will first fade out the loading animation
             $("#loader").fadeOut("slow", function() {
                 // will fade out the whole DIV that covers the website.
                 $("#preloader").delay(300).fadeOut("slow");
-            }); 
-            
-            // for hero content animations 
+            });
+
+            // for hero content animations
             $("html").removeClass('ss-preload');
             $("html").addClass('ss-loaded');
-        
+
         });
     };
 
@@ -54,11 +54,11 @@
         });
     };
 
-   
+
    /* search
     * ------------------------------------------------------ */
     var ssSearch = function() {
-            
+
         var searchWrap = $('.header__search'),
             searchField = searchWrap.find('.search-field'),
             closeSearch = searchWrap.find('.header__search-close'),
@@ -67,25 +67,25 @@
 
 
         searchTrigger.on('click', function(e) {
-            
+
             e.preventDefault();
             e.stopPropagation();
-        
+
             var $this = $(this);
-        
+
             siteBody.addClass('search-is-visible');
             setTimeout(function(){
                 searchWrap.find('.search-field').focus();
             }, 100);
-        
+
         });
 
         closeSearch.on('click', function(e) {
 
             var $this = $(this);
-        
-            e.stopPropagation(); 
-        
+
+            e.stopPropagation();
+
             if(siteBody.hasClass('search-is-visible')){
                 siteBody.removeClass('search-is-visible');
                 setTimeout(function(){
@@ -99,11 +99,11 @@
                 closeSearch.trigger('click');
             }
         });
-            
+
         searchField.on('click', function(e){
             e.stopPropagation();
         });
-            
+
         searchField.attr({placeholder: 'Type Keywords', autocomplete: 'off'});
 
     };
@@ -115,7 +115,7 @@
 
         var menuToggle = $('.header__menu-toggle'),
             siteBody = $('body');
-    
+
         menuToggle.on('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
@@ -124,7 +124,7 @@
         });
 
         $('.header__nav .has-children').children('a').on('click', function (e) {
-            
+
             e.preventDefault();
 
             $(this).toggleClass('sub-menu-is-open')
@@ -143,9 +143,9 @@
 
 
    /* masonry
-    * ---------------------------------------------------- */ 
+    * ---------------------------------------------------- */
     var ssMasonryFolio = function () {
-        
+
         var containerBricks = $('.masonry');
 
         containerBricks.masonry({
@@ -173,7 +173,7 @@
             setTimeout(function() {
                 animateEl.each(function(ctr) {
                     var el = $(this);
-                    
+
                     setTimeout(function() {
                         el.addClass('animated');
                     }, ctr * 200);
@@ -205,7 +205,7 @@
             fade: true,
             cssEase: 'linear'
         });
-        
+
         $('.slider__slide').on('click', function() {
             $gallery.slick('slickGoTo', parseInt($gallery.slick('slickCurrentSlide'))+1);
         });
@@ -216,11 +216,11 @@
    /* smooth scrolling
     * ------------------------------------------------------ */
     var ssSmoothScroll = function() {
-        
+
         $('.smoothscroll').on('click', function (e) {
             var target = this.hash,
             $target    = $(target);
-            
+
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -246,7 +246,7 @@
 
         $('.alert-box').on('click', '.alert-box__close', function() {
             $(this).parent().fadeOut(500);
-        }); 
+        });
 
     };
 
@@ -254,7 +254,7 @@
    /* Back to Top
     * ------------------------------------------------------ */
     var ssBackToTop = function() {
-        
+
         var pxShow      = 500,
             goTopButton = $(".go-top")
 
@@ -288,4 +288,24 @@
 
     })();
 
+    $('#reset').click(function(){
+      $('#cName').val('');
+      $('#cpassword1').val('');
+      $('#cpassword2').val('');
+      $('#caddress').val('none');
+      $('#cBoth1').val(null);
+      $('#cBoth2').val(null);
+      $('#cphone').val(null);
+    })
 })(jQuery);
+/* 승재 추가 */
+function maxLengthCheck(object){
+    if (object.value.length > object.maxLength){
+        object.value = object.value.slice(0, object.maxLength);
+    }
+}
+function fn(str){
+  var res;
+  res = str.replace(/[^0-9]/g,"");
+  return res;
+}
