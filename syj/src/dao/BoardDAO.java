@@ -121,14 +121,14 @@ public class BoardDAO {
 				}else {//현재 테이블에 데이터가 한개라도 없는 경우
 					number=1;
 				}
-				sql="insert into board(content,no,location,subject,user,view,regdate,status";
+				sql="insert into board(no,location,subject,user,content,view,regdate,status";
 				sql+=") values(?,?,?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
-				pstmt.setString(1, article.getContent());
-				pstmt.setInt(2, article.getNo());
-				pstmt.setInt(3, article.getLocation().getNo());
-				pstmt.setString(4, article.getSubject());
-				pstmt.setInt(5, article.getUser().getNo());
+				pstmt.setInt(1, article.getNo());
+				pstmt.setInt(2, article.getLocation().getNo());
+				pstmt.setString(3, article.getSubject());
+				pstmt.setInt(4, article.getUser().getNo());
+				pstmt.setString(5, article.getContent());
 				pstmt.setInt(6, article.getView());
 				pstmt.setTimestamp(7, article.getRegdate());
 				pstmt.setByte(8, article.getStatus());
