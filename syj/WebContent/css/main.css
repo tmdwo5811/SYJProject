@@ -762,6 +762,10 @@ select {
   border-bottom: 1px solid #c3c3c3;
   transition: all 0.3s ease-in-out;
 }
+input[type="number"]{
+  display:inline-block;
+
+}
 
 .ss-custom-select {
   position: relative;
@@ -3632,5 +3636,16 @@ body.search-is-visible {
 }
 .login_sub a{
   font-size: 15px;
+}
+.answer_button{
+  width:100%;
+  text-align:center;
+  padding:0;
+  padding-left: 6px;
+  height:40px;
+  line-height:40px;
+  background-color:#1b2259;
+  color:#fff;
+  border:none;
 }
 /*# sourceMappingURL=main.css.map */
