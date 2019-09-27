@@ -10,6 +10,8 @@ public class User {
 	private Location location;
 	private Boolean credential;
 	
+	public void setLoc(int no) { setLocation(new Location(no)); }
+	
 	public int getNo() { return no; }
 	public char getGender() { return gender; }
 	public Date getBoth() { return both; }
