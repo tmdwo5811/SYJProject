@@ -3,6 +3,7 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import vo.Post;
+import dao.BoardDAO;
 public class DeleteProAction implements CommandAction {
 
 	@Override

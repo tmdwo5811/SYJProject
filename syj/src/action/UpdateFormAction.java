@@ -3,8 +3,8 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //추가
-import dao.*;
-import vo.*;
+import dao.BoardDAO;
+import vo.Post;
 public class UpdateFormAction implements CommandAction {
 
 	@Override
