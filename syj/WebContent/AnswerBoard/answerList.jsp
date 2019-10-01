@@ -23,11 +23,13 @@
 <div class="container">
 <h2 class="text text-center">답변게시판(전체 글:${pgList.count})</h2>
 <table width="700">
-<tr>
+
+<!-- <tr>
     <td align="right">
     <a class="btn btn-default pull-right" href="answerWriteForm.jsp">글쓰기</a>
     </td>
-</tr>
+</tr> -->
+
 </table>
 <!-- 데이터의 유무  -->
 
