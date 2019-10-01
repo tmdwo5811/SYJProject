@@ -51,11 +51,11 @@
 	<table class="table table-hover">
 	    <thead>
 		    <tr>
-				<td>No</td><td>글제목</td><td>작성자</td><td>작성일</td><td>조회수</td><td>IP</td>
+				<td>No</td><td>글제목</td><td>작성일</td><td>조회수</td>
 			</tr>
 		</thead>
 			<tr>
-				<td>1</td><td>게시판의 글제목</td><td>긴쟌</td><td>19.09.26</td><td>1</td><td>192.035.0.65</td>
+				<td>1</td><td>게시판의 글제목</td><td>19.09.26</td><td>1</td>
 			</tr>
 	</table>
     <!-- ==================================== -->
@@ -154,7 +154,6 @@
                     </button>
                     <ul class="dropdown-menu" role="menu">
                       <li><a href="#">제목</a></li>
-                      <li><a href="#">작성자</a></li>
                       <li><a href="#">내용</a></li>
                       <li class="divider" ></li>
                       <li><a href="#">전체</a></li>
@@ -169,39 +168,6 @@
         </div>
 		</div>
 	</form>
-	
-	
-	
-	
-	
-	    <div class="row">    
-        <div class="col-xs-8 col-xs-offset-2">
-		    <div class="input-group">
-                <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#contains">Contains</a></li>
-                      <li><a href="#its_equal">It's equal</a></li>
-                      <li><a href="#greather_than">Greather than ></a></li>
-                      <li><a href="#less_than">Less than < </a></li>
-                      <li class="divider"></li>
-                      <li><a href="#all">Anything</a></li>
-                    </ul>
-                </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">         
-                <input type="text" class="form-control" name="x" placeholder="Search term...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-            </div>
-        </div>
-	</div>
-</div>
-
-
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
