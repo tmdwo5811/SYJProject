@@ -189,9 +189,9 @@ public class BoardDAO {
 		}
 		
 		//session.getAttribute("loginInfo/*(vo.User)*/").getNo();
-		public int updateArticle(Post article, int userNo) {
+		public int updateArticle(Post article) {
+			String no=null;
 			
-			User vo = (User)session.getAttribute("vo.User").getNo();
 			int x=-1;//게시물의 수정성공유무
 			try {
 				con=pool.getConnection();
@@ -203,7 +203,7 @@ public class BoardDAO {
 					no=rs.getString("no");
 					System.out.println("no=>"+no);//확인한뒤에 나중에 삭제
 				   
-				   if(no.equals(article.getNo()) && ) {			
+				   if(no.equals(article.getNo())) {			
 						sql="update board set writer=?,subject=?";
 						sql+=" where no=?";
 						pstmt=con.prepareStatement(sql);
