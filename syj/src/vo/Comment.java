@@ -1,6 +1,6 @@
 package vo;
 
-public class Comment {
+public class Comment extends Vo {
 	
 	private int no;
 	private Post post;
@@ -15,5 +15,10 @@ public class Comment {
 	public void setPost(Post post) { this.post = post; }
 	public void setUser(User user) { this.user = user; }
 	public void setContent(String content) { this.content = content; }
+	
+	@Override
+	public String toString() {
+		return "Comment [no=" + no + ", post=" + post + ", user=" + user + ", content=" + content + "]";
+	} //toString();
 	
 } //class Comment;
