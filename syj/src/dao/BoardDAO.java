@@ -9,6 +9,7 @@ import java.util.List;
 import util.DBConnectionMgr;
 import vo.Location;
 import vo.Post;
+import vo.User;
 
 public class BoardDAO {
 	private DBConnectionMgr pool=null;
@@ -166,14 +167,15 @@ public class BoardDAO {
 			return article;
 		}
 		//글수정
-		public Post updateGetArticle(int num) {
+		public Post updateGetArticle(int no) {
 			Post article=null;
+			
 			try {
 				con=pool.getConnection();
 				
-				sql="select * from board where num=?";
+				sql="select Post * from board where no=?";
 				pstmt=con.prepareStatement(sql);
-				pstmt.setInt(1, num);
+				pstmt.setInt(1, no);
 				rs=pstmt.executeQuery();
 				if(rs.next()) {
 					article=(Post)new Post().setByResultSet(rs);
@@ -184,6 +186,45 @@ public class BoardDAO {
 				pool.freeConnection(con,pstmt,rs);
 			}
 			return article;
+		}
+		
+		//session.getAttribute("loginInfo/*(vo.User)*/").getNo();
+		public int updateArticle(Post article, int userNo) {
+			
+			User vo = (User)session.getAttribute("vo.User").getNo();
+			int x=-1;//게시물의 수정성공유무
+			try {
+				con=pool.getConnection();
+				sql="select user from board where no=?"; //최대값+1=실제 저장할 게시물번호
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1,article.getNo() );
+				rs=pstmt.executeQuery();
+				if(rs.next()) {//보여주는 결과가 있다면 ->rs.last()->rs.getRow();(X)
+					no=rs.getString("no");
+					System.out.println("no=>"+no);//확인한뒤에 나중에 삭제
+				   
+				   if(no.equals(article.getNo()) && ) {			
+						sql="update board set writer=?,subject=?";
+						sql+=" where no=?";
+						pstmt=con.prepareStatement(sql);
+						pstmt.setString(1, article.getContent());//웹에서는 Setter Method를 메모리에 저장
+						pstmt.setString(2, article.getSubject());
+						pstmt.setInt(6, article.getNo());
+						int update=pstmt.executeUpdate();
+						System.out.println("게시판의 글수정 성공유무(update)=>"+update);//1 or 0실패
+						x=1;//수정성공 표시
+				   }else {//암호가 틀린경우
+					   x=0;//수정 실패
+				   }
+				}else { //if(rs.next())
+					x=-1; //찾은 데이터가 없는 경우(생략가능)
+				}
+			}catch(Exception e) {
+				System.out.println("updateArticle()메서드"+e);
+			}finally {
+				pool.freeConnection(con,pstmt,rs);
+			}
+			return x;
 		}
 //글삭제=>암호비교
 		public int deleteArticle(int num,String passwd) {
