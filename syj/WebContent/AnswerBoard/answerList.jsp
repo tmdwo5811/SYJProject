@@ -53,11 +53,11 @@
 	<table class="table table-hover">
 	    <thead>
 		    <tr>
-				<td>No</td><td>글제목</td><td>작성일</td><td>조회수</td>
+				<td>No</td><td>글제목</td><td>작성자</td><td>작성일</td><td>조회수</td>
 			</tr>
 		</thead>
 			<tr>
-				<td>1</td><td>게시판의 글제목</td><td>19.09.26</td><td>1</td>
+				<td>1</td><td>게시판의 글제목</td><td>Kim</td><td>19.09.26</td><td>1</td>
 			</tr>
 	</table>
     <!-- ==================================== -->
@@ -139,15 +139,16 @@
 	<!-- 검색어 추가(자주검색이 되는 항목을 잘 선택) 제목, 작성자, 제목+본문
 		ex)search.do->새로운 요청명령어를 이용하여 추가
 			list.do->기존의 내용을 추가 -->
-	<form name="test" action="/JspBoard2/list.do">
-<!-- 		<select name="search">
+	<form name="test" action="/syj/answerList.do">
+ 		<select name="search">
 			<option value="subject">제목</option>
 			<option value="subject_content">제목+본문</option>
 			<option value="writer">작성자</option>
 		</select>
 		<input type="text" size="15" name="searchtext">&nbsp;
-		<input type="submit" value="Search"> -->
-		<div class="row">    
+		<input type="submit" value="Search">
+		
+		<!-- <div class="row">    
         <div class="col-xs-8 col-xs-offset-2">
 		    <div class="input-group">
                 <div class="input-group-btn search-panel">
@@ -168,7 +169,8 @@
                 </span>
             </div>
         </div>
-		</div>
+		</div> -->
+		
 	</form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
