@@ -16,7 +16,7 @@
 	onsubmit="return writeSave()">
 	<!-- 입력하지 않고 매개변수로 전달해서 테이블에 저장 *(hidden) -->
 	<input type="hidden" name="no" value="${answer.no}">
-	<input type="hidden" name="post" value="${answer.pst}">
+	<input type="hidden" name="post" value="${answer.post}">
 	<input type="hidden" name="content" value="${answer.content}">
 	<input type="hidden" name="regdate" value="${answer.regdate}">
 
