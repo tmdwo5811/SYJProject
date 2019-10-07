@@ -1,23 +1,25 @@
 package vo;
 
+import java.sql.Timestamp;
+
 public class Comment extends Vo {
 	
 	private int no;
 	private Post post;
-	private User user;//
+	private User user;
 	private String content;
+	private Timestamp regdate;
 	
-	
-	public int getNo() { return no; }//댓글번호
-	public Post getPost() { return post; }//게시글
-	public User getUser() { return user; }//댓글작성자 String -> User 변경
-	public String getContent() { return content; }//댓글내용
-	//댓글 작성일
-	
+	public int getNo() { return no; }
+	public Post getPost() { return post; }
+	public User getUser() { return user; }
+	public String getContent() { return content; }
+	public Timestamp getRegdate() { return regdate; }
 	public void setNo(int no) { this.no = no; }
 	public void setPost(Post post) { this.post = post; }
 	public void setUser(User user) { this.user = user; }
 	public void setContent(String content) { this.content = content; }
+	public void setRegdate(Timestamp regdate) { this.regdate = regdate; }
 	
 	@Override
 	public String toString() {
