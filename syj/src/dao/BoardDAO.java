@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import util.DBConnectionMgr;
 import vo.Location;
 import vo.Post;
 import vo.User;
+import vo.Comment;
 
 public class BoardDAO {
 	private DBConnectionMgr pool=null;
@@ -258,5 +260,74 @@ public class BoardDAO {
 			}
 			return x;
 		}
-}
-
+		//댓글 작성
+		public void addComment (Comment comment) {
+			//1.DB연결
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			String sql=null;
+			//db작업
+			try {
+				con=pool.getConnection();
+				System.out.println("comment.getUser()="+comment.getUser());
+			/* System.out.println("comment.getReg_date()="+comment.getReg_date()); */
+				System.out.println("comment.getcontent()="+comment.getContent());
+				System.out.println("comment.getNo()="+comment.getNo());
+			// 데이터 추가하는 코딩
+				sql="insert into reply_board1 values";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setUser (1,comment.getUser());
+				//pstmt.setTimestamp (2,comment.getReg_date());
+				pstmt.setString(3, comment.getContent());
+				pstmt.setInt(4,comment.getNo());
+			} catch (Exception e) {
+				System.out.println("addComment()메서드 에러유발"+e);
+			}finally {
+				pool.freeConnection(con,pstmt,rs);
+		}
+			return x;
+		}
+		//댓글
+		public List CommentDetail (int num) {
+			//DB 연결
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			System.out.println("sql:"+sql);
+			ResultSet rs=null;
+			List commentList=null;
+			
+			
+			try {
+				con=pool.getConnection();
+				String sql="select * from reply_board1 where num=?";
+				pstmt=con.prepareStatement(sql);
+				System.out.println("sql:");
+				rs=pstmt.executeQuery();
+				if(rs.next()==true) {
+					commentList=new ArrayList();
+				}
+			} catch (Exception e) {
+				System.out.println("CommentDetail()메서드 에러유발"+e);
+			} finally {
+				pool.freeConnection(con,pstmt,rs);
+			}
+			return CommentDetail;
+		}
+		//댓글 삭제
+		public int deleteComment (int reboard1_num) {
+			//1. DB 연결
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			int x=-1;//데이터 삭제 유무
+			String sql="";//sql 기억
+			//2. DB 작업
+			try {
+				con=pool.getConnection();
+				con.setAutoCommit(false);
+				sql="delete from reply_board1 where reboard1_num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, reboard1_no);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
