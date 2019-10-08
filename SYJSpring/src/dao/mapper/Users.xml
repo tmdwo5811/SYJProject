@@ -23,7 +23,16 @@
 	  (LAST_INSERT_ID(), #{addr}, #{phone}, #{email})
   </insert>
   
-  <select id="selectPW" parameterType="String" resultType="Login">
+  <select id="selectId" parameterType="String" resultType="boolean">
+	SELECT
+	  COUNT(id)
+	FROM
+	  login
+	WHERE
+	  id = #{id}
+  </select>
+  
+  <select id="selectLogin" parameterType="String" resultType="Login">
 	SELECT
 	  user_no `user.no`, pw, salt
 	FROM
@@ -40,5 +49,45 @@
 	WHERE
 	  no = #{no}
   </select>
+  
+  <update id="updateLogin" parameterType="Login">
+	UPDATE
+	  login
+	SET
+	  pw = ${pw},
+	  salt = ${salt}
+	WHERE
+	  user_no = ${user.no}
+  </update>
+  
+  <update id="updateUser" parameterType="User">
+	UPDATE
+	  users
+	SET
+	  gender = ${gender},
+	  both = ${both},
+	  location_no = ${location.no},
+	  credential = ${credential}
+	WHERE
+	  no = ${no}
+  </update>
+  
+  <update id="updateUserSub" parameterType="UserSub">
+	UPDATE
+	  users_sub
+	SET
+	  addr = ${addr},
+	  phone = ${phone},
+	  email = ${email},
+	WHERE
+	  user_no = ${uesr.no}
+  </update>
+  
+  <delete id="deleteUser" parameterType="int">
+	DELETE FROM
+		users
+	WHERE
+		no = no;
+  </delete>
   
 </mapper>
