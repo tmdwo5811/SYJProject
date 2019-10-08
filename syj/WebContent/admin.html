@@ -22,7 +22,6 @@
     <!-- script
     ================================================== -->
     <script src="js/modernizr.js"></script>
-    <script src="js/main.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -30,6 +29,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
+
 </head>
 
 <body>
@@ -79,40 +79,40 @@
 
             <nav class="header__nav-wrap">
 
-                <ul class="header__nav">
-                    <li class="current has-children">
-                        <a href="index.html" title="">대나무숲 입장 하기</a>
-                        <ul class="sub-menu">
-                        <li><a href="login.html">로그인</a></li>
-                        <li><a href="join.html">회원 가입</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <a href="#0" title="">대나무숲 청원</a>
-                        <ul class="sub-menu">
-                        <li><a href="board.html">실시간 청원</a></li>
-                        <li><a href="loc_board.html">지역별 청원</a></li>
-                        <li><a href="exp_board.html">만료된 청원</a></li>
-                        <li><a href="answer_board.html">답변된 청원</a></li>
-                        <li><a href="faq.html">대나무숲 청원 FAQ</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <a href="#0" title="">청원 하기</a>
-                        <ul class="sub-menu">
-                        <li><a href="write.html">지금 청원 하기</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-children">
-                        <a href="page-about.html" title="">대나무 숲</a>
-                        <ul class="sub-menu">
-                        <li><a href="img_storage.html">사진 자료실</a></li>
-                        <li><a href="video_storage.html">동영상 자료실</a></li>
-                        <li><a href="Advertising.html">지역별 소식 보기</a></li>
-                        <li><a href="status.html">청원 진행 과정</a></li>
-                        </ul>
-                    </li>
-                </ul> <!-- end header__nav -->
+              <ul class="header__nav">
+                  <li class="current has-children">
+                      <a href="index.html" title="">대나무숲 입장 하기</a>
+                      <ul class="sub-menu">
+                      <li><a href="login.html">로그인</a></li>
+                      <li><a href="join.html">회원 가입</a></li>
+                      </ul>
+                  </li>
+                  <li class="has-children">
+                      <a href="#0" title="">대나무숲 청원</a>
+                      <ul class="sub-menu">
+                      <li><a href="board.html">실시간 청원</a></li>
+                      <li><a href="loc_board.html">지역별 청원</a></li>
+                      <li><a href="exp_board.html">만료된 청원</a></li>
+                      <li><a href="answer_board.html">답변된 청원</a></li>
+                      <li><a href="faq.html">대나무숲 청원 FAQ</a></li>
+                      </ul>
+                  </li>
+                  <li class="has-children">
+                      <a href="#0" title="">청원 하기</a>
+                      <ul class="sub-menu">
+                      <li><a href="write.html">지금 청원 하기</a></li>
+                      </ul>
+                  </li>
+                  <li class="has-children">
+                      <a href="page-about.html" title="">대나무 숲</a>
+                      <ul class="sub-menu">
+                      <li><a href="img_storage.html">사진 자료실</a></li>
+                      <li><a href="video_storage.html">동영상 자료실</a></li>
+                      <li><a href="Advertising.html">지역별 소식 보기</a></li>
+                      <li><a href="status.html">청원 진행 과정</a></li>
+                      </ul>
+                  </li>
+              </ul> <!-- end header__nav -->
 
                 <ul class="header__social">
                     <li class="ss-facebook">
@@ -143,20 +143,43 @@
 
         </header> <!-- end s-header -->
 
-        <div class="s-content">
+          <div class="s-content"><!--컨텐츠 입력 시작 -->
+            <div class="s-content content">
+                <main class="row content__page">
 
-            <div class="masonry-wrap">
+                        <div class="column large-12 comment-respond">
 
-                <div class="masonry">
+                            <!-- START respond -->
+                            <div id="respond">
 
-                    <div class="grid-sizer"><!-- 메인 페이지 -->
+                                <h3 class="h2">우리 동네 대나무숲<span> <b>관리자</b> 접속 하기</span></h3>
 
+                                <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
+                                    <fieldset>
 
-                    </div>
+                                        <div class="form-field">
+                                            <input name="cId" id="cId" class="full-width" placeholder="관리자 아이디를 입력해주세요." value="" type="text">
+                                        </div>
+                                        <div class="form-field">
+                                            <input name="cpassword" id="cpassword" class="full-width" placeholder="관리자 비밀번호를 입력해주세요." value="" type="password">
+                                        </div>
 
-                </div> <!-- end masonry -->
+                                        <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large full-width" value="관리자 로그인" type="submit">
+                                        <div class="login_sub">
+                                          <a href="joinAdmin.html" style="color:#444444;">관리자 회원 가입</a> | <a href="#" style="color:#444444;">관리자 아이디/비밀번호 찾기</a>
+                                        </div>
+                                    </fieldset>
+                                </form> <!-- end form -->
 
-            </div> <!-- end masonry-wrap -->
+                            </div>
+                            <!-- END respond-->
+
+                        </div> <!-- end comment-respond -->
+
+                    </div> <!-- end comments-wrap -->
+                </main>
+
+            </div> <!-- end s-content -->
 
         </div> <!-- end s-content -->
 
