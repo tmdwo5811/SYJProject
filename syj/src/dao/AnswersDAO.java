@@ -22,9 +22,9 @@ public class AnswersDAO {
 		//테이블에 입력할 게시물번호를 저장할 변수
 		int number=0;//데이터를 저장하기 위한 게시물번호 
 		System.out.println("insertArticle 메소드의 내부no=>"+no);//0=>신규 !=답글
-		System.out.println("ref=>"+post);
-		System.out.println("re_step=>"+content);
-		System.out.println("re_level=>"+regdate);
+		System.out.println("post=>"+post);
+		System.out.println("content=>"+content);
+		System.out.println("regdate=>"+regdate);
 	      try{
 	         con=pool.getConnection();
 	         System.out.println("con=>"+con);//디버깅 코드
