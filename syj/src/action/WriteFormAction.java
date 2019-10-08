@@ -22,7 +22,7 @@ public class WriteFormAction implements CommandAction {
 	       }
 	      //실행결과->서버의 메모리에 저장
 	       request.setAttribute("no", no);
-	       request.setAttribute("view", view);
+	       request.setAttribute("view", view);	
 	  
 		return "/writeForm.jsp";
 
