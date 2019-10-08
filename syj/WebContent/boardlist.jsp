@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -16,7 +18,6 @@
     <!-- CSS
     ================================================== -->
     <link rel="stylesheet" href="css/base.css">
-    
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
 
@@ -151,24 +152,22 @@
 
                     <div id="comments" class="column large-12">
 
-                        <h3 class="h2">청원 전체 목록 [최신순]</h3>
-                        <div style="float:right;">
-                          <button style="height:40px;line-height:40px;" onclick="location.href='write.html'">지금 청원하기</button>
-                        </div>
+                        <h3 class="h2">답변된 청원</h3>
+
                         <!-- START commentlist -->
                         <ol class="commentlist">
 
                             <li class="depth-1 comment">
 
                                 <div class="comment__avatar">
-                                    <img class="avatar" src="images/avatars/user-01.jpg" alt="" width="50" height="50">
+                                <button class="answer_button">답변 5호</button>
                                 </div>
 
                                 <div class="comment__content">
 
                                     <div class="comment__info">
-                                        <div class="post_no">게시글 번호 5</div>
-                                        <div class="comment__author">작성자 이름 예시</div>
+                                        <div class="post_no">원래의 게시글 번호 5</div>
+                                        <div class="comment__author">청원 게시글 제목</div>
                                         <div class="comment__meta">
                                             <div class="comment__time">April 30, 2019</div>
                                             <div class="comment__reply">
@@ -189,14 +188,14 @@
                             <li class="thread-alt depth-1 comment">
 
                                 <div class="comment__avatar">
-                                    <img class="avatar" src="images/avatars/user-04.jpg" alt="" width="50" height="50">
+                                  <button class="answer_button">답변 4호</button>
                                 </div>
 
                                 <div class="comment__content">
 
                                     <div class="comment__info">
-                                        <div class="post_no">게시글 번호 4</div>
-                                        <div class="comment__author">작성자 이름 예시</div>
+                                        <div class="post_no">원래의 게시글 번호 4</div>
+                                        <div class="comment__author">청원 게시글 제목</div>
 
                                         <div class="comment__meta">
                                             <div class="comment__time">April 30, 2019</div>
@@ -214,19 +213,16 @@
 
                                 </div>
 
-                                <ul class="children">
 
-                                    <li class="depth-2 comment">
-
-                                        <div class="comment__avatar">
-                                            <img class="avatar" src="images/avatars/user-03.jpg" alt="" width="50" height="50">
-                                        </div>
+                                      <div class="comment__avatar">
+                                        <button class="answer_button">답변 3호</button>
+                                      </div>
 
                                         <div class="comment__content">
 
                                             <div class="comment__info">
-                                                <div class="post_no">게시글 번호 3</div>
-                                                <div class="comment__author">작성자 이름 예시</div>
+                                                <div class="post_no">원래의 게시글 번호 3</div>
+                                                <div class="comment__author">청원 게시글 제목</div>
 
                                                 <div class="comment__meta">
                                                     <div class="comment__time">April 29, 2019</div>
@@ -244,19 +240,16 @@
 
                                         </div>
 
-                                        <ul class="children">
 
-                                            <li class="depth-3 comment">
-
-                                                <div class="comment__avatar">
-                                                    <img class="avatar" src="images/avatars/user-04.jpg" alt="" width="50" height="50">
-                                                </div>
+                                              <div class="comment__avatar">
+                                                <button class="answer_button">답변 2호</button>
+                                              </div>
 
                                                 <div class="comment__content">
 
                                                     <div class="comment__info">
-                                                        <div class="post_no">게시글 번호 2</div>
-                                                        <div class="comment__author">작성자 이름 예시</div>
+                                                        <div class="post_no">원래의 게시글 번호 2</div>
+                                                        <div class="comment__author">청원 게시글 제목</div>
 
                                                         <div class="comment__meta">
                                                             <div class="comment__time">April 29, 2019</div>
@@ -273,27 +266,19 @@
 
                                                 </div>
 
-                                            </li>
-
-                                        </ul>
-
-                                    </li>
-
-                                </ul>
-
                             </li> <!-- end comment level 1 -->
 
                             <li class="depth-1 comment">
 
-                                <div class="comment__avatar">
-                                    <img class="avatar" src="images/avatars/user-02.jpg" alt="" width="50" height="50">
-                                </div>
+                              <div class="comment__avatar">
+                                <button class="answer_button">답변 1호</button>
+                              </div>
 
                                 <div class="comment__content">
 
                                     <div class="comment__info">
-                                        <div class="post_no">게시글 번호 1</div>
-                                        <div class="comment__author">작성자 이름 예시</div>
+                                        <div class="post_no">원래의 게시글 번호 1</div>
+                                        <div class="comment__author">청원 게시글 제목</div>
 
                                         <div class="comment__meta">
                                             <div class="comment__time">April 26, 2019</div>
@@ -347,3 +332,4 @@
     <script src="js/main.js"></script>
 
 </body>
+</html>

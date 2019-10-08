@@ -11,11 +11,13 @@
 <body>
 <center><h2>답변게시판(전체 글:${pgList.count})</h2>
 <table width="700">
-<tr>
+
+<!-- <tr>
     <td align="right">
-    <button><a href="/JspBoard2/writeForm.do">글쓰기</a></button>
+    <button><a href="answerWriteForm.jsp">글쓰기</a></button>
     </td>
-</tr>
+</tr> -->
+
 </table>
 <!-- 데이터의 유무  -->
 

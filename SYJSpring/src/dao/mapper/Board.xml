@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BoardDAO">
+  
+  <insert id="insertPost" parameterType="Post">
+	INSERT INTO board
+	  (location_no, subject, user_no, content)
+	VALUES
+	  (#{user.location.no}, #{subject}, #{user.no}, #{content});
+  </insert>
+  
+  <select id="selectTotal" resultType="int">
+	SELECT
+	  COUNT(no)
+	FROM
+	  board
+  </select>
+  
+  <select id="selectPostList" parameterType="Page" resultType="Post">
+	SELECT
+	  no, location_no, subject, user_no, view, regdate, status
+	FROM
+	  board
+	ORDER BY 1 DESC
+	LIMIT #{startContent}, #{contentCount}
+  </select>
+  
+</mapper>

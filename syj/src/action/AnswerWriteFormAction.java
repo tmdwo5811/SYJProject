@@ -25,6 +25,7 @@ public class AnswerWriteFormAction implements CommandAction {
 			answer.setNo(Integer.parseInt(request.getParameter("no")));
 			answer.getPost().setNo(Integer.parseInt(request.getParameter("post")));
 			answer.setContent(request.getParameter("content"));
+			answer.getRegdate();
 		}
 		request.setAttribute("answer", answer);
 		

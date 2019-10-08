@@ -24,7 +24,20 @@ public class UsersService {
 		
 	} //join();
 	
-	public Login getPassword(String id) { return usersDAO.selectPW(id); }
+	public boolean checkId(String id) { return usersDAO.selectId(id); }
+	public Login getLogin(String id) { return usersDAO.selectLogin(id); }
 	public User getUser(int no) { return usersDAO.selectUser(no); }
+	
+	public boolean changePassword(Login login) { return usersDAO.updateLogin(login); }
+	public boolean changeAccount(User user, UserSub userSub) {
+		
+		if(!usersDAO.updateUser(user)) return false;
+		if(!usersDAO.updateUserSub(userSub)) return false;
+		
+		return true;
+		
+	} //updateUser();
+	
+	public boolean deleteAccount(int no) { return usersDAO.deleteUser(no); }
 	
 } //class UsersService;
