@@ -10,7 +10,7 @@ import vo.*;
 import dao.*;
 import java.sql.Timestamp;
 
-public class WriteProActicle {
+public class WriteProAction {
 
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// TODO Auto-generated method stub
@@ -19,20 +19,23 @@ public class WriteProActicle {
 		// 한글처리
 		request.setCharacterEncoding("utf-8");
 		Post article = new Post();
-
+		Location lo = new Location();
+		lo.setNo(Integer.parseInt(request.getParameter("location")));
+		lo.getNo();
+		
 		article.setNo(Integer.parseInt(request.getParameter("no")));
-		article.setLocation(new Location(Integer.parseInt(request.getParameter("location"))));
+		article.setLocation(lo);
 		article.setContent(request.getParameter("content"));
 		article.setView(Integer.parseInt(request.getParameter("view")));
 		article.setSubject(request.getParameter("subject"));
-		article.setStatus((byte) Integer.parseInt(request.getParameter("status")));
+		//article.setStatus((byte) Integer.parseInt(request.getParameter("status")));
 		//byte setStatus = (byte) Integer.parseInt(request.getParameter("status"));
 		article.setRegdate(new Timestamp(System.currentTimeMillis()));// 작성날짜
 
 		article.setContent(request.getParameter("content"));
-
 		BoardDAO dbPro = new BoardDAO();
 		dbPro.insertArticle(article);
+		System.out.println(article);
 		// response.sendRedirect("http://localhost:8090/JspBoard2/list.do");
 		return "/writePro.jsp";
 	}
