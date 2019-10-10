@@ -297,15 +297,4 @@
       $('#cBoth2').val(null);
       $('#cphone').val(null);
     })
-})(jQuery);
-/* 승재 추가 */
-function maxLengthCheck(object){
-    if (object.value.length > object.maxLength){
-        object.value = object.value.slice(0, object.maxLength);
-    }
-}
-function fn(str){
-  var res;
-  res = str.replace(/[^0-9]/g,"");
-  return res;
-}
+  })(jQuery);
