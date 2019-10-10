@@ -32,8 +32,7 @@
 	</center>
 	<br>
 	<div class="container">
-		<form method="post" name="writeForm" action="answerWritePro.jsp"
-			onsubmit="return writeSave()">
+		<form method="post" name="answerWriteForm" action="answerWritePro.jsp">
 			<!-- 입력하지 않고 매개변수로 전달해서 테이블에 저장 *(hidden) -->
 			<input type="hidden" name="no" value="${answer.no}"> <input
 				type="hidden" name="post" value="${answer.post}"> <input
@@ -45,9 +44,8 @@
 					rows="20"></textarea>
 			</div>
 			<button type="submit" class="btn btn-primary">작성</button>
-			<button class="btn btn-primary"><a href="/syj/answerList.do">
-			목록으로 돌아가기</a></button>
-		</form>
+			<button class="btn btn-primary">목록으로 돌아가기<a href="answerList.jsp"></a></button>
+		</form>										<!-- /syj/answerList.do -->
 	</div>
 
 	<%-- 
