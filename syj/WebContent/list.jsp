@@ -160,7 +160,7 @@
                             <li class="depth-1 comment">
 
                                 <div class="comment__avatar">
-                                <button class="answer_button">답변 5호</button>
+                                <button class="answer_button">답변${no}</button>
                                 </div>
 
                                 <div class="comment__content">
@@ -177,8 +177,7 @@
                                     </div>
 
                                     <div class="comment__text">
-                                    <p>Adhuc quaerendum est ne, vis ut harum tantas noluisse, id suas iisque mei. Nec te inani ponderum vulputate,
-                                    facilisi expetenda has et. Iudico dictas scriptorem an vim, ei alia mentitum est, ne has voluptua praesent.</p>
+                                    <p>${content}</p>
                                     </div>
 
                                 </div>

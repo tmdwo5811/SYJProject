@@ -10,7 +10,7 @@ import vo.*;
 import dao.*;
 import java.sql.Timestamp;
 
-public class WriteProAction {
+public class WriteProAction implements CommandAction {
 
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// TODO Auto-generated method stub
@@ -22,17 +22,16 @@ public class WriteProAction {
 		Location lo = new Location();
 		lo.setNo(Integer.parseInt(request.getParameter("location")));
 		lo.getNo();
-		
-		article.setNo(Integer.parseInt(request.getParameter("no")));
+//		article.setNo(Integer.parseInt(request.getParameter("no")));
 		article.setLocation(lo);
 		article.setContent(request.getParameter("content"));
-		article.setView(Integer.parseInt(request.getParameter("view")));
+//		article.setView(Integer.parseInt(request.getParameter("view")));
 		article.setSubject(request.getParameter("subject"));
 		//article.setStatus((byte) Integer.parseInt(request.getParameter("status")));
 		//byte setStatus = (byte) Integer.parseInt(request.getParameter("status"));
 		article.setRegdate(new Timestamp(System.currentTimeMillis()));// 작성날짜
 
-		article.setContent(request.getParameter("content"));
+		//article.setContent(request.getParameter("content"));
 		BoardDAO dbPro = new BoardDAO();
 		dbPro.insertArticle(article);
 		System.out.println(article);
