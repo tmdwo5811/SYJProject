@@ -156,7 +156,7 @@
 
                                 <h3 class="h2">대나무숲<span> 가입 하기</span></h3>
 
-                                <form name="contactForm" id="contactForm" method="post" action="/syj/join_testPro.do" autocomplete="off">
+                                <form name="contactForm" id="contactForm" method="post" action="join_testPro.do" autocomplete="off">
                                     <input type="hidden" name="" value="">
                                     <fieldset>
 

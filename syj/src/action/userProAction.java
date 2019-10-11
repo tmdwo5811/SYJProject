@@ -41,6 +41,8 @@ public class userProAction implements CommandAction {
 		//입력된 값을 문자열로 형변환 과정 
 		String bothString = bothDataOrigin.toString();
 		
+		System.out.println(bothString);
+		
 		//DATE 형으로 포맷
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date both = Date.valueOf(bothString);
