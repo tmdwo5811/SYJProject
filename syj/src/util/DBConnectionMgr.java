@@ -91,7 +91,6 @@ public class DBConnectionMgr {
     	_password="1234";
     	System.out.println("_driver=>"+(_driver)+",_url=>"+(_url));
     	System.out.println("_user=>"+(_user)+",_password=>"+(_password));
-    	
     }
 
     /** Use this method to set the maximum number of open connections before
@@ -164,9 +163,11 @@ public class DBConnectionMgr {
             throws Exception {
         if (!initialized) {
 			//������ DB�� ����̹��� �޸𸮿� �ε�
+        	System.out.println(_driver);
+        	
             Class c = Class.forName(_driver);
 			//�ڵ� ���(����̹�Ŭ����)
-            DriverManager.registerDriver((Driver) c.newInstance());
+//            DriverManager.registerDriver((Driver) c.newInstance());
 
             initialized = true;//���ӻ��� 
         }
