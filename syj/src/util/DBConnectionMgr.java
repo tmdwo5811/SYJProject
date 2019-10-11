@@ -48,15 +48,9 @@ public class DBConnectionMgr {
 	 * Manages a java.sql.Connection pool.
 	 *
 	 * @author  Anil Hemrajani
-     * @throws Exception 
 	 */
-	
-	public static void main(String[] args) throws Exception {
-		
-		DBConnectionMgr.getInstance();
-		
-	} //main();
-	
+
+
 	//
 	//private MemberDBMgr mem =null;
 	private Vector connections = new Vector(10);//커넥션풀 저장크기
@@ -97,7 +91,6 @@ public class DBConnectionMgr {
     	_password="1234";
     	System.out.println("_driver=>"+(_driver)+",_url=>"+(_url));
     	System.out.println("_user=>"+(_user)+",_password=>"+(_password));
-    	
     }
 
     /** Use this method to set the maximum number of open connections before
@@ -170,9 +163,11 @@ public class DBConnectionMgr {
             throws Exception {
         if (!initialized) {
 			//������ DB�� ����̹��� �޸𸮿� �ε�
+        	System.out.println(_driver);
+        	
             Class c = Class.forName(_driver);
 			//�ڵ� ���(����̹�Ŭ����)
-            DriverManager.registerDriver((Driver) c.newInstance());
+//            DriverManager.registerDriver((Driver) c.newInstance());
 
             initialized = true;//���ӻ��� 
         }

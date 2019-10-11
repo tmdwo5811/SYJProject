@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-
+<script language="JavaScript" src="script.js"></script>
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
@@ -159,20 +159,16 @@
 
                             <h3 class="h2">우리 동네에 <span>청원 하기</span></h3>
 
-                            <form method="post"  name="writeform" id="writeform" action="/syj/writePro.do" autocomplete="off">
+                            <form method="post"  name="writeform" id="writeform" action="/syj/writePro.do" autocomplete="off"  onsubmit="return writeSave()">
                             
-		                            <input type="hidden" name="no" value=${no}>
-		   							<input type="hidden" name="view" value=${view}>
+		                            <input type="hidden" name="no" value="${no}">
+		   							<input type="hidden" name="view" value="${view}">
                                 <fieldset>
-								<tr>
-								    <td  width="70"  bgcolor="#b0e0e6" align="center" >제 목</td>
-								    <td  width="330">
-								       <c:if test=${no==0}>
-								       	<input type="text" size="40" maxlength="50" name="subject">
-								       </c:if>
-								  </td>
+								<div class="form-field">
+                                        <input name="subject" id="subject" class="full-width" placeholder="청원제목을 입력해주세요." value="" type="text">
+                                    </div>
                                     <div class="form-field">
-                                        <select name="location" id="location" class="full-width" placeholder="지역을 선택해 주세요." value="">
+                                        <select name="location" id="location" class="full-width" placeholder="지역을 선택해 주세요." value="${location}">
                                           <option selected>지역을 선택해 주세요.</option>
                                           <option value="1">서울시</option>
                                           <option value="2">인천시</option>
@@ -190,9 +186,6 @@
                                         </select>
                                     </div>
                                     
-                                    <div class="form-field">
-                                        <input name="subject" id="subject" class="full-width" placeholder="제목을 입력해주세요." value="" type="text">
-                                    </div>
 
                                     <div class="message form-field">
                                         <textarea name="content" id="content" class="full-width" placeholder="청원 내용을 작성해 주세요."></textarea>
