@@ -18,10 +18,10 @@
   
   <select id="selectPostList" parameterType="Page" resultType="Post">
 	SELECT
-	  no, location_no, subject, user_no, view, regdate, status
+	  no, location_no `location.no`, subject, content, user_no, view, regdate, status
 	FROM
 	  board
-	ORDER BY 1 DESC
+	ORDER BY 7 DESC
 	LIMIT #{startContent}, #{contentCount}
   </select>
   
