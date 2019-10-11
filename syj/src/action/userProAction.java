@@ -50,7 +50,18 @@ public class userProAction implements CommandAction {
 		lo.setNo(Integer.parseInt(request.getParameter("location_no")));
 		lo.getNo();
 		
-		User.setGender(Integer.parseInt(request.getParameter("gender")));
+		//gender 데이터 추출
+		char GenData = 0;
+		
+		int GenInt = Integer.parseInt(request.getParameter("gender"));
+		
+		if(1==GenInt || 3 == GenInt) {
+			GenData = 'M';
+		}else {
+			GenData = 'W';
+		}
+		
+		User.setGender(GenData);
 		User.setBoth(both); //util.Date => sql.Date 로 형변환후 데이터 전송[승재 추가]
 		User.setLocation(lo);
 		User.setCredential(false);
