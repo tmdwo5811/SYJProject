@@ -168,7 +168,7 @@
                                         <input name="subject" id="subject" class="full-width" placeholder="청원제목을 입력해주세요." value="" type="text">
                                     </div>
                                     <div class="form-field">
-                                        <select name="location" id="location" class="full-width" placeholder="지역을 선택해 주세요." value="${location}">
+                                        <select name="location" id="location" class="full-width" placeholder="지역을 선택해 주세요." value="">
                                           <option selected>지역을 선택해 주세요.</option>
                                           <option value="1">서울시</option>
                                           <option value="2">인천시</option>
