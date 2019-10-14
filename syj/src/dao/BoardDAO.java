@@ -230,7 +230,7 @@ public class BoardDAO {
 		return x;
 	}
 
-//글삭제 고치는중
+//글삭제 고치는중1
 	/*
 	public int deleteArticle(int no, String user) {
 		String dbuser = null;
