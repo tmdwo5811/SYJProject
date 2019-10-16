@@ -10,9 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>답변게시판</title>
 <!-- ===== 검색폼-->
-<script type="text/javascript">
-
-</script>
+<script type="text/javascript"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- ===== -->

@@ -10,16 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>답변게시판</title>
 <!-- ===== 검색폼-->
-<script type="text/javascript">
-
-</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 <!-- ===== -->
 <!-- 부트스트랩 -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 <html>
 <head>
@@ -32,7 +30,8 @@
 	</center>
 	<br>
 	<div class="container">
-		<form method="post" name="answerWriteForm" action="answerWritePro.jsp">
+		<form method="post" name="answerWriteForm" action="answerWritePro.jsp"
+		onsubmit="return writeSave()">
 			<!-- 입력하지 않고 매개변수로 전달해서 테이블에 저장 *(hidden) -->
 			<input type="hidden" name="no" value="${answer.no}"> <input
 				type="hidden" name="post" value="${answer.post}"> <input
@@ -44,8 +43,8 @@
 					rows="20"></textarea>
 			</div>
 			<button type="submit" class="btn btn-primary">작성</button>
-			<button class="btn btn-primary">목록으로 돌아가기<a href="answerList.jsp"></a></button>
-		</form>										<!-- /syj/answerList.do -->
+			<button class="btn btn-primary">목록으로 돌아가기<a href="/syj/answerList.do"></a></button>
+		</form>										<!-- answerList.jsp -->
 	</div>
 
 	<%-- 
