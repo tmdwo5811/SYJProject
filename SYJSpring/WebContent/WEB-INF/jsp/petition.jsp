@@ -9,19 +9,20 @@
 </head>
 <body>
 	<h1><a href="../">대나무숲</a></h1>
-	<h2>${title}</h2>
-	<a href="write">청원하기</a>
+	<h2>눌눔른</h2>
+	<h2><c:if test="${param.l ne null}">&l=${param.l}</c:if></h2>
+	<a href="petition/write">청원하기</a>
 	<ul>
-		<c:if test="${page.start > 1}"><li><a href="${page.start-1}">&lt;</a></li></c:if>
+		<c:if test="${page.start > 1}"><li><a href="?p=${page.start-1}">&lt;</a></li></c:if>
 		<c:forEach var="i" begin="${page.start}" end="${page.end}">
 			<li>
 				<c:choose>
-					<c:when test="${i ne page.current}"><a href="${i}">${i}</a></c:when>
+					<c:when test="${i ne page.current}"><a href="?p=${i}">${i}</a></c:when>
 					<c:otherwise>${i}</c:otherwise>
 				</c:choose>
 			</li>
 		</c:forEach>
-		<c:if test="${page.next}"><li><a href="${page.end+1}">&gt;</a></li></c:if>
+		<c:if test="${page.next}"><li><a href="?p=${page.end+1}">&gt;</a></li></c:if>
 	</ul>
 	<dl>
 		<c:forEach var="post" items="${postList}">
@@ -43,16 +44,16 @@
 		</c:forEach>
 	</dl>
 	<ul>
-		<c:if test="${page.start > 1}"><li><a href="${page.start-1}">&lt;</a></li></c:if>
+		<c:if test="${page.start > 1}"><li><a href="?p=${page.start-1}">&lt;</a></li></c:if>
 		<c:forEach var="i" begin="${page.start}" end="${page.end}">
 			<li>
 				<c:choose>
-					<c:when test="${i ne page.current}"><a href="${i}">${i}</a></c:when>
+					<c:when test="${i ne page.current}"><a href="?p=${i}">${i}</a></c:when>
 					<c:otherwise>${i}</c:otherwise>
 				</c:choose>
 			</li>
 		</c:forEach>
-		<c:if test="${page.next}"><li><a href="${page.end+1}">&gt;</a></li></c:if>
+		<c:if test="${page.next}"><li><a href="?p=${page.end+1}">&gt;</a></li></c:if>
 	</ul>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
 			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>

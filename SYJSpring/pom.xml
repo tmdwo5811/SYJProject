@@ -73,7 +73,6 @@
 	</dependency>
 	
 	
-	
 	<!-- MySQL -->
 	<dependency>
 	  <groupId>mysql</groupId>
@@ -94,7 +93,6 @@
 	</dependency>
 	
 	
-	
 	<!-- Commons IO -->
 	<dependency>
 	  <groupId>commons-io</groupId>
@@ -106,7 +104,6 @@
 	  <artifactId>commons-fileupload</artifactId>
 	  <version>1.3.1</version>
 	</dependency>
-	
 	
 	
 	<!-- JSTL -->

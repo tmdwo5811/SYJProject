@@ -1,13 +1,17 @@
 package controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import service.BoardService;
+import vo.Login;
 import vo.Page;
+import vo.Post;
 
 @Controller @RequestMapping("petition")
 public class BoardController {
@@ -18,17 +22,31 @@ public class BoardController {
 	@RequestMapping({ "write", "loc" })
 	public void noneAction() {}
 	
-	private ModelAndView getPetitionModelAndView(Page page) { return new ModelAndView("petition").addObject("page", page); }
+	@RequestMapping("doWrite")
+	public String doWrite(HttpSession session, Post post) {
+		
+		post.setUser(((Login)session.getAttribute("loginInfo")).getUser());
+		boardService.writePost(post);
+		
+		return "redirect:../petition";
+		
+	} //doWrite();
 	
-	@RequestMapping({ "", "/{p}" })
-	public ModelAndView petition(@PathVariable(required = false) Integer p) {
-		if(p == null) p = 1;
+	@RequestMapping
+	public ModelAndView petition(@RequestParam(defaultValue = "1") Integer p, @RequestParam(required = false) Integer l,
+			@RequestParam(required = false) Boolean e, @RequestParam(required = false) String q , @RequestParam(defaultValue = "0") Integer o) {
+		Page page = new Page(p, 5, 7);
 		
-		Page page = new Page(p, 5, 5);
+		String order = null;
+		switch(o) {
+		case 0: order = BoardService.ORDER_RECOMMEND; break;
+		case 1: order = BoardService.ORDER_COMMENT; break;
+		case 2: order = BoardService.ORDER_REGDATE;
+		}
 		
-		return getPetitionModelAndView(page)
-				.addObject("title", "청원 전체 목록 [최신순]")
-				.addObject("postList", boardService.getPostList(page));
+		return new ModelAndView()
+				.addObject("postList", boardService.getPostList(page, l, e, q, order))
+				.addObject("page", page);
 		
 	} //petition();
 	
