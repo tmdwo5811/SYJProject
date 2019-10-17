@@ -108,6 +108,7 @@ public class BoardDAO {
 	// -게시판의 글쓰기 (일단 만들어두긴하는데 써야할듯)
 	public void insertArticle(Post article) {
 		
+		
 		int view = article.getView();
 		int no = article.getNo();
 		int number = 0;// 데이터를 저장하기위한 게시물번호
@@ -230,7 +231,7 @@ public class BoardDAO {
 		return x;
 	}
 
-//글삭제 고치는중1
+//글삭제 고치는중
 	/*
 	public int deleteArticle(int no, String user) {
 		String dbuser = null;
@@ -273,7 +274,7 @@ public class BoardDAO {
 	public boolean deleteArticle(int no, int user) {
 		int dbuser = 0;
 		int dbno=0;
-		boolean x = false;// 게시물의 삭제성공유무
+		boolean x=false;// 게시물의 삭제성공유무
 		try {			
 			if (rs.next()) {
 				dbno=rs.getInt("no");//Integer.parseInt(request.getParameter("no")
