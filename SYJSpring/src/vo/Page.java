@@ -29,7 +29,7 @@ public class Page {
 		
 		if((end = start + pageCount - 1) > totalPageCount) {
 			end = totalPageCount;
-			start = end - pageCount + 1;
+			start = Math.max(1, end - pageCount + 1);
 		}
 		
 		next = end < totalPageCount;

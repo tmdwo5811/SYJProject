@@ -138,7 +138,7 @@ public class BoardDAO {
 			int insert = pstmt.executeUpdate();
 			System.out.println("게시판의 글쓰기 성공유무(insert)=>" + insert);// 1 or 0실패
 		} catch (Exception e) {
-			System.out.println("insertArticle()메서드 에러유발" + e);
+			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
