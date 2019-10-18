@@ -125,7 +125,7 @@ public class BoardDAO {
 			} else {// 현재 테이블에 데이터가 한개라도 없는 경우
 				number = 1;
 			}
-			sql = "insert into board(no,location_no,subject,user_no,content,view,regdate,status";
+			sql = "insert into board(no,location,subject,user,content,view,regdate,status";
 			sql += ") values(?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, article.getNo());
@@ -301,80 +301,4 @@ public class BoardDAO {
 		return x;
 	}
 
-	// 댓글 작성
-	public void addComment(Comment comment) {
-		// 1.DB연결
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-		// db작업
-		try {
-			con = pool.getConnection();
-			System.out.println("comment.getUser()=" + comment.getUser());
-			/* System.out.println("comment.getReg_date()="+comment.getReg_date()); */
-			System.out.println("comment.getcontent()=" + comment.getContent());
-			System.out.println("comment.getNo()=" + comment.getNo());
-			// 데이터 추가하는 코딩
-			sql = "insert into reply_board1 values";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, comment.getUser().getNo());
-			// pstmt.setTimestamp (2,comment.getReg_date());
-			pstmt.setString(3, comment.getContent());
-			pstmt.setInt(4, comment.getNo());
-		} catch (Exception e) {
-			System.out.println("addComment()메서드 에러유발" + e);
-		} finally {
-			pool.freeConnection(con, pstmt, rs);
-		}
-
-	}
-
-	// 댓글
-	public List<Comment> CommentDetail(int num) {
-		// DB 연결
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		System.out.println("sql:" + sql);
-		ResultSet rs = null;
-		List<Comment> commentList = null;
-
-		try {
-			con = pool.getConnection();
-			String sql = "SELECT no, post_no `post.no`, user_no `user.no`, content, regdate FROM comments WHERE post_no = ?";
-			pstmt = con.prepareStatement(sql);
-			System.out.println("sql:");
-			rs = pstmt.executeQuery();
-
-			commentList = new ArrayList<>();
-			while (rs.next())
-				commentList.add((Comment) new Comment().setByResultSet(rs));
-		} catch (Exception e) {
-			System.out.println("CommentDetail()메서드 에러유발" + e);
-		} finally {
-			pool.freeConnection(con, pstmt, rs);
-		}
-		return commentList;
-	}
-
-	// 댓글 삭제
-	public int deleteComment(int no) {
-		int result = 0;
-		// 1. DB 연결
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		int x = -1;// 데이터 삭제 유무
-		String sql = "";// sql 기억
-		// 2. DB 작업
-		try {
-			con = pool.getConnection();
-			con.setAutoCommit(false);
-			sql = "DELETE FROM comments WHERE no = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, no);
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return result;
-	}
 }
