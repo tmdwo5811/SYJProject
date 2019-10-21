@@ -125,25 +125,25 @@ public class BoardDAO {
 			} else {// 현재 테이블에 데이터가 한개라도 없는 경우
 				number = 1;
 			}
-			sql = "insert into board(no,location,subject,user,content,view,regdate,status";
-			sql += ") values(?,?,?,?,?,?,?,?)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, article.getNo());
-			pstmt.setInt(2, article.getLocation().getNo());
-			pstmt.setString(3, article.getSubject());
-			pstmt.setInt(4, article.getUser().getNo());
-			pstmt.setString(5, article.getContent());
-			pstmt.setInt(6, article.getView());
-			pstmt.setTimestamp(7, article.getRegdate());
-			pstmt.setByte(8, article.getStatus());
-			int insert = pstmt.executeUpdate();
-			System.out.println("게시판의 글쓰기 성공유무(insert)=>" + insert);// 1 or 0실패
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			pool.freeConnection(con, pstmt, rs);
-		}
-	}
+			 sql = "insert into board(no,location,subject,user,content,view,regdate,status";
+	         sql += ") values(?,?,?,?,?,?,?,?)";
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setInt(1, article.getNo());
+	         pstmt.setInt(2, article.getLocation().getNo());
+	         pstmt.setString(3, article.getSubject());
+	         pstmt.setInt(4, article.getUser().getNo());
+	         pstmt.setString(5, article.getContent());
+	         pstmt.setInt(6, article.getView());
+	         pstmt.setTimestamp(7, article.getRegdate());
+	         pstmt.setByte(8, article.getStatus());
+	         int insert = pstmt.executeUpdate();
+	         System.out.println("게시판의 글쓰기 성공유무(insert)=>" + insert);// 1 or 0실패
+	      } catch (Exception e) {
+	         System.out.println("insertArticle()메서드 에러유발" + e);
+	      } finally {
+	         pool.freeConnection(con, pstmt, rs);
+	      }
+	   }
 
 	// 글상세보기
 	public Post getArticle(int num) {
