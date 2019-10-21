@@ -20,6 +20,7 @@ public class WriteProAction implements CommandAction {
 		request.setCharacterEncoding("utf-8");
 		Post article = new Post();
 		Location lo = new Location();
+		User user= new User();
 		lo.setNo(Integer.parseInt(request.getParameter("location")));
 		lo.getNo();
 //		article.setNo(Integer.parseInt(request.getParameter("no")));
@@ -32,6 +33,11 @@ public class WriteProAction implements CommandAction {
 		article.setRegdate(new Timestamp(System.currentTimeMillis()));// 작성날짜
 		article.setUser(User.LOGIN_INFO);
 
+		
+		/*
+		 * user.setNo(Integer.parseInt(request.getParameter("no"))); user.getNo();
+		 * lo.setName(request.getParameter("name")); lo.getName();
+		 */
 		//article.setContent(request.getParameter("content"));
 		BoardDAO dbPro = new BoardDAO();
 		dbPro.insertArticle(article);
