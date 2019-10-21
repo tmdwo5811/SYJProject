@@ -288,7 +288,7 @@ public class BoardDAO {
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-
+		
 	}
 
 	// 댓글
@@ -317,7 +317,28 @@ public class BoardDAO {
 		}
 		return commentList;
 	}
+	//댓글 수정
+	public Comment CommentupdateGetArticle(int no) {
+		Comment article = null;
 
+		try {
+			con = pool.getConnection();
+
+			sql = "select Comment * from board where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				article = (Comment) new Comment().setByResultSet(rs);
+			}
+		} catch (Exception e) {
+			System.out.println("CommentupdateGetArticle() 메서드 에러유발" + e);
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return article;
+	}
+	
 	// 댓글 삭제
 	public int deleteComment(int no) {
 		int result = 0;
@@ -339,4 +360,5 @@ public class BoardDAO {
 		}
 		return result;
 	}
+
 }

@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 
 public class Comment extends Vo {
 	
-	private int no;//게시물 번호
-	private Post post;//
+	private int no;//댓글 번호
+	private Post post;//게시글 번호
 	private User user;//작성자
 	private String content;//내용
 	private Timestamp regdate;//작성일자
