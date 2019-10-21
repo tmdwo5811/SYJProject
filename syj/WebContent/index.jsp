@@ -25,13 +25,15 @@
     ================================================== -->
     <script src="js/modernizr.js"></script>
     <script src="js/main.js"></script>
-
     <!-- favicons
     ================================================== -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
+    <!-- view
+    ================================================== -->
+    <link rel="stylesheet" href="css/vuestyle.css">
 </head>
 
 <body>
@@ -147,18 +149,28 @@
 
         <div class="s-content">
 
-            <div class="masonry-wrap">
+          <div id="app000" class="container000">
+            <card data-image="./seoul.jpg">
+              <div class="h1text" slot="header">Canyons</div>
+              <div class="subtext111" slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+            </card>
+            <card data-image="./seoul.jpg">
+              <div class="h1text" slot="header">Beaches</div>
+              <div class="subtext111" slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+            </card>
+            <card data-image="./seoul.jpg">
+              <div class="h1text" slot="header">Trees</div>
+              <div class="subtext111" slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+            </card>
+            <card data-image="./seoul.jpg">
+              <div class="h1text" slot="header">Lakes</div>
+              <div class="subtext111" slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+            </card>
+          </div>
+          <!-- partial -->
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js'></script>
+            <script src="js/vuescript.js"></script>
 
-                <div class="masonry">
-
-                    <div class="grid-sizer"><!-- 메인 페이지 -->
-
-
-                    </div>
-
-                </div> <!-- end masonry -->
-
-            </div> <!-- end masonry-wrap -->
 
         </div> <!-- end s-content -->
 
