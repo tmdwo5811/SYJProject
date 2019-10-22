@@ -125,7 +125,7 @@ public class BoardDAO {
 			} else {// 현재 테이블에 데이터가 한개라도 없는 경우
 				number = 1;
 			}
-			 sql = "insert into board(no,location,subject,user,content,view,regdate,status";
+			 sql = "insert into board(no,location_no,subject,user_no,content,view,regdate,status";
 	         sql += ") values(?,?,?,?,?,?,?,?)";
 	         pstmt = con.prepareStatement(sql);
 	         pstmt.setInt(1, article.getNo());

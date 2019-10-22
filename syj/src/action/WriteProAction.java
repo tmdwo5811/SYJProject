@@ -34,10 +34,12 @@ public class WriteProAction implements CommandAction {
 		article.setUser(User.LOGIN_INFO);
 
 		
+		
 		/*
 		 * user.setNo(Integer.parseInt(request.getParameter("no"))); user.getNo();
 		 * lo.setName(request.getParameter("name")); lo.getName();
 		 */
+		 
 		//article.setContent(request.getParameter("content"));
 		BoardDAO dbPro = new BoardDAO();
 		dbPro.insertArticle(article);
