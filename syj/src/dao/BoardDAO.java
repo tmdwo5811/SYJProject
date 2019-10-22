@@ -1,3 +1,4 @@
+
 package dao;
 
 import java.sql.Connection;
@@ -107,7 +108,8 @@ public class BoardDAO {
 
 	// -게시판의 글쓰기 (일단 만들어두긴하는데 써야할듯)
 	public void insertArticle(Post article) {
-
+		
+		
 		int view = article.getView();
 		int no = article.getNo();
 		int number = 0;// 데이터를 저장하기위한 게시물번호
@@ -115,7 +117,7 @@ public class BoardDAO {
 		System.out.println("view=>" + view + "no=>" + no);
 		try {
 			con = pool.getConnection();
-			sql = "select max(num) from board"; // 최대값+1=실제 저장할 게시물번호
+			sql = "select max(no) from board"; // 최대값+1=실제 저장할 게시물번호
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {// 보여주는 결과가 있다면 ->rs.last()->rs.getRow();(X)
@@ -137,7 +139,7 @@ public class BoardDAO {
 			int insert = pstmt.executeUpdate();
 			System.out.println("게시판의 글쓰기 성공유무(insert)=>" + insert);// 1 or 0실패
 		} catch (Exception e) {
-			System.out.println("insertArticle()메서드 에러유발" + e);
+			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
@@ -230,29 +232,65 @@ public class BoardDAO {
 		return x;
 	}
 
-//글삭제=>암호비교
-	public int deleteArticle(int num, String passwd) {
-		String dbpasswd = null;
+//글삭제 고치는중
+	/*
+	public int deleteArticle(int no, String user) {
+		String dbuser = null;
+		int dbno=0;
 		int x = -1;// 게시물의 삭제성공유무
 
 		try {
 			con = pool.getConnection();
-			sql = "select passwd from board where num=?";
+			sql = "select no user from board where no=? ";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, user_no);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				dbpasswd = rs.getString("passwd");
-				System.out.println("dbpasswd" + dbpasswd);
-				if (dbpasswd.contentEquals(passwd)) {
-					sql = "delete from board where num=?";
+				dbno=rs.getInt("no");//Integer.parseInt(request.getParameter("no")
+				dbuser = rs.getString("user");
+				System.out.println("dbuser" + dbuser+",dbno"+dbno);
+				if (dbuser.contentEquals("user")) {
+					sql = "delete from board where no=? and user=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, num);
+					pstmt.setInt(1, no);
+					pstmt.setString(2, user);
 					int delete = pstmt.executeUpdate();
 					System.out.println("게시판의 글삭제 성공유무(delete)=>" + delete);
 					x = 1;
 				} else {
 					x = 0;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("deleteArticle()메서드 에러유발" + e);
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return x;
+	}
+	*/
+
+	
+	public boolean deleteArticle(int no, int user) {
+		int dbuser = 0;
+		int dbno=0;
+		boolean x=false;// 게시물의 삭제성공유무
+		try {			
+			if (rs.next()) {
+				dbno=rs.getInt("no");//Integer.parseInt(request.getParameter("no")
+				dbuser = rs.getInt("user");
+				System.out.println("dbuser" + dbuser+",dbno"+dbno);
+				if (dbuser==user && dbno==no) {
+					sql = "delete from board where no=? and user=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, no);
+					pstmt.setInt(2, user);
+					int delete = pstmt.executeUpdate();
+					x = true;
+					System.out.println("게시판의 글삭제 성공유무(delete)=>" + delete);
+				} else {
+					x = false;
 				}
 			}
 		} catch (Exception e) {
@@ -340,3 +378,5 @@ public class BoardDAO {
 		return result;
 	}
 }
+
+

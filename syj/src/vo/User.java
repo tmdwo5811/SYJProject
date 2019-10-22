@@ -4,6 +4,16 @@ import java.sql.Date;
 
 public class User extends Vo {
 	
+	public static final User LOGIN_INFO;
+	
+	static {
+		LOGIN_INFO = new User();
+		LOGIN_INFO.setNo(1);
+		LOGIN_INFO.setGender('M');
+		LOGIN_INFO.setBoth(Date.valueOf("1999-12-06"));
+		LOGIN_INFO.setLocation(new Location(4));
+	} //static;
+	
 	private int no;
 	private char gender;
 	private Date both;

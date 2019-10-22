@@ -40,10 +40,10 @@ public class UsersDAO {
 		try {
 
 			con = pool.getConnection();
-			sql = "INSERT INTO users (gender,both,location_no) VALUES (?,?,?)";
+			sql = "INSERT INTO users (gender,`both`,location_no) VALUES (?,?,?)";
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, user.getGender());
+			pstmt.setString(1, Character.toString(user.getGender()));
 			pstmt.setDate(2, user.getBoth());
 			pstmt.setInt(3, user.getLocation().getNo());
 			if (pstmt.executeUpdate() == 0) {

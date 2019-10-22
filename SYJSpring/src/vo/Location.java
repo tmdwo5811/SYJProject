@@ -10,7 +10,7 @@ public class Location {
 	private static String[] array;
 	
 	public int getNo() { return no; }
-	public String getName() { return array[no]; }
+	public String getName() { return array[no-1]; }
 	public void setNo(int no) { this.no = no; }
 	
 	public static String[] getArray() { return Location.array; }

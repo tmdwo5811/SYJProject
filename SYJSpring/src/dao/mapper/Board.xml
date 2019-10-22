@@ -6,23 +6,69 @@
 	INSERT INTO board
 	  (location_no, subject, user_no, content)
 	VALUES
-	  (#{user.location.no}, #{subject}, #{user.no}, #{content});
+	  (#{user.location.no}, #{subject}, #{user.no}, #{content})
   </insert>
   
   <select id="selectTotal" resultType="int">
 	SELECT
-	  COUNT(no)
+	  COUNT(b.no)
 	FROM
-	  board
+	  board b
+	LEFT JOIN
+	  answers a
+	ON
+	  b.no = post_no
+	WHERE
+	  a.no IS NULL
+	<if test="locationNo">
+	  AND
+		location_no = #{locationNo}
+	</if>
+	<if test="expired">
+	  AND
+		TIMESTAMPDIFF(day, b.regdate, NOW()) ${expired?'&gt;=':'&lt;'} 7
+	</if>
+	<if test="search">
+	  AND
+		(subject LIKE CONCAT('%', #{search}, '%')
+	  OR
+		b.content LIKE CONCAT('%', #{search}, '%'))
+	</if>
   </select>
   
-  <select id="selectPostList" parameterType="Page" resultType="Post">
+  <select id="selectPostList" resultType="Post">
 	SELECT
-	  no, location_no, subject, user_no, view, regdate, status
+	  b.no<if test="!locationNo">, location_no `location.no`</if>,
+	  subject, b.content, view, b.regdate, COUNT(c.no) `commentCount`
 	FROM
-	  board
-	ORDER BY 1 DESC
-	LIMIT #{startContent}, #{contentCount}
+	  board b
+	LEFT JOIN
+	  answers a
+	ON
+	  b.no = post_no
+	LEFT JOIN
+	  comments c
+	ON
+	  b.no = c.post_no
+	WHERE
+	  a.no IS NULL
+	<if test="locationNo">
+	  AND
+		location_no = #{locationNo}
+	</if>
+	<if test="expired">
+	  AND
+		TIMESTAMPDIFF(day, b.regdate, NOW()) ${expired?'&gt;=':'&lt;'} 7
+	</if>
+	<if test="search">
+	  AND
+		(subject LIKE CONCAT('%', #{search}, '%')
+	  OR
+		b.content LIKE CONCAT('%', #{search}, '%'))
+	</if>
+	GROUP BY b.no
+	ORDER BY ${order}
+	LIMIT #{page.startContent}, #{page.contentCount}
   </select>
   
 </mapper>
