@@ -18,7 +18,7 @@ public class Answer {
 	public Timestamp getRegdate() { return regdate; }
 	public void setNo(int no) { this.no = no; }
 	public void setPost(Post post) { this.post = post; }
-	public void setUser(User user) { this.user = user; }
+	public void setId(_Login _loguser) { this.id = _loguser; }
 	public void setContent(String content) { this.content = content; }
 	public void setRegdate(Timestamp regdate) { this.regdate = regdate; }
 	
