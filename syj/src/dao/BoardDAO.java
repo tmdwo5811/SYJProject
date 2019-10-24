@@ -123,7 +123,7 @@ public class BoardDAO {
 			} else {// 현재 테이블에 데이터가 한개라도 없는 경우
 				number = 1;
 			}
-			sql = "insert into board(no,location,subject,user,content,view,regdate,status";
+			sql = "insert into board(no,location_no,subject,user,content,view,regdate,status";
 			sql += ") values(?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, article.getNo());
@@ -277,7 +277,14 @@ public class BoardDAO {
 			System.out.println("comment.getcontent()=" + comment.getContent());
 			System.out.println("comment.getNo()=" + comment.getNo());
 			// 데이터 추가하는 코딩
-			sql = "insert into reply_board1 values";
+			
+			//=======================================
+			//완벽한 쿼리 문이 아니기때문에 values뒤에 추가적으로 몇가지 코드를 더 입력을 해야하는데 
+			//insertAticles라는 메소드에 비슷한 sql구문이 있습니다. 그것을 참고하여 입력하세요.
+			sql = "insert into comment(no,post_no,user_no,content,timestemp";
+			sql +=") vlaues(?,?,?,?,?)";
+			//=======================================
+			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, comment.getUser().getNo());
 			// pstmt.setTimestamp (2,comment.getReg_date());
