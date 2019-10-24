@@ -3715,8 +3715,8 @@ h1+p, p+p {
 .card {
   position: relative;
   flex: 0 0 240px;
-  width: 240px;
-  height: 320px;
+  width: 200px;
+  height: 200px;
   background-color: #333;
   overflow: hidden;
   border-radius: 10px;
@@ -3744,8 +3744,9 @@ h1+p, p+p {
 }
 
 .card-info {
-  padding: 20px;
+/*   padding: 20px; */
   position: absolute;
+  padding:0px;
   bottom: 0;
   color: #fff;
   transform: translateY(40%);
