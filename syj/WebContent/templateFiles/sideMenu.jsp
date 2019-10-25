@@ -19,7 +19,7 @@
 		<div class="header__top">
 			<div class="header__logo">
 				<a class="site-logo" href="index.jsp">
-					<img src="images/logo.svg" alt="Homepage">
+					<img src="images/logo1233.png" alt="Homepage">
 				</a>
 			</div>
 			<div class="header__search">
@@ -45,23 +45,23 @@
 		<nav class="header__nav-wrap">
 
 			<ul class="header__nav">
-				<li class="current has-children"><a href="index.html" title="">대나무숲
+				<li class="current has-children"><a href="index.jsp" title="">대나무숲
 						입장 하기</a>
 					<ul class="sub-menu">
-						<li><a href="login.html">로그인</a></li>
-						<li><a href="join.html">회원 가입</a></li>
+						<li><a href="login.jsp">로그인</a></li>
+						<li><a href="join_test.jsp">회원 가입</a></li>
 					</ul></li>
 				<li class="has-children"><a href="#0" title="">대나무숲 청원</a>
 					<ul class="sub-menu">
-						<li><a href="board.html">실시간 청원</a></li>
-						<li><a href="loc_board.html">지역별 청원</a></li>
-						<li><a href="exp_board.html">만료된 청원</a></li>
-						<li><a href="answer_board.html">답변된 청원</a></li>
-						<li><a href="faq.html">대나무숲 청원 FAQ</a></li>
+						<li><a href="board.jsp">실시간 청원</a></li>
+						<li><a href="loc_board.jsp">지역별 청원</a></li>
+						<li><a href="exp_board.jsp">만료된 청원</a></li>
+						<li><a href="answer_board.jsp">답변된 청원</a></li>
+						<li><a href="#">대나무숲 청원 FAQ</a></li>
 					</ul></li>
 				<li class="has-children"><a href="#0" title="">청원 하기</a>
 					<ul class="sub-menu">
-						<li><a href="write.html">지금 청원 하기</a></li>
+						<li><a href="writeForm.jsp">지금 청원 하기</a></li>
 					</ul></li>
 				<li class="has-children"><a href="page-about.html" title="">대나무
 						숲</a>

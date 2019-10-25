@@ -2242,8 +2242,7 @@ input::-moz-focus-inner {
 }
 
 .header__logo img {
-  width: 125px;
-  height: 30px;
+  width: 100%;
   margin: 0;
 }
 
@@ -2961,7 +2960,7 @@ body.search-is-visible {
  * ## content
  * ------------------------------------------------------------------- */
 .s-content {
-  padding-top: 6.4rem;
+  padding-top: 0rem;
 }
 
 .content__page {
@@ -2983,7 +2982,7 @@ body.search-is-visible {
  * ## footer
  * ------------------------------------------------------------------- */
 .s-footer {
-  padding-top: 4rem;
+  padding-top: 1rem;
   padding-bottom: 8rem;
   font-size: 1.6rem;
   line-height: 2.4rem;
@@ -3083,7 +3082,7 @@ body.search-is-visible {
   }
 
   .s-content {
-    padding-top: 14.2rem;
+    padding-top: 0rem;
   }
 
   .content__page {
