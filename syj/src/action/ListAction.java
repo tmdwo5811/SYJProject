@@ -46,8 +46,9 @@ public class ListAction implements CommandAction {
 	    request.setAttribute("articleList", articleList);//${articleList}
 	    
 		//3.공유해서 이동할 수있도록 페이지를 지정
-		
+		 }
 		return "/list.jsp";// / board/list.jsp=>경로를 변경해서 지정할 수있다.
 	}
+
 
 }

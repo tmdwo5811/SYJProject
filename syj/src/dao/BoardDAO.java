@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+import com.mysql.cj.jdbc.Blob;
 
 import util.DBConnectionMgr;
+import vo.Comment;
 import vo.Location;
 import vo.Post;
-import vo.User;
-import vo.Comment;
 
 public class BoardDAO {
 	private DBConnectionMgr pool = null;
@@ -96,7 +96,7 @@ public Hashtable pageList(String pageNum,int count) {
 	    System.out.println("페이지별 number=>"+number);
 	    
 	    //총페이지수,시작,종료페이지 계산
-	    //                      122/10=12.2+1=>12.2+1.0=13.2=13페이지
+	    //                      122/10=12 .2+1=>12.2+1.0=13.2=13페이지
 	       int pageCount=count/pageSize+(count%pageSize==0?0:1);
 	    //블럭당 페이지수 계산->10->10배수,3->3배수
 	       int startPage=0;//1,2,3,,,,10 [다음 블럭 10]->11,12,,,,20
@@ -151,21 +151,21 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 		//글목록보기
 		if(rs.next()) {//레코드가 최소 만족 1개이상 존재한다면
 			articleList=new ArrayList(end);//10=>end갯수만큼 데이터를 담을 공간을 생성하라
+			
 			do {
-				Post article=new Post();//MemberDTO~
-				User article1=new User();
-				Location article2=new Location();
+				Post article=new Post();
+				Location lo=new Location(rs.getInt("locaction"));
+
 				article.setNo(rs.getInt("no"));
-				article.setLocation(rs.getLocation(getNo("location")));
-				//article2.setNo(rs.getInt("location"));
+				article.setLocation(lo);
+				//System.out.println(lo);
 				article.setSubject(rs.getString("subject"));
-				//article.setUser(rs.getInt("user"));
-				article1.setNo(rs.getInt("user"));
 				article.setContent(rs.getString("content"));
 				article.setView(rs.getInt("view"));
 				article.setRegdate(rs.getTimestamp("regdate"));
 				article.setStatus(rs.getByte("status"));
-
+				
+				
 				//추가
 				articleList.add(article);
 			}while(rs.next());
