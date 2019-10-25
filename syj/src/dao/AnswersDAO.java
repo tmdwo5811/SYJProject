@@ -37,18 +37,12 @@ public class AnswersDAO {
 	        	 num=1;
 	         }
 	         
-	         //답글이라면
-			/*
-			 * if(no!=0) {//양수면서 1이상 //같은 그룹번호를 가지고 있으면서 나보다 step값이 큰것을 찾아서, 그 step값을 하나
-			 * 증가시킨다. sql="update board set re_step=re_step+1 where ref=? and re_step > ?";
-			 * pstmt=con.prepareStatement(sql); pstmt.setInt(1, no); pstmt.setInt(2, post);
-			 * int update=pstmt.executeUpdate();
-			 * System.out.println("댓글수정 유무(update)=>"+update);//1이면 성공
-			 * 
-			 * re_step=re_step+1; re_level=re_level+1; }else {//신규글이라면 => no=0
-			 * ref=number;//1 re_step=0; re_level=0; }
-			 */
-	         
+	         sql = "INSERT INTO answers(post_no, user_no, content) VALUES(?, ?, ?)";
+
+	         pstmt.setInt(1, article.getPost().getNo()); //일반게시물의 번호
+	         pstmt.setString(2, article.getId().getId()); //답변게시물의 작성자
+	         pstmt.setString(3, article.getContent()); //답변게시물의 글내용
+	        
 	         //12개 데이터->num,reg_date,readcount(생략) ->default | 작성날짜->regdate, now() <--mysql(? 대신에)
 			
 	         /*

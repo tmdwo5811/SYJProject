@@ -1,4 +1,3 @@
-<%@page import="vo.Location"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -6,89 +5,35 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>메인 페이지</title>
+	<title>대나무숲</title>
 </head>
 <body>
-	<c:forEach var="location" items="<%=Location.getArray()%>">
-		${location} <br>
-	</c:forEach>
-	<div>
-		<form action="doLogin" method="post">
-			<fieldset>
-				<c:choose>
-					<c:when test="${loginInfo eq null}">
-						<legend>로그인</legend>
-						<dl>
-							<dt>아이디</dt>
-							<dd><input name="id"></dd>
-							<dt>비밀번호</dt>
-							<dd><input name="pw" type="password"></dd>
-						</dl>
-						<div><button>로그인</button></div>
-					</c:when>
-					<c:otherwise>
-						<dl>
-							<dt>회원번호</dt>
-							<dd>${loginInfo.no}</dd>
-							<dt>성별</dt>
-							<dd>${loginInfo.gender}</dd>
-							<dt>생년월일</dt>
-							<dd>${loginInfo.both}</dd>
-							<dt>지역</dt>
-							<dd>${loginInfo.location.no}</dd>
-							<dt>credential</dt>
-							<dd>${loginInfo.credential ne null}</dd>
-						</dl>
-					</c:otherwise>
-				</c:choose>
-			</fieldset>
-		</form>
-		<form action="doJoin" method="post">
-			<fieldset>
-				<legend>회원가입</legend>
-				<dl>
-					<dt>아이디</dt>
-					<dd><input name="id" required></dd>
-					<dt>비밀번호</dt>
-					<dd><input name="pw" type="password" required></dd>
-					<dt>비밀번호 확인</dt>
-					<dd><input id="confirm" type="password" required></dd>
-					<dt>주민등록번호</dt>
-					<dd><input name="rrn1" maxlength="6" required> - <input name="rrn2" type="password" size="1" maxlength="1" required><span>●●●●●●</span></dd>
-					<dt>지역</dt>
-					<dd>
-						<select name="loc">
-							<option value="1">서울특별시</option>
-							<option value="2">부산광역시</option>
-							<option value="3">대구광역시</option>
-							<option value="4">인천광역시</option>
-							<option value="5">광주광역시</option>
-							<option value="6">대전광역시</option>
-							<option value="7">울산광역시</option>
-							<option value="8">세종특별자치시</option>
-							<option value="9">경기도</option>
-							<option value="10">강원도</option>
-							<option value="11">충청북도</option>
-							<option value="12">충청남도</option>
-							<option value="13">전라북도</option>
-							<option value="14">전라남도</option>
-							<option value="15">경상북도</option>
-							<option value="16">경상남도</option>
-							<option value="17">제주특별자치도</option>
-						</select>
-					</dd>
-					<dt>주소</dt>
-					<dd><input name="addr"></dd>
-					<dt>전화번호</dt>
-					<dd><input name="phone" required></dd>
-					<dt>E-Mail</dt>
-					<dd><input name="email"></dd>
-				</dl>
-				<div><button>회원가입</button></div>
-			</fieldset>
-		</form>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"
-			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="></script>
+	<h1><a href="#">대나무숲</a></h1>
+	<dl>
+		<dt>대나무숲 입장</dt>
+		<c:choose>
+			<c:when test="${loginInfo eq null}">
+				<dd><a href="login">로그인</a></dd>
+				<dd><a href="join">회원가입</a></dd>
+			</c:when>
+			<c:otherwise>
+				<dd><a href="doLogout">로그아웃</a></dd>
+			</c:otherwise>
+		</c:choose>
+		<dt>대나무숲 청원</dt>
+		<dd><a href="petition">실시간 청원</a></dd>
+		<dd><a href="petition">지역별 청원</a></dd>
+	<!--<dd><a href="petition/loc/4">지역별 청원</a></dd>-->
+		<dd><a href="petition/expired">만료된 청원</a></dd>
+		<dd><a href="answer">답변된 청원</a></dd>
+		<dd><a href="faq">대나무숲 청원 FAQ</a></dd>
+		<dt>청원 하기</dt>
+		<dd><a href="petition/write">청원 하기</a></dd>
+		<dt>대나무 숲</dt>
+		<dd><a href="file/img">사진 자료실</a></dd>
+		<dd><a href="file/video">동영상 자료실</a></dd>
+		<dd><a href="#">지역별 소식 보기</a></dd>
+		<dd><a href="#">청원 진행 과정</a></dd>
+	</dl>
 </body>
 </html>

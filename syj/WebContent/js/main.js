@@ -148,17 +148,17 @@
 
         var containerBricks = $('.masonry');
 
-        containerBricks.masonry({
-            itemSelector: '.masonry__brick',
-            columnWidth: '.grid-sizer',
-            percentPosition: true,
-            resize: true
-        });
+//        containerBricks.masonry({
+//            itemSelector: '.masonry__brick',
+//            columnWidth: '.grid-sizer',
+//            percentPosition: true,
+//            resize: true
+//        });
 
         // layout Masonry after each image loads
-        containerBricks.imagesLoaded().progress( function() {
-            containerBricks.masonry('layout');
-        });
+//        containerBricks.imagesLoaded().progress( function() {
+//            containerBricks.masonry('layout');
+//        });
 
     };
 
@@ -192,25 +192,25 @@
 
    /* slick slider
     * ------------------------------------------------------ */
-    var ssSlickSlider = function() {
-
-        var $gallery = $('.slider__slides').slick({
-            arrows: false,
-            dots: true,
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            adaptiveHeight: true,
-            pauseOnFocus: false,
-            fade: true,
-            cssEase: 'linear'
-        });
-
-        $('.slider__slide').on('click', function() {
-            $gallery.slick('slickGoTo', parseInt($gallery.slick('slickCurrentSlide'))+1);
-        });
-
-    };
+//    var ssSlickSlider = function() {
+//
+//        var $gallery = $('.slider__slides').slick({
+//            arrows: false,
+//            dots: true,
+//            infinite: true,
+//            slidesToShow: 1,
+//            slidesToScroll: 1,
+//            adaptiveHeight: true,
+//            pauseOnFocus: false,
+//            fade: true,
+//            cssEase: 'linear'
+//        });
+//
+//        $('.slider__slide').on('click', function() {
+//            $gallery.slick('slickGoTo', parseInt($gallery.slick('slickCurrentSlide'))+1);
+//        });
+//
+//    };
 
 
    /* smooth scrolling
@@ -269,8 +269,6 @@
             }
         });
     };
-
-
    /* Initialize
     * ------------------------------------------------------ */
     (function clInit() {
@@ -281,31 +279,20 @@
         ssMenu();
         ssMasonryFolio();
         ssBricksAnimate();
-        ssSlickSlider();
+       // ssSlickSlider();
         ssSmoothScroll();
         ssAlertBoxes();
         ssBackToTop();
 
     })();
 
-    $('#reset').click(function(){
-      $('#cName').val('');
-      $('#cpassword1').val('');
-      $('#cpassword2').val('');
-      $('#caddress').val('none');
-      $('#cBoth1').val(null);
-      $('#cBoth2').val(null);
-      $('#cphone').val(null);
-    })
-})(jQuery);
-/* 승재 추가 */
-function maxLengthCheck(object){
-    if (object.value.length > object.maxLength){
-        object.value = object.value.slice(0, object.maxLength);
-    }
-}
-function fn(str){
-  var res;
-  res = str.replace(/[^0-9]/g,"");
-  return res;
-}
+    // $('#reset').click(function(){
+    //   $('#cName').val('');
+    //   $('#cpassword1').val('');
+    //   $('#cpassword2').val('');
+    //   $('#caddress').val('none');
+    //   $('#cBoth1').val(null);
+    //   $('#cBoth2').val(null);
+    //   $('#cphone').val(null);
+    // })
+  })(jQuery);

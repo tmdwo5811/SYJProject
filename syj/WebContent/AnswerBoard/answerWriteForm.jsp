@@ -63,13 +63,11 @@
 	    <button><a href="answerList.jsp"> 글목록</a></button>
    </td>
    </tr>
-
   <!--  <tr>
     <td  width="70" align="center">이 름</td>
     <td  width="330">
        <input type="text" size="10" maxlength="10" name="writer"></td>
   </tr> -->
-
   <tr>
     <td  width="70" align="center" >제 목</td>
     <td  width="330">
@@ -81,22 +79,11 @@
 		</c:if>
     </td>
   </tr>
- <!--  <tr>
-    <td  width="70" align="center">Email</td>
-    <td  width="330">
-       <input type="text" size="40" maxlength="30" name="email" ></td>
-  </tr> -->
   <tr>
     <td  width="70" align="center" >내 용</td>
     <td  width="330" >
      <textarea name="content" rows="13" cols="40"></textarea> </td>
   </tr>
-  <!-- <tr>
-    <td  width="70" align="center" >비밀번호</td>
-    <td  width="330" >
-     <input type="password" size="8" maxlength="12" name="passwd">
-	 </td>
-  </tr> -->
 <tr>
  <td colspan=2 align="center">
   <input type="submit" value="글쓰기" >
