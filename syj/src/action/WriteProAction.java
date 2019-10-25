@@ -31,13 +31,17 @@ public class WriteProAction implements CommandAction {
 		//article.setStatus((byte) Integer.parseInt(request.getParameter("status")));
 		//byte setStatus = (byte) Integer.parseInt(request.getParameter("status"));
 		article.setRegdate(new Timestamp(System.currentTimeMillis()));// 작성날짜
+		
 		article.setUser(User.LOGIN_INFO);
 
+
+		
 		
 		/*
 		 * user.setNo(Integer.parseInt(request.getParameter("no"))); user.getNo();
 		 * lo.setName(request.getParameter("name")); lo.getName();
 		 */
+		 
 		//article.setContent(request.getParameter("content"));
 		BoardDAO dbPro = new BoardDAO();
 		dbPro.insertArticle(article);
