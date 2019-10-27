@@ -42,6 +42,33 @@ public class AnswersDAO {
 	         pstmt.setInt(1, article.getPost().getNo()); //일반게시물의 번호
 	         pstmt.setString(2, article.getId().getId()); //답변게시물의 작성자
 	         pstmt.setString(3, article.getContent()); //답변게시물의 글내용
+	        
+	         //12개 데이터->num,reg_date,readcount(생략) ->default | 작성날짜->regdate, now() <--mysql(? 대신에)
+			
+	         /*
+			 * sql="insert into board(no,post,content,regdate)values(?,?,?,?)";
+			 * pstmt=con.prepareStatement(sql); pstmt.setInt(1, article.getNo());//웹에선
+			 * Setter Method를 메모리에 저장한다. pstmt.setPost()(2, article.getPost());
+			 * pstmt.setString(3, article.getContent()); pstmt.setTimestamp(4,
+			 * article.getRegdate());//?대신에 now()(웹상에서 계산하여 저장)
+			 */
+	         
+	         sql = "INSERT INTO answers(post_no, user_no, content) VALUES(?, ?, ?)";
+
+	         pstmt.setInt(1, article.getPost().getNo()); //일반게시물의 번호
+	         pstmt.setString(2, article.getId().getId()); //답변게시물의 작성자
+	         pstmt.setString(3, article.getContent()); //답변게시물의 글내용
+	         
+//	         //--------ref,re_step,re_level에 대한 계산이 적용된 상태에서 저장----------
+//	         pstmt.setInt(6, ref);//pstmt.setInt(6, article.getRef()); (X)
+//	         pstmt.setInt(7, re_step);
+//	         pstmt.setInt(8, re_level);
+//	         //--------------------------------------
+	         
+			/*
+			 * pstmt.setString(9, article.getContent()); pstmt.setString(10,
+			 * article.getIp());//request.getRemoteAddr() | jspf(writePro.jsp)
+			 */
 	         
 	         int insert=pstmt.executeUpdate();
 	         System.out.println("게시판의 글쓰기 성공유무(insert)=>"+insert);//1이면 성공 0 실패
