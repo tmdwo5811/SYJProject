@@ -56,7 +56,7 @@
 
             <div class="header__top">
                 <div class="header__logo">
-                    <a class="site-logo" href="index.html">
+                    <a class="site-logo" href="index.do">
                         <img src="images/logo.svg" alt="Homepage">
                     </a>
                 </div>
@@ -85,7 +85,7 @@
 
               <ul class="header__nav">
                   <li class="current has-children">
-                      <a href="index.html" title="">대나무숲 입장 하기</a>
+                      <a href="index.do" title="">대나무숲 입장 하기</a>
                       <ul class="sub-menu">
                       <li><a href="login.html">로그인</a></li>
                       <li><a href="join.html">회원 가입</a></li>
@@ -104,7 +104,7 @@
                   <li class="has-children">
                       <a href="#0" title="">청원 하기</a>
                       <ul class="sub-menu">
-                      <li><a href="write.html">지금 청원 하기</a></li>
+                      <li><a href="writeForm.do">지금 청원 하기</a></li>
                       </ul>
                   </li>
                   <li class="has-children">
@@ -167,8 +167,8 @@
 								<div class="form-field">
                                         <input name="subject" id="subject" class="full-width" placeholder="청원제목을 입력해주세요." value="" type="text">
                                     </div>
-                                    <div class="form-field">
-                                        <select name="location" id="location" class="full-width" placeholder="지역을 선택해 주세요." value="">
+                                      <div class="form-field">
+                                        <select name="location" id="location" class="full-width" placeholder="지역을 선택해 주세요." value="${location}">
                                           <option selected>지역을 선택해 주세요.</option>
                                           <option value="1">서울시</option>
                                           <option value="2">인천시</option>
