@@ -57,7 +57,7 @@
 						<li><a href="loc_board.jsp">지역별 청원</a></li>
 						<li><a href="exp_board.jsp">만료된 청원</a></li>
 						<li><a href="answer_board.jsp">답변된 청원</a></li>
-						<li><a href="#">대나무숲 청원 FAQ</a></li>
+						<li><a href="faq.jsp">대나무숲 청원 FAQ</a></li>
 					</ul></li>
 				<li class="has-children"><a href="#0" title="">청원 하기</a>
 					<ul class="sub-menu">
@@ -93,3 +93,4 @@
 		<!-- end header__nav-wrap -->
 	</header>
 	<!-- end s-header -->
+	
