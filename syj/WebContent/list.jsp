@@ -1,25 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<!-- head태그 시작 -->
-	<%@ include file="templateFiles/headParts.jsp"%>
-	<!-- head태그 끝 -->
+<!-- head태그 시작 -->
+<%@ include file="templateFiles/headParts.jsp"%>
+<!-- head태그 끝 -->
 
 <body class="ss-bg-white">
-	<!-- 사이드 메뉴 시작 -->
-	<%@ include file="templateFiles/sideMenu.jsp"%>
-	<!-- 사이드 메뉴 끝  -->
-        <!-- site content
-        ================================================== -->
-		<c:if test="${pgList.count==0}">
-		<table border="1" width="700" cellpadding="0" cellspacing="0" align="center">
-		   <tr>
-		        <td align="center">게시판에 저장된 글이 없습니다.</td>
-		   </tr>
-		</table>
-		</c:if>
-		<c:if test="${pgList.count > 0}">        
+   <!-- 사이드 메뉴 시작 -->
+   <%@ include file="templateFiles/sideMenu.jsp"%>
+   <!-- 사이드 메뉴 끝  -->
+
+      <c:if test="${pgList.count==0}">
+      <table border="1" width="700" cellpadding="0" cellspacing="0" align="center">
+         <tr>
+              <td align="center">게시판에 저장된 글이 없습니다.</td>
+         </tr>
+      </table>
+      </c:if>
+      <c:if test="${pgList.count > 0}">        
         <div class="s-content content">
             <main class="row content__page">
                 <div class="comments-wrap">
@@ -50,18 +49,17 @@
                  </div>
             </main>
             <!--여기  -->
-		</div>
-	</c:if>
+      </div>
+   </c:if>
         </div> <!-- end s-content -->
 
-	<!-- footerParts 시작 -->
-	<%@ include file="templateFiles/footerParts.jsp"%>
-	<!-- footerParts 끝 -->
-    <!-- Java Script
+      <!-- footerParts 시작 -->
+      <%@ include file="templateFiles/footerParts.jsp"%>
+      <!-- footerParts 끝 -->
+      <!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
+      <script src="js/jquery-3.2.1.min.js"></script>
+      <script src="js/plugins.js"></script>
+      <script src="js/main.js"></script>
 </body>
 </html>
