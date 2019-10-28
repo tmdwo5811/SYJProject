@@ -12,14 +12,19 @@ import vo.Post;
 @Service
 public class BoardService {
 	
+	public static final String
+			ORDER_RECOMMEND = "view DESC, regdate",
+			ORDER_COMMENT = "commentCount DESC, regdate DESC",
+			ORDER_REGDATE = "regdate DESC";
+	
 	@Autowired
 	private BoardDAO boardDAO;
 	
 	public boolean writePost(Post post) { return boardDAO.insertPost(post); }
 	
-	public List<Post> getPostList(Page page) {
-		page.initTotal(boardDAO.selectTotal());
-		return boardDAO.selectPostList(page);
-	} //getPostList();
+	public List<Post> getPostList(Page page, Integer locationNo, Boolean expired, String search, String order) {
+		page.initTotal(boardDAO.selectTotal(locationNo, expired, search));
+		return boardDAO.selectPostList(page, locationNo, expired, search, order);
+	}
 	
 } //class BoardService;

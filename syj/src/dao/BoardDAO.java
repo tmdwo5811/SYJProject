@@ -1,16 +1,19 @@
+
 package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
+import com.mysql.cj.jdbc.Blob;
+
 import util.DBConnectionMgr;
+import vo.Comment;
 import vo.Location;
 import vo.Post;
-import vo.User;
-import vo.Comment;
 
 public class BoardDAO {
 	private DBConnectionMgr pool = null;
@@ -69,6 +72,111 @@ public class BoardDAO {
 		}
 		return x;
 	}
+public Hashtable pageList(String pageNum,int count) {
+    	
+    	//1.페이징 처리결과를 저장할 hashtable객체를 선언
+    	Hashtable<String,Integer> pgList=new Hashtable<String,Integer>();
+    	//ListAction에서의 복잡한 페이징처리를 대신 처리
+	     int pageSize=5;//numPerPage->페이지당 보여주는 게시물수(=레코드수) 10
+	     int blockSize=3;//pagePerBlock->블럭당 보여주는 페이지수 10
+	     
+	    //게시판을 맨 처음 실행시키면 무조건 1페이지부터 출력
+	    if(pageNum==null){
+	    	pageNum="1";//default(무조건 1페이지는 선택하지 않아도 보여줘야 하기때문에),가장 최근의 글
+	    }
+	    int currentPage=Integer.parseInt(pageNum);//"1"->1 현재페이지(=nowPage)
+	    //메서드 호출->시작 레코드번호
+	    //                  (1-1)*10+1=1,(2-1)*10+1=11,(3-1)*10+1=21)
+	    int startRow=(currentPage-1)*pageSize+1; //시작 레코드 번호
+	    int endRow=currentPage*pageSize;//1*10=10,2*10=20,3*10=30 ->마지막 레코드번호
+	    int number=0;//beginPerPage->페이지별로 시작하는 맨 처음에 나오는 게시물번호
+	    System.out.println("현재 레코드수(count)=>"+count);
+	    //            122-(1-1)*10=122,122-(2-1)*10=112
+	    number=count-(currentPage-1)*pageSize;
+	    System.out.println("페이지별 number=>"+number);
+	    
+	    //총페이지수,시작,종료페이지 계산
+	    //                      122/10=12 .2+1=>12.2+1.0=13.2=13페이지
+	       int pageCount=count/pageSize+(count%pageSize==0?0:1);
+	    //블럭당 페이지수 계산->10->10배수,3->3배수
+	       int startPage=0;//1,2,3,,,,10 [다음 블럭 10]->11,12,,,,20
+	       if(currentPage%blockSize!=0){//1~9,11~19,21~29
+	    	   startPage=currentPage/blockSize*blockSize+1;
+	       }else{ //10%10=0,(10,20,30)
+	    		               //((10/10)-1)*10+1
+	    	   startPage=((currentPage/blockSize)-1)*blockSize+1;
+	       }
+	       int endPage=startPage+blockSize-1;//1+10-1=10
+	       System.out.println("startPage="+startPage+",endPage="+endPage);
+	       if(endPage > pageCount)
+	    	   endPage=pageCount;//마지막페이지=총페이지수
+	       //페이징처리에 대한 계산결과->Hashtable,HashMap->ListAction전달->메모리에 저장->list.jsp
+	       pgList.put("pageSize", pageSize);//<->pgList.get(키명)("pageSize")
+	       pgList.put("blockSize", blockSize);
+	       pgList.put("currentPage", currentPage);
+	       pgList.put("startRow", startRow);
+	       pgList.put("endRow", endRow);
+	       pgList.put("count", count);
+	       pgList.put("number", number);
+	       pgList.put("startPage", startPage);
+	       pgList.put("endPage", endPage);
+	       pgList.put("pageCount", pageCount);
+	       
+	       return pgList;
+    }
+public List getBoardArticles(int start,int end,String search,String searchtext) {
+	
+	List articleList=null;//ArrayList articleList=null;
+	
+	try {
+		con=pool.getConnection();
+	    //---------------------------------------------------------------------------
+		if(search==null || search=="") {
+			sql="select * from board order by ref desc,re_step asc limit ?,?";//1,10
+		}else { //제목+본문
+			if(search.equals("subject_content")) { //제목+본문
+				sql="select * from board where subject like '%"+
+			           searchtext+"%' or content like '%"+searchtext+"%' order by ref desc,re_step asc limit ?,?";
+			}else { //제목,작성자->매개변수를 이용해서 하나의 sql통합
+				sql="select * from board where "+search+" like '%"+
+			           searchtext+"%' order by ref desc,re_step asc limit ?,?";
+			}
+		}
+		System.out.println("getBoardArticles()의 sql=>"+sql);
+		//-----------------------------------------------------------------------------
+		pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, start-1);//mysql은 레코드순번이 내부적으로 0부터 시작
+		pstmt.setInt(2, end);
+		rs=pstmt.executeQuery();
+		//글목록보기
+		if(rs.next()) {//레코드가 최소 만족 1개이상 존재한다면
+			articleList=new ArrayList(end);//10=>end갯수만큼 데이터를 담을 공간을 생성하라
+			
+			do {
+				Post article=new Post();
+				Location lo=new Location(rs.getInt("locaction"));
+
+				article.setNo(rs.getInt("no"));
+				article.setLocation(lo);
+				//System.out.println(lo);
+				article.setSubject(rs.getString("subject"));
+				article.setContent(rs.getString("content"));
+				article.setView(rs.getInt("view"));
+				article.setRegdate(rs.getTimestamp("regdate"));
+				article.setStatus(rs.getByte("status"));
+				
+				
+				//추가
+				articleList.add(article);
+			}while(rs.next());
+		}
+	}catch(Exception e) {
+		System.out.println("getArticles() 메서드 에러유발"+e);
+	}finally {
+		pool.freeConnection(con,pstmt,rs);
+	}
+	return articleList;
+}
 
 	// 2.글목록보기에 대한 메서드구현->레코드가 한개이상->한 페이지당 10개씩 끊어서 보여준다.
 	// 1) 레코드의 시작번호 2) 불러올 레코드의 갯수
@@ -107,7 +215,8 @@ public class BoardDAO {
 
 	// -게시판의 글쓰기 (일단 만들어두긴하는데 써야할듯)
 	public void insertArticle(Post article) {
-
+		
+		
 		int view = article.getView();
 		int no = article.getNo();
 		int number = 0;// 데이터를 저장하기위한 게시물번호
@@ -115,7 +224,7 @@ public class BoardDAO {
 		System.out.println("view=>" + view + "no=>" + no);
 		try {
 			con = pool.getConnection();
-			sql = "select max(num) from board"; // 최대값+1=실제 저장할 게시물번호
+			sql = "select max(no) from board"; // 최대값+1=실제 저장할 게시물번호
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {// 보여주는 결과가 있다면 ->rs.last()->rs.getRow();(X)
@@ -123,6 +232,7 @@ public class BoardDAO {
 			} else {// 현재 테이블에 데이터가 한개라도 없는 경우
 				number = 1;
 			}
+<<<<<<< HEAD
 			sql = "insert into board(no,location_no,subject,user,content,view,regdate,status";
 			sql += ") values(?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
@@ -142,6 +252,27 @@ public class BoardDAO {
 			pool.freeConnection(con, pstmt, rs);
 		}
 	}
+=======
+			 sql = "insert into board(no,location_no,subject,user_no,content,view,regdate,status";
+	         sql += ") values(?,?,?,?,?,?,?,?)";
+	         pstmt = con.prepareStatement(sql);
+	         pstmt.setInt(1, article.getNo());
+	         pstmt.setInt(2, article.getLocation().getNo());
+	         pstmt.setString(3, article.getSubject());
+	         pstmt.setInt(4, article.getUser().getNo());
+	         pstmt.setString(5, article.getContent());
+	         pstmt.setInt(6, article.getView());
+	         pstmt.setTimestamp(7, article.getRegdate());
+	         pstmt.setByte(8, article.getStatus());
+	         int insert = pstmt.executeUpdate();
+	         System.out.println("게시판의 글쓰기 성공유무(insert)=>" + insert);// 1 or 0실패
+	      } catch (Exception e) {
+	         System.out.println("insertArticle()메서드 에러유발" + e);
+	      } finally {
+	         pool.freeConnection(con, pstmt, rs);
+	      }
+	   }
+>>>>>>> refs/heads/master
 
 	// 글상세보기
 	public Post getArticle(int num) {
@@ -230,29 +361,65 @@ public class BoardDAO {
 		return x;
 	}
 
-//글삭제=>암호비교
-	public int deleteArticle(int num, String passwd) {
-		String dbpasswd = null;
+//글삭제 고치는중
+	/*
+	public int deleteArticle(int no, String user) {
+		String dbuser = null;
+		int dbno=0;
 		int x = -1;// 게시물의 삭제성공유무
 
 		try {
 			con = pool.getConnection();
-			sql = "select passwd from board where num=?";
+			sql = "select no user from board where no=? ";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, user_no);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				dbpasswd = rs.getString("passwd");
-				System.out.println("dbpasswd" + dbpasswd);
-				if (dbpasswd.contentEquals(passwd)) {
-					sql = "delete from board where num=?";
+				dbno=rs.getInt("no");//Integer.parseInt(request.getParameter("no")
+				dbuser = rs.getString("user");
+				System.out.println("dbuser" + dbuser+",dbno"+dbno);
+				if (dbuser.contentEquals("user")) {
+					sql = "delete from board where no=? and user=?";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setInt(1, num);
+					pstmt.setInt(1, no);
+					pstmt.setString(2, user);
 					int delete = pstmt.executeUpdate();
 					System.out.println("게시판의 글삭제 성공유무(delete)=>" + delete);
 					x = 1;
 				} else {
 					x = 0;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("deleteArticle()메서드 에러유발" + e);
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return x;
+	}
+	*/
+
+	
+	public boolean deleteArticle(int no, int user) {
+		int dbuser = 0;
+		int dbno=0;
+		boolean x=false;// 게시물의 삭제성공유무
+		try {			
+			if (rs.next()) {
+				dbno=rs.getInt("no");//Integer.parseInt(request.getParameter("no")
+				dbuser = rs.getInt("user");
+				System.out.println("dbuser" + dbuser+",dbno"+dbno);
+				if (dbuser==user && dbno==no) {
+					sql = "delete from board where no=? and user=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, no);
+					pstmt.setInt(2, user);
+					int delete = pstmt.executeUpdate();
+					x = true;
+					System.out.println("게시판의 글삭제 성공유무(delete)=>" + delete);
+				} else {
+					x = false;
 				}
 			}
 		} catch (Exception e) {
@@ -367,5 +534,11 @@ public class BoardDAO {
 		}
 		return result;
 	}
+<<<<<<< HEAD
 
 }
+=======
+}
+
+
+>>>>>>> refs/heads/master

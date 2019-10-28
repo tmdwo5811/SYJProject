@@ -27,6 +27,11 @@ public class UserController {
 	public void InitBinder(WebDataBinder dataBinder) { dataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true)); }
 	
 	@RequestMapping({ "join", "login" }) public void none() {}
+	@RequestMapping("doLogout")
+	public String doLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:.";
+	}
 	
 	@RequestMapping(path = "doJoin", params = { "id", "pw", "rrn1", "rrn2", "loc", "addr", "phone", "email" })
 	public String doJoin(@ModelAttribute User user, @ModelAttribute Login login, @ModelAttribute UserSub userSub, String rrn1, int rrn2) {
@@ -45,12 +50,16 @@ public class UserController {
 	@RequestMapping(path = "doLogin", params = { "id", "pw" })
 	public String doLogin(HttpSession session, @ModelAttribute Login login) {
 		
-		Login pw = usersService.getLogin(login.getId());
+		Login _login = usersService.getLogin(login.getId());
 		
-		if(pw.isPassword(login.getPw()))
-			session.setAttribute("loginInfo", usersService.getUser(pw.getUser().getNo()));
+		if(_login.isPassword(login.getPw())) {
+			login.setPw(null);
+			login.setUser(usersService.getUser(_login.getUser().getNo()));
+			session.setAttribute("loginInfo", login);
+			return "redirect:.";
+		}
 		
-		return "redirect:/";
+		return "redirect:login";
 		
 	} //doLogin();
 	

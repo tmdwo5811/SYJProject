@@ -161,10 +161,10 @@
 
                             <form method="post"  name="writeform" id="writeform" action="/syj/writePro.do" autocomplete="off"  onsubmit="return writeSave()">
                             
-		                            <input type="hidden" name="no" value="${no}">
-		   							<input type="hidden" name="view" value="${view}">
+                                  <input type="hidden" name="no" value="${no}">
+                              <input type="hidden" name="view" value="${view}">
                                 <fieldset>
-								<div class="form-field">
+                        <div class="form-field">
                                         <input name="subject" id="subject" class="full-width" placeholder="청원제목을 입력해주세요." value="" type="text">
                                     </div>
                                     <div class="form-field">

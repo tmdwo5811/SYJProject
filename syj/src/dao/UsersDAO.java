@@ -32,7 +32,28 @@ public class UsersDAO {
 		}
 
 	} // UsersDAO();
-
+	public boolean loginCheck(String id, String passwd) {
+		// 1.DB 연결
+				boolean check = false;
+				// 2.SQL 처리
+				try {
+					con = pool.getConnection(); // 만들어진 Connection객체를 반환 시키는것
+					System.out.println("con=>" + con);
+					sql = "select id,pw from login where id=? and pw=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id);
+					pstmt.setString(2, passwd);
+					rs = pstmt.executeQuery();
+					check = rs.next(); // 데이터가 존재 => true or 없으면 -> false
+				} catch (Exception e) {
+					System.out.println("loginCheck() 실행 에러유발 =>	" + e);
+				} finally {
+					// 3.메모리해제
+					pool.freeConnection(con, pstmt, rs);
+				}
+				return check;
+	}
+	
 	public boolean insertUser(User user, _Login _login, UserSub userSub) {
 
 		boolean result = false;

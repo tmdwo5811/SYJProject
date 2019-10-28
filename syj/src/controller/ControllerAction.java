@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.*;//FileInputStream
@@ -122,11 +121,3 @@ public class ControllerAction extends HttpServlet {
        dispatcher.forward(request, response);//content.jsp로 이동하라
     }
 }
-
-
-
-
-
-
-
-
