@@ -28,7 +28,7 @@
                         <h3 class="h2">답변된 청원</h3>
                         <!-- START commentlist -->
                         <ol class="commentlist">
-                            <li class="depth-1 comment">
+                            <li class="depth-1 comment" style="width:752px;">
                               <div class="comment__avatar">
                                 <button class="answer_button">답변 1호</button>
                               </div>
@@ -42,9 +42,6 @@
                                                 <a class="comment-reply-link" href="#0">자세히 보기</a>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="comment__text">
-                                    <p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.</p>
                                     </div>
 
                                 </div><!-- comment__avatar -->
