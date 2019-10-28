@@ -107,5 +107,4 @@ public class userProAction implements CommandAction {
 		
 		return "/index.jsp";
 	}
-	
 }
