@@ -10,7 +10,6 @@
 	<!-- 사이드 메뉴 시작 -->
 	<%@ include file="templateFiles/sideMenu.jsp"%>
 	<!-- 사이드 메뉴 끝  -->
-
         <!-- site content
         ================================================== -->
 		<c:if test="${pgList.count==0}">
@@ -43,28 +42,11 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div><!-- comment__avatar -->
-
                             </li>  <!-- depth-1 comment -->
-
                         </ol>
                         <!-- END commentlist -->
-
                     </div> <!-- end comments -->
-					    <c:set var="number" value="${pgList.number}"/>
-					    <c:forEach var="article" items="${articleList}">
-					   <tr height="30"  onmouseover="this.style.backgroundColor='white'" 
-					    	  onmouseout="this.style.backgroundColor='#e0ffff'" >
-					    	  <!-- 하나씩 감소하면서 출력하는 게시물번호 -->
-					    <td align="center"  width="50" >
-					          <c:out value="${number}" />
-					          <c:set var="number"  value="${number-1}" />
-					    </td>
-					    <td  width="250" >
-						<!-- 답변글인 경우 먼저 답변이미지를 부착시키는 코드  -->
-					
-					   </c:forEach>
                  </div>
             </main>
             <!--여기  -->
