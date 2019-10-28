@@ -36,7 +36,7 @@
 
 <body class="ss-bg-white">
 
-    <!-- preloader
+    <!-- preloader ddddddddd
     ================================================== -->
     <div id="preloader">
         <div id="loader" class="dots-fade">
