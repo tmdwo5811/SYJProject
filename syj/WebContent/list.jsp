@@ -10,7 +10,6 @@
 	<!-- 사이드 메뉴 시작 -->
 	<%@ include file="templateFiles/sideMenu.jsp"%>
 	<!-- 사이드 메뉴 끝  -->
-
         <!-- site content
         ================================================== -->
 		<c:if test="${pgList.count==0}">
