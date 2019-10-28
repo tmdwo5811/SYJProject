@@ -3,11 +3,41 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
-	<!-- head태그 시작 -->
-	<%@ include file="templateFiles/headParts.jsp"%>
-	<!-- head태그 끝 -->
+<html class="no-js" lang="en">
+<head>
+<script language="JavaScript" src="script.js"></script>
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Video Post - Typerite</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
 <body class="ss-bg-white">
+
     <!-- preloader
     ================================================== -->
     <div id="preloader">
@@ -26,7 +56,7 @@
 
             <div class="header__top">
                 <div class="header__logo">
-                    <a class="site-logo" href="index.do">
+                    <a class="site-logo" href="index.html">
                         <img src="images/logo.svg" alt="Homepage">
                     </a>
                 </div>
@@ -55,7 +85,7 @@
 
               <ul class="header__nav">
                   <li class="current has-children">
-                      <a href="index.do" title="">대나무숲 입장 하기</a>
+                      <a href="index.html" title="">대나무숲 입장 하기</a>
                       <ul class="sub-menu">
                       <li><a href="login.html">로그인</a></li>
                       <li><a href="join.html">회원 가입</a></li>
@@ -74,7 +104,7 @@
                   <li class="has-children">
                       <a href="#0" title="">청원 하기</a>
                       <ul class="sub-menu">
-                      <li><a href="writeForm.do">지금 청원 하기</a></li>
+                      <li><a href="write.html">지금 청원 하기</a></li>
                       </ul>
                   </li>
                   <li class="has-children">
@@ -118,10 +148,6 @@
 
         <!-- site content
         ================================================== -->
-=======
-	<!-- 사이드 메뉴 시작 -->
-	<%@ include file="templateFiles/sideMenu.jsp"%>
-	<!-- 사이드 메뉴 끝  -->
 
         <div class="s-content content">
             <main class="row content__page">
@@ -135,13 +161,13 @@
 
                             <form method="post"  name="writeform" id="writeform" action="/syj/writePro.do" autocomplete="off"  onsubmit="return writeSave()">
                             
-		                            <input type="hidden" name="no" value="${no}">
-		   							<input type="hidden" name="view" value="${view}">
+                                  <input type="hidden" name="no" value="${no}">
+                              <input type="hidden" name="view" value="${view}">
                                 <fieldset>
-								<div class="form-field">
+                        <div class="form-field">
                                         <input name="subject" id="subject" class="full-width" placeholder="청원제목을 입력해주세요." value="" type="text">
                                     </div>
-                                      <div class="form-field">
+                                    <div class="form-field">
                                         <select name="location" id="location" class="full-width" placeholder="지역을 선택해 주세요." value="${location}">
                                           <option selected>지역을 선택해 주세요.</option>
                                           <option value="1">서울시</option>
@@ -159,6 +185,7 @@
                                           <option value="13">전라도</option>
                                         </select>
                                     </div>
+                                    
 
                                     <div class="message form-field">
                                         <textarea name="content" id="content" class="full-width" placeholder="청원 내용을 작성해 주세요."></textarea>
@@ -185,10 +212,25 @@
 
         </div> <!-- end s-content -->
 
-     
-	<!-- footerParts 시작 -->
-	<%@ include file="templateFiles/footerParts.jsp"%>
-	<!-- footerParts 끝 -->
+
+        <!-- footer
+        ================================================== -->
+        <footer class="s-footer footer">
+            <div class="row">
+                <div class="column large-full footer__content">
+                    <div class="footer__copyright">
+                        <span>© Copyright Typerite 2019</span>
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
+            </div>
+        </footer>
+
+    </div> <!-- end s-wrap -->
 
 
     <!-- Java Script
@@ -198,3 +240,4 @@
     <script src="js/main.js"></script>
 
 </body>
+</html>
