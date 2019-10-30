@@ -30,19 +30,20 @@ public class CommentProAction implements CommandAction {
 		User user=new User();
 		//PropertyUtils.copyProperties(comment,commentForm);
 		//메서드 호출
-	    comment.setNo(Integer.parseInt(request.getParameter("no")));
+	    /*
+		comment.setNo(Integer.parseInt(request.getParameter("No")));
 	    user.setNo(Integer.parseInt(request.getParameter("No")));
 	    comment.setContent(request.getParameter("content"));
 	    comment.setRegdate(new Timestamp(System.currentTimeMillis()));				
 		BoardDAO manager= new BoardDAO();
 		manager.addComment(comment);
-	
+		*/
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();  
 		out.println("<script language='javascript'>");  
 		out.println("location.href = \"../board1/content.do?num="+num+"&pageNum="+pageNum+"\";");  
 		out.println("</script>");  
 
-		return "/comment.do";
+		return "/comment.jsp";
 	}
 }

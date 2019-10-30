@@ -41,7 +41,7 @@
                                         <div class="comment__meta">
                                             <div class="comment__time">April 30, 2019</div>
                                             <div class="comment__reply">
-                                                <a class="comment-reply-link" href="#0">자세히 보기</a>
+                                                <a class="comment-reply-link" href="comment.jsp">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>
