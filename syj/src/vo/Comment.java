@@ -10,6 +10,7 @@ public class Comment extends Vo {
 	private String content;//내용
 	private Timestamp regdate;//작성일자
 	
+	
 	public int getNo() { return no; }
 	public Post getPost() { return post; }
 	public User getUser() { return user; }
@@ -20,6 +21,10 @@ public class Comment extends Vo {
 	public void setUser(User user) { this.user = user; }
 	public void setContent(String content) { this.content = content; }
 	public void setRegdate(Timestamp regdate) { this.regdate = regdate; }
+	
+	
+	
+	
 	
 	@Override
 	public String toString() {

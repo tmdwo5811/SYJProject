@@ -40,7 +40,7 @@
           <c:out value="${number}" />
           <c:set var="number"  value="${number-1}" />
     </td>
-    <td  width="250" >
+    <td  width="250" ><!-- 커밋을 위한 수정 -->
 	<!-- 답변글인 경우 먼저 답변이미지를 부착시키는 코드  -->
 	
 	 <c:if test="${article.re_level > 0}">

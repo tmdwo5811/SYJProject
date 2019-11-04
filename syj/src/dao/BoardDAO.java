@@ -426,15 +426,19 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 			//=======================================
 			//완벽한 쿼리 문이 아니기때문에 values뒤에 추가적으로 몇가지 코드를 더 입력을 해야하는데 
 			//insertAticles라는 메소드에 비슷한 sql구문이 있습니다. 그것을 참고하여 입력하세요.
-			sql = "insert into comment(no,post_no,user_no,content,timestemp";
+			sql = "insert into comments(no,post_no,user_no,content,Timestemp";
 			sql +=") vlaues(?,?,?,?,?)";
 			//=======================================
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, comment.getUser().getNo());
-			// pstmt.setTimestamp (2,comment.getReg_date());
-			pstmt.setString(3, comment.getContent());
-			pstmt.setInt(4, comment.getNo());
+			pstmt.setInt(1, comment.getNo());
+			pstmt.setInt(2, comment.getPost().getNo());
+			pstmt.setInt(3, comment.getUser().getNo());//=>null
+			pstmt.setString(4, comment.getContent());//=>null
+			pstmt.setTimestamp (5,comment.getRegdate());
+			
+			pstmt.setInt(4, comment.getNo());//=>0
+			
 		} catch (Exception e) {
 			System.out.println("addComment()메서드 에러유발" + e);
 		} finally {
@@ -476,7 +480,7 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 		try {
 			con = pool.getConnection();
 
-			sql = "select Comment * from board where no=?";
+			sql = "select comments * from board where no=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
