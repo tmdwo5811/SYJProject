@@ -82,7 +82,6 @@ public class DBConnectionMgr {
 
     //(2)dbmysql.properties파일을 읽어들여서 키->값을 불러오기
     public DBConnectionMgr() throws IOException {
-       
        _driver="com.mysql.cj.jdbc.Driver";
        //드라이브만 시스템에 반영
        if(_driver!=null)  System.setProperty("jdbc.drivers", _driver);//등록

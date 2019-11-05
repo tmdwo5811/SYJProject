@@ -185,61 +185,66 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 
 	// 2.글목록보기에 대한 메서드구현->레코드가 한개이상->한 페이지당 10개씩 끊어서 보여준다.
 	// 1) 레코드의 시작번호 2) 불러올 레코드의 갯수
-	public List getArticles(int start, int end) {// getMemberList(int start,int end)
+public List getArticles(int start, int end) {// getMemberList(int start,int end)
 
-		List articleList = null;// ArrayList articleList=null;
+	List articleList = null;// ArrayList articleList=null;
 
-		try {
-			con = pool.getConnection();
-			/*
-			 * 그룹번호가 가장 최신의 글을 중심으로 정렬하되,만약에 level이 같은 경우에는 step값으로 오름차순을 통해서 몇번째 레코드번호를
-			 * 기준해서 정렬할것인가?
-			 */
-			sql="select * from board order by no asc limit ?,?";//1,10
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, start - 1);// mysql은 레코드순번이 내부적으로 0부터 시작
-			pstmt.setInt(2, end);
-			rs = pstmt.executeQuery();
-			// 글목록보기
-			if (rs.next()) {// 레코드가 최소 만족 1개이상 존재한다면
-				articleList = new ArrayList(end);// 10=>end갯수만큼 데이터를 담을 공간을 생성하라
+
+	try {
+		con = pool.getConnection();
+		/*
+		 * 그룹번호가 가장 최신의 글을 중심으로 정렬하되,만약에 level이 같은 경우에는 step값으로 오름차순을 통해서 몇번째 레코드번호를
+		 * 기준해서 정렬할것인가?
+		 */
+		sql="select * from board order by no asc limit ?,?";//1,10
+		pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, start - 1);// mysql은 레코드순번이 내부적으로 0부터 시작
+		pstmt.setInt(2, end);
+		rs = pstmt.executeQuery();
+		// 글목록보기
+		if (rs.next()) {// 레코드가 최소 만족 1개이상 존재한다면
+			articleList = new ArrayList(end);// 10=>end갯수만큼 데이터를 담을 공간을 생성하라
+			
+			do {
+				//Post article = (Post) new Post().setByResultSet(rs);
+				//Location user content view regdate status
+				Post article =new Post();
+				Location lo=new Location(rs.getInt("location_no"));
+				article.setNo(rs.getInt("no"));
+				article.setLocation(lo);
+				//article.setLocation(rs.getLocation("location"));
+				article.setSubject(rs.getString("subject"));
+				article.setContent(rs.getString("content"));
+				article.setView(rs.getInt("view"));
+				article.setRegdate(rs.getTimestamp("regdate"));
+				article.setStatus(rs.getByte("status"));
 				
-				do {
-					//Post article = (Post) new Post().setByResultSet(rs);
-					//Location user content view regdate status
-					Post article =new Post();
-					Location lo=new Location(rs.getInt("location_no"));
-					article.setNo(rs.getInt("no"));
-					article.setLocation(lo);
-					//article.setLocation(rs.getLocation("location"));
-					article.setSubject(rs.getString("subject"));
-					article.setContent(rs.getString("content"));
-					article.setView(rs.getInt("view"));
-					article.setRegdate(rs.getTimestamp("regdate"));
-					article.setStatus(rs.getByte("status"));
-					
-					articleList.add(article);
-				} while (rs.next());
-			}
-		} catch (Exception e) {
-			System.out.println("getArticles() 메서드 에러유발" + e);
-		} finally {
-			pool.freeConnection(con, pstmt, rs);
+				articleList.add(article);
+			} while (rs.next());
+
 		}
-		return articleList;
+	} catch (Exception e) {
+		System.out.println("getArticles() 메서드 에러유발" + e);
+	} finally {
+		pool.freeConnection(con, pstmt, rs);
 	}
-	private Post makeArticleFromResult() throws Exception {
-		Post article=new Post();
-		Location lo=new Location(rs.getInt("location_no"));
-		article.setNo(rs.getInt("no"));
-		article.setLocation(lo);
-		article.setSubject(rs.getString("subject"));
-		article.setContent(rs.getString("content"));
-		article.setView(rs.getInt("view"));
-		article.setRegdate(rs.getTimestamp("regdate"));//오늘날짜->코딩 ->now()
-		article.setStatus(rs.getByte("status"));
-		return article;
-	}
+
+	return articleList;
+}
+private Post makeArticleFromResult() throws Exception {
+	Post article=new Post();
+	Location lo=new Location(rs.getInt("location_no"));
+	article.setNo(rs.getInt("no"));
+	article.setLocation(lo);
+	article.setSubject(rs.getString("subject"));
+	article.setContent(rs.getString("content"));
+	article.setView(rs.getInt("view"));
+	article.setRegdate(rs.getTimestamp("regdate"));//오늘날짜->코딩 ->now()
+	article.setStatus(rs.getByte("status"));
+	return article;
+}
+
+
 	// -게시판의 글쓰기 (일단 만들어두긴하는데 써야할듯)
 	public void insertArticle(Post article) {
 		int view = article.getView();

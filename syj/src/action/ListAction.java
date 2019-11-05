@@ -34,8 +34,7 @@ public class ListAction implements CommandAction {
 	    if(count > 0){
 	    	System.out.println(pgList.get("startRow"+","+pgList.get("endRow")));
 	    	articleList=dbpro.getBoardArticles(pgList.get("startRow"), 
-	    														pgList.get("endRow"),
-	    														search,searchtext);//첫번째 레코드번호,불러올 갯수
+	    														pgList.get("endRow"),	search,searchtext);//첫번째 레코드번호,불러올 갯수
 	    }else {//count=0
 	    	articleList=Collections.EMPTY_LIST;//아무것도 없는 빈 list객체 변환
 	    }
