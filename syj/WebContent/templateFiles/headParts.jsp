@@ -28,6 +28,7 @@
 <!-- view
     ================================================== -->
 <link rel="stylesheet" href="css/vuestyle.css">
+<script src="js/login.js"></script>
 <script>
 function printClock() {
     
