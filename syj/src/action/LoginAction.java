@@ -23,7 +23,7 @@ public class LoginAction implements CommandAction {
 		request.setAttribute("loc",dbPro.locNum());
 		
 		System.out.println("loginCheck =>"+loginCheck + " getId =>" + login.getId() + " getLoc =>" + dbPro.locNum());
-		
+		System.out.println("board_no =>"+"status"+"subject"+"board_regdate"+"view"+"board_content");
 		return "/index.jsp";
 	}
 

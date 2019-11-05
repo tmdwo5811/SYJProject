@@ -48,7 +48,7 @@ public class UsersDAO {
 				try {
 					con = pool.getConnection(); // 만들어진 Connection객체를 반환 시키는것
 					System.out.println("con=>" + con);
-					sql = "select lo.id,lo.pw,lo.salt,us.`no` from login as lo join users as us on (lo.user_no = us.`no`) where lo.id = ?";
+					sql = "select lo.id,lo.pw,lo.salt,us.location_no from login as lo join users as us on (lo.user_no = us.`no`) where lo.id = ?";
 					//select 
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, id);

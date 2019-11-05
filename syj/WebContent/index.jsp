@@ -88,7 +88,55 @@
 		<c:if test="${!empty id || !id eq 'admin'}">
 		<div>
 			${id} 님 일반계정으로 잘 들어오셨습니다.<p>
-			${loc}번 지역의 회원님입니다.
+			${loc} 번 지역의 회원님입니다.
+			
+			
+			
+			
+			
+			<div id="comments" class="column large-12">
+                        <h3 class="h2">우리 동네 실시간 청원</h3>
+                        <div style="float:right;">
+                          <button style="height:40px;line-height:40px;" onclick="location.href='write.html'">지금 청원하기</button>
+                        </div>
+                        <!-- START commentlist -->
+                        <ol class="commentlist">
+
+                            <li class="depth-1 comment">
+
+                                <div class="comment__avatar">
+                                    <img class="avatar" src="images/avatars/user-01.jpg" alt="" width="50" height="50">
+                                </div>
+
+                                <div class="comment__content">
+
+                                    <div class="comment__info">
+                                        <div class="post_no">게시글 번호 ${board_no} | 현상태 &lt;${status}&gt;</div>
+                                        <div class="comment__author">${subject}</div>
+                                        <div class="comment__meta">
+                                            <div class="comment__time">${board_regdate}</div>
+                                            <div class="comment__reply">
+                                                <a class="comment-reply-link" href="#0">자세히 보기</a> | 조회수 ${view}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="comment__text">
+                                    <p>
+                                    	${board_content}
+                                    </p>
+                                    </div>
+
+                                </div>
+                            </li> <!-- end comment level 1 -->
+                        </ol>
+                        <!-- END commentlist -->
+                    </div> <!-- end comments -->
+                    
+                    
+                    
+                    
+                    
 		</div>
 		
 		</c:if><!-- 일반 계정 일때 -->
