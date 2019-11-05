@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/vendor.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/faq.css">
 
 <!-- favicons
     ================================================== -->
@@ -27,6 +28,7 @@
 <!-- view
     ================================================== -->
 <link rel="stylesheet" href="css/vuestyle.css">
+<script src="js/login.js"></script>
 <script>
 function printClock() {
     

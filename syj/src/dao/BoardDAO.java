@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+import org.apache.catalina.User;
+
 import com.mysql.cj.jdbc.Blob;
 
 import util.DBConnectionMgr;
-import vo.Comment;
-import vo.Location;
-import vo.Post;
+import vo.*;
+
+
+
 
 public class BoardDAO {
 	private DBConnectionMgr pool = null;
@@ -47,7 +50,7 @@ public class BoardDAO {
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-		return x;
+		return x;	
 	}
 
 	public int getArticleSearchCount(String search, String searchtext) {
@@ -124,6 +127,8 @@ public Hashtable pageList(String pageNum,int count) {
 	       
 	       return pgList;
     }
+//2019 11 04 수정 검색
+
 public List getBoardArticles(int start,int end,String search,String searchtext) {
 	
 	List articleList=null;//ArrayList articleList=null;
@@ -132,11 +137,11 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 		con=pool.getConnection();
 	    //---------------------------------------------------------------------------
 		if(search==null || search=="") {
-			sql="select * from board order by ref desc,re_step asc limit ?,?";//1,10
+			sql="select * from board order by no asc limit ?,?";//1,10
 		}else { //제목+본문
 			if(search.equals("subject_content")) { //제목+본문
 				sql="select * from board where subject like '%"+
-			           searchtext+"%' or content like '%"+searchtext+"%' order by ref desc,re_step asc limit ?,?";
+			           searchtext+"%' or content like '%"+searchtext+"%' order by no desc limit ?,?";
 			}else { //제목,작성자->매개변수를 이용해서 하나의 sql통합
 				sql="select * from board where "+search+" like '%"+
 			           searchtext+"%' order by ref desc,re_step asc limit ?,?";
@@ -154,7 +159,7 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 			
 			do {
 				Post article=new Post();
-				Location lo=new Location(rs.getInt("locaction"));
+				Location lo=new Location(rs.getInt("location_no"));
 
 				article.setNo(rs.getInt("no"));
 				article.setLocation(lo);
@@ -171,7 +176,7 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 			}while(rs.next());
 		}
 	}catch(Exception e) {
-		System.out.println("getArticles() 메서드 에러유발"+e);
+		System.out.println("getBoardArticles() 메서드 에러유발"+e);
 	}finally {
 		pool.freeConnection(con,pstmt,rs);
 	}
@@ -183,6 +188,7 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 public List getArticles(int start, int end) {// getMemberList(int start,int end)
 
 	List articleList = null;// ArrayList articleList=null;
+
 
 	try {
 		con = pool.getConnection();
@@ -215,12 +221,14 @@ public List getArticles(int start, int end) {// getMemberList(int start,int end)
 				
 				articleList.add(article);
 			} while (rs.next());
+
 		}
 	} catch (Exception e) {
 		System.out.println("getArticles() 메서드 에러유발" + e);
 	} finally {
 		pool.freeConnection(con, pstmt, rs);
 	}
+
 	return articleList;
 }
 private Post makeArticleFromResult() throws Exception {
@@ -236,15 +244,12 @@ private Post makeArticleFromResult() throws Exception {
 	return article;
 }
 
+
 	// -게시판의 글쓰기 (일단 만들어두긴하는데 써야할듯)
 	public void insertArticle(Post article) {
-		
-		
 		int view = article.getView();
 		int no = article.getNo();
 		int number = 0;// 데이터를 저장하기위한 게시물번호
-		System.out.println("insertArticle 메서드의 내부 no=>" + no);// 0신규글
-		System.out.println("view=>" + view + "no=>" + no);
 		try {
 			con = pool.getConnection();
 			sql = "select max(no) from board"; // 최대값+1=실제 저장할 게시물번호

@@ -80,10 +80,16 @@
 		</div>
 		<!-- end comment-respond -->
 		</c:if><!-- 로그아웃일때 -->
+		
 		<c:if test="${!empty id || id eq 'admin'}">
 		
 		</c:if><!-- 관리자 계정 일때 -->
+		
 		<c:if test="${!empty id || !id eq 'admin'}">
+		<div>
+			${id} 님 일반계정으로 잘 들어오셨습니다.<p>
+			${loc}번 지역의 회원님입니다.
+		</div>
 		
 		</c:if><!-- 일반 계정 일때 -->
 	</div>

@@ -13,16 +13,18 @@ public class LoginAction implements CommandAction {
 		request.setCharacterEncoding("utf-8");
 		_Login login = new _Login();
 		login.setId(request.getParameter("cId"));
-		login.setPasswordWithEncrypt(request.getParameter("cpassword"));
+		login.setPw(request.getParameter("cpassword"));
 		UsersDAO dbPro = new UsersDAO();
+		
 		boolean loginCheck = dbPro.loginCheck(login.getId(), login.getPw());
 		System.out.println("login.getPw() =>"+login.getPw());
 		request.setAttribute("loginCheck", loginCheck);
 		request.setAttribute("id", login.getId());
+		request.setAttribute("loc",dbPro.locNum());
 		
-		System.out.println("loginCheck =>"+loginCheck + " getId =>" + login.getId());
+		System.out.println("loginCheck =>"+loginCheck + " getId =>" + login.getId() + " getLoc =>" + dbPro.locNum());
 		
-		return "/LoginProc.jsp";
+		return "/index.jsp";
 	}
 
 }
