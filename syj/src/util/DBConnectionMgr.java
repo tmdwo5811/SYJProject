@@ -45,36 +45,36 @@ import java.util.Vector;
 public class DBConnectionMgr {
 
     /**
-	 * Manages a java.sql.Connection pool.
-	 *
-	 * @author  Anil Hemrajani
-	 */
+    * Manages a java.sql.Connection pool.
+    *
+    * @author  Anil Hemrajani
+    */
 
 
-	//
-	//private MemberDBMgr mem =null;
-	private Vector connections = new Vector(10);//커넥션풀 저장크기
+   //
+   //private MemberDBMgr mem =null;
+   private Vector connections = new Vector(10);//커넥션풀 저장크기
     /*   MySQL =>회원리스트(회원관리)  */
     
     
     //(1) 멤버변수 선언
     private String _driver,_url,_user,_password;
     /*
-	private String _driver = "org.gjt.mm.mysql.Driver",
+   private String _driver = "org.gjt.mm.mysql.Driver",
     _url = "jdbc:mysql://127.0.0.1:3306/mydb?useUnicode=true&characterEncoding=UTF-8",
     _user = "root",  //계정명(관리자)
     _password = "1234"; //암호
     */
-	/*
-	 * private String _driver = "oracle.jdbc.driver.OracleDriver", _url =
-	 * "jdbc:oracle:thin:@localhost:1521:orcl", _user = "scott", _password =
-	 * "tiger";
-	 */
+   /*
+    * private String _driver = "oracle.jdbc.driver.OracleDriver", _url =
+    * "jdbc:oracle:thin:@localhost:1521:orcl", _user = "scott", _password =
+    * "tiger";
+    */
 
     private boolean _traceOn = false;
     private boolean initialized = false;
-	
-	//Ŀ�ؼ��� 10�� �غ�
+   
+   //Ŀ�ؼ��� 10�� �غ�
     private int _openConnections = 10;
 
     //Ŀ�ؼ�Ǯ��ü�� ����
@@ -82,15 +82,14 @@ public class DBConnectionMgr {
 
     //(2)dbmysql.properties파일을 읽어들여서 키->값을 불러오기
     public DBConnectionMgr() throws IOException {
-    	
-    	_driver="com.mysql.cj.jdbc.Driver";
-    	//드라이브만 시스템에 반영
-    	if(_driver!=null)  System.setProperty("jdbc.drivers", _driver);//등록
-    	_url="jdbc:mysql://teamsyj.iptime.org:3306/teamsyjproject?serverTimezone=Asia/Seoul&useSSL=false";
-    	_user="teamsyj";
-    	_password="1234";
-    	System.out.println("_driver=>"+(_driver)+",_url=>"+(_url));
-    	System.out.println("_user=>"+(_user)+",_password=>"+(_password));
+       _driver="com.mysql.cj.jdbc.Driver";
+       //드라이브만 시스템에 반영
+       if(_driver!=null)  System.setProperty("jdbc.drivers", _driver);//등록
+       _url="jdbc:mysql://teamsyj.iptime.org:3306/?serverTimezone=Asia/Seoul&useSSL=false";
+       _user="teamsyj";
+       _password="1234";
+       System.out.println("_driver=>"+(_driver)+",_url=>"+(_url));
+       System.out.println("_user=>"+(_user)+",_password=>"+(_password));
     }
 
     /** Use this method to set the maximum number of open connections before
@@ -100,11 +99,11 @@ public class DBConnectionMgr {
     //커넥션풀을 얻어오는 정적메서드
     public static DBConnectionMgr getInstance() throws Exception{
         //커넥션풀이 생성이 안되어있다면
-		if (instance == null) {
+      if (instance == null) {
             synchronized (DBConnectionMgr.class) {
                 //생성이 안되어있다면
-				if (instance == null) {
-					//객체생성
+            if (instance == null) {
+               //객체생성
                     instance = new DBConnectionMgr();
                 }
             }
@@ -131,17 +130,17 @@ public class DBConnectionMgr {
     /** Opens specified "count" of connections and adds them to the existing pool */
     //�ʱ⿡ ���ᰴü�� �������ִ� �޼ҵ�
 
-	public synchronized void setInitOpenConnections(int count)
+   public synchronized void setInitOpenConnections(int count)
             throws SQLException {
 
         Connection c = null;//������ ��ü
         ConnectionObject co = null;//������ ���ᰴü
-		                           //�������ִ� ��ü
+                                 //�������ִ� ��ü
 
         for (int i = 0; i < count; i++) {
-			//count������ŭ ���ᰴü�� ����
+         //count������ŭ ���ᰴü�� ����
             c = createConnection();
-			//���Ϳ� ����� ���ᰴü,�뿩����
+         //���Ϳ� ����� ���ᰴü,�뿩����
             co = new ConnectionObject(c, false);
              //���������� ���Ϳ� ���ᰴü�� �߰�
             connections.addElement(co);
@@ -159,14 +158,14 @@ public class DBConnectionMgr {
     /** Returns an unused existing or new connection.  */
     //���ᰴü�� ������ �޼ҵ�
 
-	public synchronized Connection getConnection()
+   public synchronized Connection getConnection()
             throws Exception {
         if (!initialized) {
-			//������ DB�� ����̹��� �޸𸮿� �ε�
-        	System.out.println(_driver);
-        	
+         //������ DB�� ����̹��� �޸𸮿� �ε�
+           System.out.println(_driver);
+           
             Class c = Class.forName(_driver);
-			//�ڵ� ���(����̹�Ŭ����)
+         //�ڵ� ���(����̹�Ŭ����)
 //            DriverManager.registerDriver((Driver) c.newInstance());
 
             initialized = true;//���ӻ��� 
@@ -175,18 +174,18 @@ public class DBConnectionMgr {
 
         Connection c = null;
         ConnectionObject co = null;
-		//��������� ���� ���ᰴü
+      //��������� ���� ���ᰴü
         boolean badConnection = false;
 
 
         for (int i = 0; i < connections.size(); i++) {
-			//���Ϳ� �� ���ᰴü�� �����´�.
+         //���Ϳ� �� ���ᰴü�� �����´�.
             co = (ConnectionObject) connections.elementAt(i);
 
             // If connection is not in use, test to ensure it's still valid!
             if (!co.inUse) {//�������� ���� ���¶�� 
                 try {
-					//�������� ������ ���ᰴü ����
+               //�������� ������ ���ᰴü ����
                     badConnection = co.connection.isClosed();
                     if (!badConnection)
                         badConnection = (co.connection.getWarnings() != null);
@@ -197,7 +196,7 @@ public class DBConnectionMgr {
 
                 // Connection is bad, remove from pool
                 if (badConnection) { //�����ʰ� ������
-				    //���Ϳ��� �����϶�
+                //���Ϳ��� �����϶�
                     connections.removeElementAt(i);
                     trace("ConnectionPoolManager: Remove disconnected DB connection #" + i);
                     continue;
@@ -225,7 +224,7 @@ public class DBConnectionMgr {
 
     /** Marks a flag in the ConnectionObject to indicate this connection is no longer in use */
     //�ݳ����ִ� �޼ҵ�
-	public synchronized void freeConnection(Connection c) {
+   public synchronized void freeConnection(Connection c) {
         if (c == null)//�ݳ����ִ� ���ᰴü�� ������
             return;
 
@@ -234,7 +233,7 @@ public class DBConnectionMgr {
         for (int i = 0; i < connections.size(); i++) {
             co = (ConnectionObject) connections.elementAt(i);
             //�ݳ��� ���ᰴü==�޸𸮻��� ã�� ��ü
-			if (c == co.connection) {
+         if (c == co.connection) {
                 co.inUse = false;//�ݳ�ó��
                 break;
             }
@@ -243,8 +242,8 @@ public class DBConnectionMgr {
         for (int i = 0; i < connections.size(); i++) {
             co = (ConnectionObject) connections.elementAt(i);
             //10�̻��� �Ѱų� 
-			//������� ������ ���ᰴü�� ������
-			if ((i + 1) > _openConnections && !co.inUse)
+         //������� ������ ���ᰴü�� ������
+         if ((i + 1) > _openConnections && !co.inUse)
                 removeConnection(co.connection);
         }
     }
@@ -380,7 +379,7 @@ public class DBConnectionMgr {
 
 //inner class�� ����
 class ConnectionObject {
-	//������ ���ᰴü
+   //������ ���ᰴü
     public java.sql.Connection connection = null;
     public boolean inUse = false;//�뿩����
 

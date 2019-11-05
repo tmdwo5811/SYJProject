@@ -159,7 +159,7 @@
 
                             <h3 class="h2">우리 동네에 <span>청원 하기</span></h3>
 
-                            <form method="post"  name="writeform" id="writeform" action="/syj/writePro.do" autocomplete="off"  onsubmit="return writeSave()">
+                            <form method="post"  name="writeform" id="writeform" action="/syj/writePro.jsp" autocomplete="off"  onsubmit="return writeSave()">
                             
                                   <input type="hidden" name="no" value="${no}">
                               <input type="hidden" name="view" value="${view}">
