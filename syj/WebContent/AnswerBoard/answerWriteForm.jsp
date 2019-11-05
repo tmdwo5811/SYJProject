@@ -63,11 +63,13 @@
 	    <button><a href="answerList.jsp"> 글목록</a></button>
    </td>
    </tr>
-  <!--  <tr>
+   --%>
+   <tr>
     <td  width="70" align="center">이 름</td>
     <td  width="330">
        <input type="text" size="10" maxlength="10" name="writer"></td>
-  </tr> -->
+  </tr>
+  <%--
   <tr>
     <td  width="70" align="center" >제 목</td>
     <td  width="330">

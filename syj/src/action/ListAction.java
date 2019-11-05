@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BoardDAO;
+import vo.Post;
 
 public class ListAction implements CommandAction {
 
@@ -30,13 +31,14 @@ public class ListAction implements CommandAction {
 		
 		Hashtable<String,Integer> pgList=dbpro.pageList(pageNum,count);
 		
-		
-		 if(count > 0){
-		 System.out.println(pgList.get("startRow"+","+pgList.get("endRow")));
-		 articleList=dbpro.getBoardArticles(pgList.get("startRow"),
-		  pgList.get("endRow"), search,searchtext);//첫번째 레코드번호,불러올 갯수 }else {//count=0
-		  articleList=Collections.EMPTY_LIST;//아무것도 없는 빈 list객체 변환 }
-	
+	    if(count > 0){
+	    	System.out.println(pgList.get("startRow"+","+pgList.get("endRow")));
+	    	articleList=dbpro.getBoardArticles(pgList.get("startRow"), 
+	    														pgList.get("endRow"),
+	    														search,searchtext);//첫번째 레코드번호,불러올 갯수
+	    }else {//count=0
+	    	articleList=Collections.EMPTY_LIST;//아무것도 없는 빈 list객체 변환
+	    }
 
 		//2.처리한 결과를 공유(서버 메모리에 저장)->이동할 페이지에 공유해서 사용
 		//request.setAttribute("currentPage"(키명))=>${키명}
@@ -46,9 +48,9 @@ public class ListAction implements CommandAction {
 	    request.setAttribute("articleList", articleList);//${articleList}
 	    
 		//3.공유해서 이동할 수있도록 페이지를 지정
-		 }
+		
 		return "/list.jsp";// / board/list.jsp=>경로를 변경해서 지정할 수있다.
 	}
 
-
 }
+
