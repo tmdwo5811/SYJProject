@@ -138,6 +138,7 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 	    //---------------------------------------------------------------------------
 		if(search==null || search=="") {
 			sql="select * from board order by no asc limit ?,?";//1,10
+			
 		}else { //제목+본문
 			if(search.equals("subject_content")) { //제목+본문
 				sql="select * from board where subject like '%"+

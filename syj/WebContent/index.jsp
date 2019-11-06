@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="user_id" value="${sessionScope.idKey}"/>
+<c:set var="user_loc" value="${sessionScope.locValue}"/>
 <!DOCTYPE html>
 <html>
 <!-- head태그 시작 -->
@@ -40,7 +42,7 @@
 	<script	src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js'></script>
 	<script src="js/vuescript.js"></script>
 	<div class="s-content">
-	<c:if test="${empty id}">
+	<c:if test="${empty user_id}">
 		<main class="row content__page">
 		<div class="column large-12 comment-respond">
 			<!-- START respond -->
@@ -50,7 +52,7 @@
 					우리 동네 대나무숲<span> 접속 하기</span>
 				</h3>
 
-				<form name="contactForm" id="contactForm" method="post" action="login.do"
+				<form name="contactForm" id="contactForm" method="post" action="loginProc.do"
 					autocomplete="off">
 					<fieldset>
 
@@ -81,14 +83,14 @@
 		<!-- end comment-respond -->
 		</c:if><!-- 로그아웃일때 -->
 		
-		<c:if test="${!empty id || id eq 'admin'}">
+		<c:if test="${!empty user_id || user_id eq 'admin'}">
 		
 		</c:if><!-- 관리자 계정 일때 -->
 		
-		<c:if test="${!empty id || !id eq 'admin'}">
+		<c:if test="${!empty user_id || !user_id eq 'admin'}">
 		<div>
-			${id} 님 일반계정으로 잘 들어오셨습니다.<p>
-			${loc} 번 지역의 회원님입니다.
+			${user_id} 님 일반계정으로 잘 들어오셨습니다.<p>
+			${user_loc} 번 지역의 회원님입니다.
 			
 			
 			
