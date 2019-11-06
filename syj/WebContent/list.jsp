@@ -95,15 +95,49 @@
 			</div>
 			<% }%>
 	<!-- end s-content -->
+	<c:if test="${pgList.startPage > pgList.blockSize}">
+		<a
+			href="/syj/list.do?pageNum=${pgList.startPage-pgList.blockSize}&search=${search}&searchtext=${searchtext}">[이전]</a>
+	</c:if>
 
+	<c:forEach var="i" begin="${pgList.startPage}" end="${pgList.endPage}">
+		<a
+			href="/syj/list.do?pageNum=${i}&search=${search}&searchtext=${searchtext}">
+			<c:if test="${pgList.currentPage==i}">
+				<font color="red"><b>[${i}]</b></font>
+			</c:if> <c:if test="${pgList.currentPage!=i}">
+	          ${i}
+	   </c:if>
+		</a>
+	</c:forEach>
+
+	<c:if test="${pgList.endPage < pgList.pageCount}">
+		<a
+			href="/syj/list.do?pageNum=${pgList.startPage+pgList.blockSize}&search=${search}&searchtext=${searchtext}">[다음]</a>
+	</c:if>
+
+	<p>
+		<!-- 검색어 추가(자주 검색이 되는 항목을 잘 선택) 제목,작성자,제목+본문
+       ex) search.do ->새로운 요청명령어를 이용해서 추가
+             list.do->기존의 내용을 추가
+  -->
+		
+	<form name="test" action="/syj/list.do">
+		<select name="search">
+      <option value="subject">제목</option>
+      <option value="subject_content">제목+본문</option>
+      <option value="writer">작성자</option>
+   </select>
+   <input type="text" size="15" name="searchtext">&nbsp;
+   <input type="submit" value="검색">
 	<!-- footerParts 시작 -->
-	<%@ include file="templateFiles/footerParts.jsp"%>
-	<!-- footerParts 끝 -->
-	<!-- Java Script
+		<%@ include file="templateFiles/footerParts.jsp"%>
+		<!-- footerParts 끝 -->
+		<!-- Java Script
     ================================================== -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/main.js"></script>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
 	
 </body>
 </html>
