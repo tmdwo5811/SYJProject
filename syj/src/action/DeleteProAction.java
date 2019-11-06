@@ -13,14 +13,14 @@ public class DeleteProAction implements CommandAction {
 	    
 	      String pageNum=request.getParameter("pageNum");//BoardDTO의 멤버변수가 아니기에
 	      //추가
-	      String passwd=request.getParameter("passwd");
+	      int passwd=Integer.parseInt(request.getParameter("passwd"));
 	      int num=Integer.parseInt(request.getParameter("num"));
 	      System.out.println("deletePro.do의 num=>"
 	                                   +num+",passwd=>"+passwd+",pageNum=>"+pageNum);
 	      
 	      BoardDAO dbPro=new BoardDAO();
 	      //select passwd from board where num=?
-	      int check=dbPro.deleteArticle(num,passwd);//암호찾고->웹상의 암호체크
+	      boolean check=dbPro.deleteArticle(num,passwd);//암호찾고->웹상의 암호체크
 	      
 	      //공유
 	      request.setAttribute("pageNum",pageNum);
