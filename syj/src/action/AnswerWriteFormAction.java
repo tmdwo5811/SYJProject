@@ -12,12 +12,7 @@ public class AnswerWriteFormAction implements CommandAction {
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws Throwable {
 		// TODO Auto-generated method stub
-		
-//		int no = 0;
-//		Post post = new Post();
-//		String content;
-//		Timestamp regdate;
-		
+			
 		Answer answer = new Answer();
 		answer.setPost(new Post());
 		
@@ -29,8 +24,6 @@ public class AnswerWriteFormAction implements CommandAction {
 		}
 		request.setAttribute("answer", answer);
 		
-		//${answer.post.no}
-		
-		return null;
+		return "/answerList.jsp";
 	}
 }

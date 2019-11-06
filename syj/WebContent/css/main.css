@@ -3436,7 +3436,7 @@ body.search-is-visible {
   margin: 0;
   padding: 2rem 0 0 0;
   padding-left: 14%;
-  width:752px;
+  width:100%;
 }
 
 .comment__avatar {

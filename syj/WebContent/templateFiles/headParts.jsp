@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="css/vuestyle.css">
 <link rel="stylesheet" href="css/faq.css">
 <script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/login.js"></script>
 <script>
 	function printClock() {
 
