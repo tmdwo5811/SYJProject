@@ -33,9 +33,6 @@ public class WriteProAction implements CommandAction {
 		article.setRegdate(new Timestamp(System.currentTimeMillis()));// 작성날짜
 		
 		article.setUser(User.LOGIN_INFO);
-
-
-		
 		
 		/*
 		 * user.setNo(Integer.parseInt(request.getParameter("no"))); user.getNo();

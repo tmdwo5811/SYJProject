@@ -26,7 +26,7 @@ public class WriteFormAction implements CommandAction {
 	       request.setAttribute("view", view);	
 	       //request.setAttribute("location", location);	
 	  
-		return "/writeForm.jsp";
+		return "/list.jsp";
 
 	}
 

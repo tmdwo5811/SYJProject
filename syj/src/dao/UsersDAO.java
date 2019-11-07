@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.Date;
 //import java.util.Date;
 import java.sql.PreparedStatement;
@@ -8,8 +9,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.co.hucloud.utilities.SHA256Util;
 import util.DBConnectionMgr;
 import vo.Location;
+import vo.Login;
 import vo._Login;
 import vo.User;
 import vo.UserSub;
@@ -22,7 +25,11 @@ public class UsersDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private String sql;
+	private int loNum;
 
+	public int locNum() {
+		return loNum;
+	}
 	public UsersDAO() {
 
 		try {
@@ -35,18 +42,33 @@ public class UsersDAO {
 	public boolean loginCheck(String id, String passwd) {
 		// 1.DB 연결
 				boolean check = false;
+				int loNum;
+				_Login lo = new _Login();
 				// 2.SQL 처리
 				try {
 					con = pool.getConnection(); // 만들어진 Connection객체를 반환 시키는것
 					System.out.println("con=>" + con);
+<<<<<<< HEAD
 					sql = "select id,pw from login where id=? and pw=?";
+=======
+					sql = "select lo.id,lo.pw,lo.salt,us.location_no from login as lo join users as us on (lo.user_no = us.`no`) where lo.id = ?";
+					//select 
+>>>>>>> branch 'master' of https://github.com/tmdwo5811/SYJProject.git
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, id);
-					pstmt.setString(2, passwd);
 					rs = pstmt.executeQuery();
-					check = rs.next(); // 데이터가 존재 => true or 없으면 -> false
+//					check = rs.next(); // 데이터가 존재 => true or 없으면 -> false
+					if(rs.next()) {
+						Login login = new Login();
+						login.setPw(rs.getString(2));
+						login.setSalt(rs.getString(3));
+						check = login.isPassword(passwd);
+						Location loc = new Location();
+						loc.setNo(rs.getInt(4));
+						this.loNum = loc.getNo();
+					}
 				} catch (Exception e) {
-					System.out.println("loginCheck() 실행 에러유발 =>	" + e);
+					e.printStackTrace();
 				} finally {
 					// 3.메모리해제
 					pool.freeConnection(con, pstmt, rs);

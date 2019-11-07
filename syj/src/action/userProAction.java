@@ -105,6 +105,6 @@ public class userProAction implements CommandAction {
 		dbPro.insertUser(User,_Login,UserSub);
 		//response.sendRedirect("http://localhost:8090/JspBoard2/list.do");
 		
-		return "/index.jsp";
+		return "/join_testPro.jsp";
 	}
 }

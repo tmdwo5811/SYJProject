@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.BoardDAO;
 import vo.Post;
 
-public class ListAction implements CommandAction {
+public class AnswerListAction implements CommandAction {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse pesponse) throws Throwable {
@@ -48,7 +48,7 @@ public class ListAction implements CommandAction {
 	    
 		//3.공유해서 이동할 수있도록 페이지를 지정
 		
-		return "/list.jsp";// / board/list.jsp=>경로를 변경해서 지정할 수있다.
+		return "/answerList.jsp";// / board/list.jsp=>경로를 변경해서 지정할 수있다.
 	}
 
 }
