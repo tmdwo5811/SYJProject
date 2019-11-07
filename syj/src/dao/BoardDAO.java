@@ -187,7 +187,7 @@ public List getBoardArticles(int start,int end,String search,String searchtext) 
 	// 2.글목록보기에 대한 메서드구현->레코드가 한개이상->한 페이지당 10개씩 끊어서 보여준다.
 	// 1) 레코드의 시작번호 2) 불러올 레코드의 갯수
 public List getArticles(int start, int end) {// getMemberList(int start,int end)
-
+	
 	List articleList = null;// ArrayList articleList=null;
 
 
