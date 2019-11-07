@@ -21,23 +21,22 @@ public class ListAction implements CommandAction {
 		String searchtext=request.getParameter("searchtext");
 		System.out.println("ListAction의 매개변수확인");
 		System.out.println("pageNum"+pageNum+" ,search"+search+" ,searchtext"+searchtext);
-		int count=0;//총레코드수
-		BoardDAO dbpro=new BoardDAO();
-			//count=dbpro.getArticleSearchCount(search, searchtext);//sql구문에 따라라서 결과 달라짐
 		
-		count = dbpro.getArticleCount();
-		Hashtable<String,Integer> pgList=dbpro.pageList(pageNum,count);
-		int startRow = pgList.get("startRow");
-		int endRow = pgList.get("endRow");
+		int count=0;//총레코드수
 		List articleList=null;//화면에 출력할 레코드를 저장할변수
+
+		BoardDAO dbpro=new BoardDAO();
+		count=dbpro.getArticleSearchCount(search, searchtext);//sql구문에 따라라서 결과 달라짐
 		System.out.println("현재검색된 레코드수(count)"+count);
 		
+		Hashtable<String,Integer> pgList=dbpro.pageList(pageNum,count);
+		
 	    if(count > 0){
-	    	System.out.println("startRow =>"+startRow+","+"endRow =>"+endRow);
-	    	articleList=dbpro.getArticles(startRow, endRow);//첫번째 레코드번호,불러올 갯수
+	    	System.out.println(pgList.get("startRow"+","+pgList.get("endRow")));
+	    	articleList=dbpro.getBoardArticles(pgList.get("startRow"), 
+	    														pgList.get("endRow"),	search,searchtext);//첫번째 레코드번호,불러올 갯수
 	    }else {//count=0
 	    	articleList=Collections.EMPTY_LIST;//아무것도 없는 빈 list객체 변환
-	    	System.out.println("아무것도 없음");
 	    }
 
 		//2.처리한 결과를 공유(서버 메모리에 저장)->이동할 페이지에 공유해서 사용
@@ -48,9 +47,6 @@ public class ListAction implements CommandAction {
 	    request.setAttribute("articleList", articleList);//${articleList}
 	    
 		//3.공유해서 이동할 수있도록 페이지를 지정
-	    
-	    //4.DB에서 게시물에 대한 정보를 가져오는 구문
-	    
 		
 		return "/list.jsp";// / board/list.jsp=>경로를 변경해서 지정할 수있다.
 	}
