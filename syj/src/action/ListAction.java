@@ -11,7 +11,7 @@ import dao.BoardDAO;
 import vo.Post;
 
 public class ListAction implements CommandAction {
-
+ 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse pesponse) throws Throwable {
 		// TODO Auto-generated method stub
