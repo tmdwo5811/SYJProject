@@ -7,7 +7,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Video Post - Typerite</title>
+    <title>Video Post - Typ0erite</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -173,6 +173,7 @@
                                         <div class="comment__meta">
                                             <div class="comment__time">April 30, 2019</div>
                                             <div class="comment__reply">
+                                                <a class="comment-reply-link" href="#0">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -181,6 +182,7 @@
                                     <p>
                                     Adhuc quaerendum est ne, vis ut harum tantas noluisse, id suas iisque mei. Nec te inani ponderum vulputate,
                                     facilisi expetenda has et. Iudico dictas scriptorasdfasdfsdfasdfadsgdem an vim, ei alia mentitum est, ne has voluptua praesent.
+
                                     </p>
                                     </div>
                                     <!-- 댓글 위치 -->
@@ -188,13 +190,15 @@
 	                                  <table width="500" cellspacing="0" cellpadding="0" align="center" bgcolor="ffffff">
 	                                    <tr>
 	                                    	<td style=padding:10;><align=absmiddle>
-	                                    		<input type="hidden" size="30" value="테스트김">&nbsp;테스트김
+	                                    		<input type="hidden" name="writer" size="20" value="테스트김">&nbsp;테스트김
 	                                    	</td>
 	                                    	<td style=padding:10;>
 	                                    	<textarea name="content" rows="1" cols="60"></textarea>
 	                                    	<input type="hidden" name="num" value="11111">
-											<input type="hidden" name="pageNum" value="1">
-											<input type="hidden" name="User" value="테스트김">
+
+											<input type="hidden" name="pageNum" value="">
+											<input type="hidden" name="writer_id" value="테스트김">
+											<input type="hidden" name="content" value="content" placeholder="내용을 입력해 주세요.">
 	                                    	</td>
 	                                    	<td style=padding:5;>
 	                                    	<input type="submit" value="작성">
