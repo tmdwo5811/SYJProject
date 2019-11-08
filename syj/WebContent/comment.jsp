@@ -181,7 +181,8 @@
                                     <div class="comment__text">
                                     <p>
                                     Adhuc quaerendum est ne, vis ut harum tantas noluisse, id suas iisque mei. Nec te inani ponderum vulputate,
-                                    facilisi expetenda has et. Iudico dictas scriptorem an vim, ei alia mentitum est, ne has voluptua praesent.
+                                    facilisi expetenda has et. Iudico dictas scriptorasdfasdfsdfasdfadsgdem an vim, ei alia mentitum est, ne has voluptua praesent.
+
                                     </p>
                                     </div>
                                     <!-- 댓글 위치 -->
@@ -194,6 +195,7 @@
 	                                    	<td style=padding:10;>
 	                                    	<textarea name="content" rows="1" cols="60"></textarea>
 	                                    	<input type="hidden" name="num" value="11111">
+
 											<input type="hidden" name="pageNum" value="">
 											<input type="hidden" name="writer_id" value="테스트김">
 											<input type="hidden" name="content" value="content" placeholder="내용을 입력해 주세요.">
