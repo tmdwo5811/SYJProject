@@ -451,18 +451,29 @@ private Post makeArticleFromResult() throws Exception {
 			System.out.println("comment.getcontent()=" + comment.getContent());
 			System.out.println("comment.getNo()=" + comment.getNo());
 			// 데이터 추가하는 코딩
-			sql = "insert into reply_board1 values";
+			
+			//=======================================
+			//완벽한 쿼리 문이 아니기때문에 values뒤에 추가적으로 몇가지 코드를 더 입력을 해야하는데 
+			//insertAticles라는 메소드에 비슷한 sql구문이 있습니다. 그것을 참고하여 입력하세요.
+			sql = "insert into comments(no,post_no,user_no,content,Timestemp";
+			sql +=") vlaues(?,?,?,?,?)";
+			//=======================================
+			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, comment.getUser().getNo());
-			// pstmt.setTimestamp (2,comment.getReg_date());
-			pstmt.setString(3, comment.getContent());
-			pstmt.setInt(4, comment.getNo());
+			pstmt.setInt(1, comment.getNo());
+			pstmt.setInt(2, comment.getPost().getNo());
+			pstmt.setInt(3, comment.getUser().getNo());//=>null
+			pstmt.setString(4, comment.getContent());//=>null
+			pstmt.setTimestamp (5,comment.getRegdate());
+			
+			pstmt.setInt(4, comment.getNo());//=>0
+			
 		} catch (Exception e) {
 			System.out.println("addComment()메서드 에러유발" + e);
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
-
+		
 	}
 
 	// 댓글
@@ -491,7 +502,28 @@ private Post makeArticleFromResult() throws Exception {
 		}
 		return commentList;
 	}
+	//댓글 수정
+	public Comment CommentupdateGetArticle(int no) {
+		Comment article = null;
 
+		try {
+			con = pool.getConnection();
+
+			sql = "select comments * from board where no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				article = (Comment) new Comment().setByResultSet(rs);
+			}
+		} catch (Exception e) {
+			System.out.println("CommentupdateGetArticle() 메서드 에러유발" + e);
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return article;
+	}
+	
 	// 댓글 삭제
 	public int deleteComment(int no) {
 		int result = 0;
@@ -514,5 +546,3 @@ private Post makeArticleFromResult() throws Exception {
 		return result;
 	}
 }
-
-
