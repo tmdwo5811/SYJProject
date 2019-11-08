@@ -21,7 +21,7 @@
 					<div id="comments" class="column large-12">
 						<h3 class="h2">답변된 청원</h3>
 						<!-- START commentlist -->
-				
+						
 						<ol class="commentlist">
 							<li class="depth-1 comment" style="width: 752px;">
 								<div class="comment__avatar">

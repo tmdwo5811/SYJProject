@@ -22,7 +22,7 @@
 		</a> <a href="loc_board.jsp"> <card data-image="images/second111.jpg">
 			<div class="h1text" slot="header">지역별 모아보기</div>
 			<div class="subtext111" slot="content">
-				<br>지역별 청원 내용을 확인<br>할수있습니다.
+				<br>지역별 청원 내용을 확인<br>할수있습니다. 
 			</div>
 			</card>
 		</a> <a href="faq.jsp"> <card data-image="images/third111.jpg">
