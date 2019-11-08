@@ -13,6 +13,7 @@
 	<!-- 사이드 메뉴 시작 -->
 	<%@ include file="templateFiles/sideMenu.jsp"%>
 	<!-- 사이드 메뉴 끝  -->
+	
 	<div id="app000" class="container000">
 		<a href="board.jsp"> <card data-image="images/seoul.jpg">
 			<div class="h1text" slot="header" id="clock1234">실시간 청원</div>
