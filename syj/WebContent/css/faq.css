@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+
+.table1 ul {
+	display:none;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 
