@@ -48,16 +48,11 @@ public class UsersDAO {
 				try {
 					con = pool.getConnection(); // 만들어진 Connection객체를 반환 시키는것
 					System.out.println("con=>" + con);
-<<<<<<< HEAD
-					sql = "select id,pw from login where id=? and pw=?";
-=======
 					sql = "select lo.id,lo.pw,lo.salt,us.location_no from login as lo join users as us on (lo.user_no = us.`no`) where lo.id = ?";
-					//select 
->>>>>>> branch 'master' of https://github.com/tmdwo5811/SYJProject.git
 					pstmt = con.prepareStatement(sql);
 					pstmt.setString(1, id);
 					rs = pstmt.executeQuery();
-//					check = rs.next(); // 데이터가 존재 => true or 없으면 -> false
+					//check = rs.next(); // 데이터가 존재 => true or 없으면 -> false
 					if(rs.next()) {
 						Login login = new Login();
 						login.setPw(rs.getString(2));
