@@ -8,14 +8,13 @@
 <!-- head태그 시작 -->
 <%@ include file="templateFiles/headParts.jsp"%>
 <!-- head태그 끝 -->
-
 <body onload="printClock()">
 	<!-- 사이드 메뉴 시작 -->
 	<%@ include file="templateFiles/sideMenu.jsp"%>
 	<!-- 사이드 메뉴 끝  -->
 	
 	<div id="app000" class="container000">
-		<a href="board.jsp"> <card data-image="images/seoul.jpg">
+		<a href="list.do"> <card data-image="images/seoul.jpg">
 			<div class="h1text" slot="header" id="clock1234">실시간 청원</div>
 			<div class="subtext111" slot="content">
 				<br>우리동네 대나무숲에 오신것을<br>환영합니다.
@@ -24,10 +23,10 @@
 		</a> <a href="loc_board.jsp"> <card data-image="images/second111.jpg">
 			<div class="h1text" slot="header">지역별 모아보기</div>
 			<div class="subtext111" slot="content">
-				<br>지역별 청원 내용을 확인<br>할수있습니다.
+				<br>지역별 청원 내용을 확인<br>할수있습니다. 
 			</div>
 			</card>
-		</a> <a href="#"> <card data-image="images/third111.jpg">
+		</a> <a href="faq.jsp"> <card data-image="images/third111.jpg">
 			<div class="h1text" slot="header">대나무숲 이용방법</div>
 			<div class="subtext111" slot="content">
 				<br>대나무숲 서비스 관련<br>이용 방법을확인할수있습니다.
