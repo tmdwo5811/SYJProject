@@ -9,7 +9,6 @@
 <%@ include file="templateFiles/headParts.jsp"%>
 <!-- head태그 끝 -->
 
-
 <body onload="printClock()">
 	<!-- 사이드 메뉴 시작 -->
 	<%@ include file="templateFiles/sideMenu.jsp"%>
