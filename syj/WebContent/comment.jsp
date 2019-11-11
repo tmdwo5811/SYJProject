@@ -55,7 +55,7 @@
 	                                  <table width="500" cellspacing="0" cellpadding="0" align="center" bgcolor="ffffff">
 	                                    <tr>
 	                                    	<td style=padding:10;><align=absmiddle>
-	                                    		<input type="hidden" name="writer" size="20" value="테스트김">&nbsp;테스트김
+	                                    		<input type="hidden" name="writer" size="20" value="테스트김">&nbsp;태스트김
 	                                    	</td>
 	                                    	<td style=padding:10;>
 	                                    	<textarea name="content" rows="1" cols="60"></textarea>
@@ -65,7 +65,7 @@
 											<input type="hidden" name="content" value="content" placeholder="내용을 입력해 주세요.">
 	                                    	</td>
 	                                    	<td style=padding:5;>
-	                                    	<input type="submit" value="작성">
+	                                    	<input type="submit" value="작성" onclick="comment.jsp">
 	                                    	</td>
 	                                    	
 	                                    </tr>
