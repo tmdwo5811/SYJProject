@@ -29,12 +29,12 @@
 								</div>
 								<div class="comment__content">
 									<div class="comment__info">
-										<div class="post_no">게게시글 번호 ${article.no}</div>
+										<div class="post_no">게시글 번호 ${article.no}</div>
 										<div class="comment__author">${article.subject}</div>
 										<div class="comment__meta">
 											<div class="comment__time">${article.regdate}</div>
 											<div class="comment__reply">
-												<a class="comment-reply-link" href="/syj/comment.jsp?no=${article.no}&pageNum=${pgList.currentPage}">자세히보기</a>
+												<a class="comment-reply-link" href="/syj/content.do?no=${article.no}&pageNum=${pgList.currentPage}">자세히보기</a>
 												</div>
 										</div>
 									</div>

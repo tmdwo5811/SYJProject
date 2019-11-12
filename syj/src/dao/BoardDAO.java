@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-import org.apache.catalina.User;
+//import org.apache.catalina.User;
 
 import com.mysql.cj.jdbc.Blob;
 
@@ -32,6 +32,22 @@ public class BoardDAO {
 		} catch (Exception e) {
 			System.out.println("DB접속 오류=>" + e);
 		}
+	}
+	private Post makeArticleFromResult() throws Exception {
+		Post article=new Post();
+		Location lo=new Location(rs.getInt("location_no"));
+		User us = new User();
+		us.getNo();
+		
+		article.setUser(us);
+		article.setNo(rs.getInt("no"));
+		article.setLocation(lo);
+		article.setSubject(rs.getString("subject"));
+		article.setContent(rs.getString("content"));
+		article.setView(rs.getInt("view"));
+		article.setRegdate(rs.getTimestamp("regdate"));//오늘날짜->코딩 ->now()
+		article.setStatus(rs.getByte("status"));
+		return article;
 	}
 
 	public int getArticleCount() {// 페이징처리 전체 레코드수
@@ -81,7 +97,7 @@ public Hashtable pageList(String pageNum,int count) {
     	Hashtable<String,Integer> pgList=new Hashtable<String,Integer>();
     	//ListAction에서의 복잡한 페이징처리를 대신 처리
 	     int pageSize=5;//numPerPage->페이지당 보여주는 게시물수(=레코드수) 10
-	     int blockSize=3;//pagePerBlock->블럭당 보여주는 페이지수 10
+	     int blockSize=10;//pagePerBlock->블럭당 보여주는 페이지수 10
 	     
 	    //게시판을 맨 처음 실행시키면 무조건 1페이지부터 출력
 	    if(pageNum==null){
@@ -232,18 +248,7 @@ public List getArticles(int start, int end) {// getMemberList(int start,int end)
 
 	return articleList;
 }
-private Post makeArticleFromResult() throws Exception {
-	Post article=new Post();
-	Location lo=new Location(rs.getInt("location_no"));
-	article.setNo(rs.getInt("no"));
-	article.setLocation(lo);
-	article.setSubject(rs.getString("subject"));
-	article.setContent(rs.getString("content"));
-	article.setView(rs.getInt("view"));
-	article.setRegdate(rs.getTimestamp("regdate"));//오늘날짜->코딩 ->now()
-	article.setStatus(rs.getByte("status"));
-	return article;
-}
+
 
 
 	// -게시판의 글쓰기 (일단 만들어두긴하는데 써야할듯)
@@ -282,22 +287,25 @@ private Post makeArticleFromResult() throws Exception {
 	   }
 
 	// 글상세보기
-	public Post getArticle(int num) {
+	public Post getArticle( int no) {
 		Post article = null;
 		try {
-			con = pool.getConnection();
-			sql = "update board set readcount=readcount+1 where num=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			int update = pstmt.executeUpdate();
-			System.out.println("조회수 증가유무(update)=>" + update);
-			sql = "select * from board where num=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			rs = pstmt.executeQuery();
+			con=pool.getConnection();
+			  
+//			sql="update board set view=view+1 where no=?";//1,10
+//			pstmt=con.prepareStatement(sql);
+//			pstmt.setInt(1, no);//mysql은 레코드순번이 내부적으로 0부터 시작
+//			int update=pstmt.executeUpdate();
+//			System.out.println("조회수 증가유무(update)=>"+update);//1
+			
+			sql="select * from board where no=?";//1,10
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs=pstmt.executeQuery();
 			// 글목록보기
 			if (rs.next()) {
-				article = (Post) new Post().setByResultSet(rs);
+				//article = (Post) new Post().setByResultSet(rs);
+				article = makeArticleFromResult();
 			}
 		} catch (Exception e) {
 			System.out.println("getArticle 메서드에러" + e);
@@ -369,7 +377,7 @@ private Post makeArticleFromResult() throws Exception {
 	}
 
 //글삭제 고치는중
-	/*
+/*	
 	public int deleteArticle(int no, String user) {
 		String dbuser = null;
 		int dbno=0;
@@ -380,7 +388,6 @@ private Post makeArticleFromResult() throws Exception {
 			sql = "select no user from board where no=? ";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no);
-			pstmt.setString(2, user_no);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				dbno=rs.getInt("no");//Integer.parseInt(request.getParameter("no")
@@ -405,17 +412,20 @@ private Post makeArticleFromResult() throws Exception {
 		}
 		return x;
 	}
-	*/
-
 	
+*/
+
 	public boolean deleteArticle(int no, int user) {
 		int dbuser = 0;
 		int dbno=0;
 		boolean x=false;// 게시물의 삭제성공유무
-		try {			
+		try {	
+			dbno=rs.getInt("no");//Integer.parseInt(request.getParameter("no")
+			dbuser = rs.getInt("user");
+				sql="select * from board where user_no=? ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, no);
 			if (rs.next()) {
-				dbno=rs.getInt("no");//Integer.parseInt(request.getParameter("no")
-				dbuser = rs.getInt("user");
 				System.out.println("dbuser" + dbuser+",dbno"+dbno);
 				if (dbuser==user && dbno==no) {
 					sql = "delete from board where no=? and user=?";
