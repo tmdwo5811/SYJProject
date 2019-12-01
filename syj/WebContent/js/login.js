@@ -1,7 +1,7 @@
 function memberReg(){
 	document.location="join_testPro.do";
 }
-function loginCheck(){
+function loginCheck1(){
 	var joinForm = document.contactForm;
 	var id = joinForm.id;
 	var pw = joinForm.pw;
@@ -11,8 +11,8 @@ function loginCheck(){
 	var gender = joinForm.both;
 	var phone = joinForm.phone;
 	
-	if(!id || !pw || !pw2 || !loc || !both || !gender || !phone){
-		alert("모든 칸을 채워주세요");
+	if(id.value == "" || pw.value == "" || pw2.value == "" || loc.value == "" || both.value == "" || gender.value == "" || phone.value == ""){
+		alert("빈칸을 반드시 채워주세요");
 	}else{
 		loginForm.submit();
 	}

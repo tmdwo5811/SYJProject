@@ -89,7 +89,7 @@
 		</c:if><!-- 관리자 계정 일때 -->
 		
 		<c:if test="${!empty user_id || !user_id eq 'admin'}">
-		<div>
+		<div style="text-align:center;padding:30px;">
 			${user_id} 님 일반계정으로 잘 들어오셨습니다.<p>
 			${user_loc} 번 지역의 회원님입니다.
 			
