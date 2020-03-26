@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="vo.*,java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 	<!-- head태그 시작 -->
@@ -104,11 +105,95 @@
 			
     </div> <!-- end s-wrap -->
 	
+	<!-- site content
+        ================================================== -->
+    
+<form>
+	<div class="s-content content">
+		<main class="row content__page">
 
-    <!-- Java Script
+		<div class="comments-wrap">
+
+			<div id="comments" class="column large-12">
+
+				<h3 class="h2">청원 전체 목록 [최신순]</h3>
+				<div style="float: right;">
+					<button style="height: 40px; line-height: 40px;"
+						onclick="location.href='writeForm.jsp'">지금 청원하기</button>
+				</div>
+				<!-- START commentlist -->
+				<ol class="commentlist">
+
+					<li class="depth-1 comment">
+
+						<div class="comment__avatar">
+							<img class="avatar" src="images/avatars/user-01.jpg" alt=""
+								width="50" height="50">
+						</div>
+
+						<div class="comment__content">
+
+							<div class="comment__info">
+								<div class="post_no">게시글 번호 ${article.no}</div>
+								<div class="comment__author">${article.subject}</div>
+								<div class="comment__meta">
+									<div class="comment__time">${article.regdate}</div>
+									<div class="comment__reply">
+										<a class="comment-reply-link" href="#0">자세히 보기</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="comment__text">
+								<p>${article.content}</p>
+							</div>
+							<!-- 댓글 위치 -->
+							<form method="post" name="add_form" action="comment.jsp">
+								<table width="500" cellspacing="0" cellpadding="0"
+									align="center" bgcolor="ffffff">
+									<tr>
+										<td style="padding: 10;"><align =absmiddle> <input
+												type="hidden" name="writer" size="20" value="테스트김">&nbsp;테스트김
+											</td>
+										<td style="padding: 10;"><textarea name="content"
+												rows="1" cols="60"></textarea> <input type="hidden"
+											name="num" value="11111"> <input type="hidden"
+											name="pageNum" value=""> <input type="hidden"
+											name="writer_id" value="테스트김"> <input type="hidden"
+											name="content" value="content" placeholder="내용을 입력해 주세요.">
+										</td>
+										<td style="padding: 5;">
+      											 
+										</td>
+
+									</tr>
+								</table>
+							</form>
+						</div>
+			</div>
+
+			</li>
+			<!-- end comment level 1 -->
+
+			</ol>
+			<!-- END commentlist -->
+
+		</div>
+		<!-- end comments --> </main>
+
+	</div>
+	<!-- end s-content -->
+
+	 	 <input type="button" value="글삭제" 
+      	 onclick="document.location.href='/syj/deleteForm.do?num=${article.no}&pageNum=${pageNum}'">
+</form>
+	<!-- footerParts 시작 -->
+	<%@ include file="templateFiles/footerParts.jsp"%>
+	<!-- footerParts 끝 -->
+	<!-- Java Script
     ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
 
 </body>
