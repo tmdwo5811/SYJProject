@@ -78,7 +78,7 @@
 							<div style="text-align: center;">
 								<input name="submit" id="submit"
 									class="btn btn--primary btn-wide btn--large width48"
-									value="가입 하기" type="button" onclick="loginCheck()"> <input
+									value="가입 하기" type="button" onclick="loginCheck1()"> <input
 									name="reset" id="reset"
 									class="btn btn--default btn-wide btn--large width48"
 									value="다시 작성" type="button">

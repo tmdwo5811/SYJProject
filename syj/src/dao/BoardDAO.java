@@ -15,9 +15,6 @@ import com.mysql.cj.jdbc.Blob;
 import util.DBConnectionMgr;
 import vo.*;
 
-
-
-
 public class BoardDAO {
 	private DBConnectionMgr pool = null;
 	private Connection con = null;
@@ -502,7 +499,7 @@ public List getArticles(int start, int end) {// getMemberList(int start,int end)
 			System.out.println("sql:");
 			rs = pstmt.executeQuery();
 
-			commentList = new ArrayList<>();
+			//commentList = new ArrayList<>();
 			while (rs.next())
 				commentList.add((Comment) new Comment().setByResultSet(rs));
 		} catch (Exception e) {

@@ -4,7 +4,7 @@
 <!--- basic page needs
     ================================================== -->
 <meta charset="utf-8">
-<title>Typerite</title>
+<title>우리 동네 대나무숲</title>
 <meta name="description" content="">
 <meta name="author" content="">
 

@@ -12,13 +12,13 @@ public class SessionUtil {
 	
 	private static SqlSessionFactory sqlSessionFactory;
 	
-	static {
-		
-		try(InputStream inputStream = Resources.getResourceAsStream("mybatis/config.xml")) {
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		}catch (IOException e) { e.printStackTrace(); }
-		
-	} //static;
+//	static {
+//		
+//		try(InputStream inputStream = Resources.getResourceAsStream("mybatis/config.xml")) {
+//			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//		}catch (IOException e) { e.printStackTrace(); }
+//		
+//	} //static;
 	
 	public static SqlSession getSession() { return sqlSessionFactory.openSession(); }
 	

@@ -127,7 +127,7 @@ public class UsersDAO {
 
 	public List<User> selectUser() {
 
-		List<User> result = new ArrayList<>();
+		//List<User> result = new ArrayList<>();
 
 		try {
 			con = pool.getConnection();
@@ -144,7 +144,7 @@ public class UsersDAO {
 			pool.freeConnection(con, pstmt, rs);
 		}
 
-		return result;
+		return null;
 
 	} // selectUser();
 
